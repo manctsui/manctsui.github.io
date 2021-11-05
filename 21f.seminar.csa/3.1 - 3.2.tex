@@ -1,0 +1,708 @@
+\documentclass[10pt,xcolor=table,dvipsnames]{beamer}
+\usepackage{adjustbox,amssymb,amsmath,tikz-cd,adjustbox,multirow}
+
+\usetheme{Boadilla}
+\setbeamertemplate{navigation symbols}{}
+\definecolor{linkin}{RGB}{238,238,238}
+\setbeamercolor{background canvas}{bg=linkin}
+\definecolor{stupid}{RGB}{245,245,245}
+\setbeamercolor{block body}{bg=stupid}
+
+\newcommand\rightthreearrow{%
+        \mathrel{\vcenter{\mathsurround0pt
+                \ialign{##\crcr
+                        \noalign{\nointerlineskip}$\rightarrow$\crcr
+                        \noalign{\nointerlineskip}$\rightarrow$\crcr
+                        \noalign{\nointerlineskip}$\rightarrow$\crcr
+                }%
+        }}%
+}
+
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+
+\begin{document}
+
+\title[Reading Group]{Chapter 3: Techniques from Group Cohomology}
+\author{Abdullah Naeem Malik}
+\institute[CSA]{Central Simple Algebras and Galois Cohomology}
+\date{November I, 2021}
+\maketitle
+
+\begin{frame}
+    \frametitle{Section 3.1}
+\begin{stepitemize}
+\item A $G$-module $A$ ``is'' a $\mathbb{Z}\left[ G\right] $-module.
+\item $A$ is trivial if $G$ acts trivially.
+\item $A^{G}:=\left\{ m\in A:g.m=m\right\} $
+\item Morphism $A \longrightarrow B$ is morphism of abelian groups and $G$-linear
+\end{stepitemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Cohomology basics}
+$d^2 = 0$, exact/acyclic, chain map, snake lemma,..
+\vspace{5.7cm}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Cohomology basics}
+$d^2 = 0$, exact/acyclic, chain map, snake lemma,..
+\vspace{1cm}
+\begin{center}
+\begin{tikzcd}
+            & \text{ker} \alpha \arrow[d]     & \text{ker} \beta \arrow[d]     & \text{ker} \gamma \arrow[d]     &   \\
+            & A \arrow[d, "\alpha"] \arrow[r] & B \arrow[d, "\beta"] \arrow[r] & C \arrow[d, "\gamma"] \arrow[r] & 0 \\
+0 \arrow[r] & D \arrow[r] \arrow[d]           & E \arrow[r] \arrow[d]          & F \arrow[d]                     &   \\
+            & \text{coker} \alpha             & \text{ker} \beta               & \text{ker} \gamma               &
+\end{tikzcd}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Projective Modules}
+\vspace{1cm}
+\begin{center}
+\begin{tikzcd}
+                                    & A \arrow[d, "\alpha", two heads] \\
+P \arrow[r, "f"] \arrow[ru, dashed] & B
+\end{tikzcd}
+\end{center}
+
+\vspace{1cm}
+\onslide<2->{An $R$-module $P$ is projective iff there exists an $R$-module $M$ and a free $R$-module $F$ such that $P \oplus M \simeq F$}
+
+\vspace{1cm}
+
+\onslide<3->{$ ... \longrightarrow P_3 \longrightarrow P_2 \longrightarrow P_1 \longrightarrow P_0 \longrightarrow A $}
+\end{frame}
+
+\begin{frame}
+The goal of the cohomology is
+\begin{stepitemize}
+\item $H^0 \left(G,A \right) = A^G$ for all $G$-modules $A$.
+\item For all $G$-homomorphisms $A \longrightarrow B$, we have%
+\begin{equation*}
+H^i \left(G,A \right) \longrightarrow H^i \left(G,B \right)
+\end{equation*}
+\item Short exact sequences of $G$-modules induce long exact sequences
+\item $H^i \left(G,A \right):= H^i \left(Hom_G\left(P_i,A \right)\right)$
+\end{stepitemize}
+\end{frame}
+
+\begin{frame}[fragile]
+        \begin{block}{Lemma 1}
+        $A^{G}\cong Hom_{G}\left( \mathbb{Z},A\right) \cong \ker \left( Hom\left(
+P_{0},A\right) \longrightarrow Hom\left( P_{1},A\right) \right)
+:=H^{0}\left( G,A\right)$
+        \end{block}
+        \begin{block}{Proof}
+        $\phi \in Hom_{G}\left( \mathbb{Z},A\right) \iff \phi \left( 1\right) \in
+A^{G}$ since $m=\phi \left( 1\right) =\phi \left( g.1\right) =g.\phi \left(1\right) =g.m$
+\begin{center}
+\begin{tikzcd}
+              &                      &                                                      &                              & \mathbb{Z} \arrow[ld, no head, Rightarrow] \arrow[lld, "i", bend right] \\
+... \arrow[r] & P_1 \arrow[r, "p_1"] & P_0 \arrow[r, "p_0"] \arrow[rd, "\lambda_0", dashed] & \mathbb{Z} \arrow[d, "\phi"] &                                                                         \\
+              &                      &                                                      & A                            &
+\end{tikzcd}
+\end{center}
+\begin{gather*}
+Hom\left( P_{0},A\right) \longrightarrow Hom\left( P_{1},A\right)
+\longrightarrow Hom\left( P_{2},A\right) \longrightarrow ...\qedsymbol
+\end{gather*}
+
+        \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+        \begin{block}{Lemma 2}
+        $A \longrightarrow B$ induces $H^i\left( G,A\right) \longrightarrow H^i\left(G,B\right) $
+        \end{block}
+        \begin{block}{Proof}
+        \begin{center}
+\begin{tikzcd}
+... \arrow[r] & P_0 \arrow[r] & \mathbb{Z} \arrow[d] & {Hom_{G}\left( P_0,A\right)} \arrow[r] \arrow[dd] & {Hom_{G}\left( P_1,A\right)} \arrow[r] \arrow[dd] & ... \\
+              &               & A \arrow[d]          &                                                   &                                                   &     \\
+              &               & B                    & {Hom_{G}\left( P_0,B\right)} \arrow[r]            & {Hom_{G}\left( P_1,B\right)} \arrow[r]            & ... \qedsymbol
+\end{tikzcd}
+\end{center}
+
+        \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+        \begin{block}{Corollary}
+                A short exact sequence of $G$-modules
+                \begin{gather*}
+                0\longrightarrow A \longrightarrow B \longrightarrow C \longrightarrow 0
+                \end{gather*}
+                induce
+                \begin{gather*}
+...\longrightarrow H^{i}\left( G,A\right) \longrightarrow H^{i}\left(
+G,B\right) \longrightarrow H^{i}\left( G,C\right) \longrightarrow
+H^{i+1}\left( G,A\right) \longrightarrow ...
+                \end{gather*}
+        \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Section 3.2}
+\begin{stepitemize}
+\item More general
+\item .. but not concrete enough
+\end{stepitemize}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Standard Resolution of $\mathbb{Z}$}
+\begin{stepitemize}
+\item Consider the $G$-module $\mathbb{Z}\left[ G^{i+1}\right] =\left\langle
+\sigma _{0},...,\sigma _{i}\right\rangle $
+
+\item The $G$-action is $g.\left( \sigma _{0},...,\sigma _{i}\right) =\left(
+g\sigma _{0},...,g\sigma _{i}\right) $
+
+\item Observe that $\mathbb{Z}\left[ G^{i+1}\right] \cong \mathbb{Z}\left[ G\right]
+^{i+1}$
+
+\item Define $\delta_{i}:\mathbb{Z}\left[ G^{i+1}\right] \longrightarrow \mathbb{Z%
+}\left[ G^{i}\right] $ by $\delta_{i}=\sum\limits_{j}\left( -1\right)
+^{j}s_{j}^{i}$ where $s_{j}^{i}\left( \sigma _{0},...\sigma _{i}\right)
+=\left( \sigma _{0},...,\widehat{\sigma }_{j},...,\sigma
+_{i}\right) $
+
+\item For $i=0$, we have $\delta_{0}:\mathbb{Z}\left[ G\right] \longrightarrow
+\mathbb{Z=}\left\langle \varnothing \right\rangle $ with $\delta_{0}\left(
+\sigma _{0}\right) =1$
+
+\item $...\longrightarrow \mathbb{Z}\left[ G^{2}\right] \overset{\delta_{2}}{%
+\longrightarrow }\mathbb{Z}\left[ G^{1}\right] \overset{\delta_{1}}{%
+\longrightarrow }\mathbb{Z}\left[ G^{0}\right] \overset{\delta_{0}}{%
+\longrightarrow }\mathbb{Z} $
+\end{stepitemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+        \begin{block}{Lemma 3}
+        $\delta_{i}\circ \delta_{i+1}=0$
+        \end{block}
+        \begin{block}{Proof}
+\begin{equation*}
+\delta _{i}\circ \delta _{i+1}=\left\{
+\begin{array}{ccc}
+\sum\limits_{k}\sum\limits_{j}\left( -1\right) ^{k}s_{k}^{i}\left( \left(
+-1\right) ^{j}s_{j}^{i+1}\right)  &  & \text{with }j<k \\
++\sum\limits_{k}\sum\limits_{j}\left( -1\right) ^{k}s_{k}^{i}\left( \left(
+-1\right) ^{j-1}s_{j}^{i+1}\right)  &  & \text{with }k<j%
+\end{array}%
+\right.
+\end{equation*}
+        \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Fact}
+\begin{center}
+\begin{tikzcd}
+... \arrow[r] & C_{i+1} \arrow[r, "\partial_{i+1}"] \arrow[d, "{f_{i+1},g_{i+1}}"'] & C_{i} \arrow[r, "\partial_{i}"] \arrow[d, "{f_{i},g_{i}}"'] \arrow[ld, "p_{i}"'] & C_{i-1} \arrow[r] \arrow[d, "{f_{i-1},g_{i-1}}"] \arrow[ld, "p_{i-1}"] & ... \\
+... \arrow[r] & D_{i+1} \arrow[r, "\partial_{i+1}'"]                                  & D_{i} \arrow[r, "\partial_{i}'"]                                                   & D_{i-1} \arrow[r]                                                  & ...
+\end{tikzcd}
+\end{center}
+
+$f$ is said to be \textbf{homotopic} to $g$ if there exist maps $p$ such that
+\begin{equation*}
+\partial _{i+1}^{\prime }\circ p_{i}+p_{i-1}\circ \partial _{i}=g_{i}-f_{i}
+\end{equation*}
+
+
+Chain homotopic maps preserve homology
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item  Now fix $\sigma \in \mathbb{Z}\left[ G^{i+1}\right] $ and define $h_{i}:%
+\mathbb{Z}\left[ G^{i+1}\right] \longrightarrow \mathbb{Z}\left[ G^{i+2}%
+\right] $ by $h_{i}\left( \sigma _{0},...\sigma _{i}\right) =\left( \sigma
+,\sigma _{0},...\sigma _{i}\right) $
+\item Note that $\delta _{i+1}\circ h_{i}+h_{i-1}\circ \delta _{i}=id_{\mathbb{Z}\left[
+G^{i+1}\right] }$
+\end{itemize}
+\begin{block}{Proof}
+\textcolor{stupid}{$\left( \sum\limits_{k}\left( -1\right) ^{k}s_{k}^{i+1}\right) h_{i}\left(
+\sigma _{0},...\sigma _{i}\right) +h_{i-1}\circ \sum\limits_{j}\left(
+-1\right) ^{j}s_{j}^{i}\left( \sigma _{0},...,\sigma _{i}\right) $}
+
+\textcolor{stupid}{$=\left( \sum\limits_{k}\left( -1\right) ^{k}s_{k}^{i+1}\right) \left(
+\sigma ,\sigma _{0},...\sigma _{i}\right) +h_{i-1}\sum\limits_{j}\left(
+-1\right) ^{j}\left( \sigma _{0},...,\widehat{\sigma }_{j},...,\sigma
+_{i}\right) $}
+
+\textcolor{stupid}{$=\sum\limits_{k}\left( -1\right) ^{k}\left( \sigma ,\sigma _{0},...,%
+\widehat{\sigma }_{k},...,\sigma _{i}\right) +\sum\limits_{j}\left(
+-1\right) ^{j}\left( \sigma ,\sigma _{0},...,\widehat{\sigma }%
+_{j},...,\sigma _{i}\right) $}
+
+\textcolor{stupid}{$=\left( \sigma _{0},...,\sigma _{i}\right) $}
+
+        \end{block}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item  Now fix $\sigma \in \mathbb{Z}\left[ G^{i+1}\right] $ and define $h_{i}:%
+\mathbb{Z}\left[ G^{i+1}\right] \longrightarrow \mathbb{Z}\left[ G^{i+2}%
+\right] $ by $h_{i}\left( \sigma _{0},...\sigma _{i}\right) =\left( \sigma
+,\sigma _{0},...\sigma _{i}\right) $
+\item Note that $\delta _{i+1}\circ h_{i}+h_{i-1}\circ \delta _{i}=id_{\mathbb{Z}\left[
+G^{i+1}\right] }$
+\end{itemize}
+\begin{block}{Proof}
+$\left( \sum\limits_{k}\left( -1\right) ^{k}s_{k}^{i+1}\right) h_{i}\left(
+\sigma _{0},...\sigma _{i}\right) +h_{i-1}\circ \sum\limits_{j}\left(
+-1\right) ^{j}s_{j}^{i}\left( \sigma _{0},...,\sigma _{i}\right) $
+
+\textcolor{stupid}{$=\left( \sum\limits_{k}\left( -1\right) ^{k}s_{k}^{i+1}\right) \left(
+\sigma ,\sigma _{0},...\sigma _{i}\right) +h_{i-1}\sum\limits_{j}\left(
+-1\right) ^{j}\left( \sigma _{0},...,\widehat{\sigma }_{j},...,\sigma
+_{i}\right) $}
+
+\textcolor{stupid}{$=\sum\limits_{k}\left( -1\right) ^{k}\left( \sigma ,\sigma _{0},...,%
+\widehat{\sigma }_{k},...,\sigma _{i}\right) +\sum\limits_{j}\left(
+-1\right) ^{j}\left( \sigma ,\sigma _{0},...,\widehat{\sigma }%
+_{j},...,\sigma _{i}\right) $}
+
+\textcolor{stupid}{$=\left( \sigma _{0},...,\sigma _{i}\right) $}
+
+        \end{block}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item  Now fix $\sigma \in \mathbb{Z}\left[ G^{i+1}\right] $ and define $h_{i}:%
+\mathbb{Z}\left[ G^{i+1}\right] \longrightarrow \mathbb{Z}\left[ G^{i+2}%
+\right] $ by $h_{i}\left( \sigma _{0},...\sigma _{i}\right) =\left( \sigma
+,\sigma _{0},...\sigma _{i}\right) $
+\item Note that $\delta _{i+1}\circ h_{i}+h_{i-1}\circ \delta _{i}=id_{\mathbb{Z}\left[
+G^{i+1}\right] }$
+\end{itemize}
+\begin{block}{Proof}
+$\left( \sum\limits_{k}\left( -1\right) ^{k}s_{k}^{i+1}\right) h_{i}\left(
+\sigma _{0},...\sigma _{i}\right) +h_{i-1}\circ \sum\limits_{j}\left(
+-1\right) ^{j}s_{j}^{i}\left( \sigma _{0},...,\sigma _{i}\right) $
+
+$=\left( \sum\limits_{k}\left( -1\right) ^{k}s_{k}^{i+1}\right) \left(
+\sigma ,\sigma _{0},...\sigma _{i}\right) +h_{i-1}\sum\limits_{j}\left(
+-1\right) ^{j}\left( \sigma _{0},...,\widehat{\sigma }_{j},...,\sigma
+_{i}\right) $
+
+\textcolor{stupid}{$=\sum\limits_{k}\left( -1\right) ^{k}\left( \sigma ,\sigma _{0},...,%
+\widehat{\sigma }_{k},...,\sigma _{i}\right) +\sum\limits_{j}\left(
+-1\right) ^{j}\left( \sigma ,\sigma _{0},...,\widehat{\sigma }%
+_{j},...,\sigma _{i}\right) $}
+
+\textcolor{stupid}{$=\left( \sigma _{0},...,\sigma _{i}\right) $}
+
+        \end{block}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item  Now fix $\sigma \in \mathbb{Z}\left[ G^{i+1}\right] $ and define $h_{i}:%
+\mathbb{Z}\left[ G^{i+1}\right] \longrightarrow \mathbb{Z}\left[ G^{i+2}%
+\right] $ by $h_{i}\left( \sigma _{0},...\sigma _{i}\right) =\left( \sigma
+,\sigma _{0},...\sigma _{i}\right) $
+\item Note that $\delta _{i+1}\circ h_{i}+h_{i-1}\circ \delta _{i}=id_{\mathbb{Z}\left[
+G^{i+1}\right] }$
+\end{itemize}
+\begin{block}{Proof}
+$\left( \sum\limits_{k}\left( -1\right) ^{k}s_{k}^{i+1}\right) h_{i}\left(
+\sigma _{0},...\sigma _{i}\right) +h_{i-1}\circ \sum\limits_{j}\left(
+-1\right) ^{j}s_{j}^{i}\left( \sigma _{0},...,\sigma _{i}\right) $
+
+$=\left( \sum\limits_{k}\left( -1\right) ^{k}s_{k}^{i+1}\right) \left(
+\sigma ,\sigma _{0},...\sigma _{i}\right) +h_{i-1}\sum\limits_{j}\left(
+-1\right) ^{j}\left( \sigma _{0},...,\widehat{\sigma }_{j},...,\sigma
+_{i}\right) $
+
+$=\sum\limits_{k}\left( -1\right) ^{k}\left( \sigma ,\sigma _{0},...,%
+\widehat{\sigma }_{k-1},...,\sigma _{i}\right) +\sum\limits_{j}\left(
+-1\right) ^{j}\left( \sigma ,\sigma _{0},...,\widehat{\sigma }%
+_{j},...,\sigma _{i}\right) $
+
+\textcolor{stupid}{$=\left( \sigma _{0},...,\sigma _{i}\right) $}
+
+        \end{block}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item  Now fix $\sigma \in \mathbb{Z}\left[ G^{i+1}\right] $ and define $h_{i}:%
+\mathbb{Z}\left[ G^{i+1}\right] \longrightarrow \mathbb{Z}\left[ G^{i+2}%
+\right] $ by $h_{i}\left( \sigma _{0},...\sigma _{i}\right) =\left( \sigma
+,\sigma _{0},...\sigma _{i}\right) $
+\item Note that $\delta _{i+1}\circ h_{i}+h_{i-1}\circ \delta _{i}=id_{\mathbb{Z}\left[
+G^{i+1}\right] }$
+\end{itemize}
+\begin{block}{Proof}
+$\left( \sum\limits_{k}\left( -1\right) ^{k}s_{k}^{i+1}\right) h_{i}\left(
+\sigma _{0},...\sigma _{i}\right) +h_{i-1}\circ \sum\limits_{j}\left(
+-1\right) ^{j}s_{j}^{i}\left( \sigma _{0},...,\sigma _{i}\right) $
+
+$=\left( \sum\limits_{k}\left( -1\right) ^{k}s_{k}^{i+1}\right) \left(
+\sigma ,\sigma _{0},...\sigma _{i}\right) +h_{i-1}\sum\limits_{j}\left(
+-1\right) ^{j}\left( \sigma _{0},...,\widehat{\sigma }_{j},...,\sigma
+_{i}\right) $
+
+$=\sum\limits_{k}\left( -1\right) ^{k}\left( \sigma ,\sigma _{0},...,%
+\widehat{\sigma }_{k-1},...,\sigma _{i}\right) +\sum\limits_{j}\left(
+-1\right) ^{j}\left( \sigma ,\sigma _{0},...,\widehat{\sigma }%
+_{j},...,\sigma _{i}\right) $
+
+$=\left( \sigma _{0},...,\sigma _{i}\right) $
+
+        \end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Finally..}
+\begin{equation*}
+Hom_{G}\left( \mathbb{Z}\left[ G\right] ,A\right) \longrightarrow
+Hom_{G}\left( \mathbb{Z}\left[ G^{2}\right] ,A\right) \longrightarrow
+Hom_{G}\left( \mathbb{Z}\left[ G^{3}\right] ,A\right) \longrightarrow ...
+\end{equation*}
+
+\begin{stepitemize}
+\item[]
+\item[] $i$-cochains $\in Hom_{G}\left( \mathbb{Z}\left[ G^{i+1}\right] ,A\right) $
+
+\item[] $i$-cocyles $\in \ker \left( Hom_{G}\left( \mathbb{Z}\left[ G^{i+1}\right]
+,A\right) \longrightarrow Hom_{G}\left( \mathbb{Z}\left[ G^{i+2}\right]
+,A\right) \right) $
+\item[] $i$-coboundaries $\in $ $\text{Im}\left(
+Hom_{G}\left( \mathbb{Z}\left[ G^{i}\right] ,A\right) \longrightarrow
+Hom_{G}\left( \mathbb{Z}\left[ G^{i+1}\right] ,A\right) \right) $
+\end{stepitemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Inhomogeneous Cochains}
+\begin{stepitemize}
+\item[] Alternatively.. use $\mathbb{Z}\left[ G^{i+1}\right] =\left\langle e,\sigma
+_{1},\sigma _{1}\sigma _{2},\sigma _{1}\sigma _{2}\sigma _{3},...,\sigma
+_{1}\cdots \sigma _{i}\right\rangle $
+
+\item[] Let $\left[ \sigma _{1},...,\sigma _{i}\right] =\left( e,\sigma _{1},\sigma
+_{1}\sigma _{2},\sigma _{1}\sigma _{2}\sigma _{3},...,\sigma _{1}\cdots
+\sigma _{i}\right) $
+
+\item[] Note that
+\begin{eqnarray*}
+&&\delta _{i}\left[ \sigma _{1},...,\sigma _{i}\right]  \\
+&=&\delta _{i}\left( e,\sigma _{1},\sigma _{1}\sigma _{2},\sigma _{1}\sigma
+_{2}\sigma _{3},...,\sigma _{1}\cdots \sigma _{i}\right)  \\
+&=&\sum\limits_{j}\left( -1\right) ^{j}s_{j}^{i}\left( e,\sigma _{1},\sigma
+_{1}\sigma _{2},\sigma _{1}\sigma _{2}\sigma _{3},...,\sigma _{1}\cdots
+\sigma _{i}\right)  \\
+&=&\left( \sigma _{1},\sigma _{1}\sigma _{2},\sigma _{1}\sigma _{2}\sigma
+_{3},...,\sigma _{1}\cdots \sigma _{i}\right) -\left( e,\sigma _{1}\sigma
+_{2},\sigma _{1}\sigma _{2}\sigma _{3},...,\sigma _{1}\cdots \sigma
+_{i}\right) +... \\
+&&+\left( -1\right) ^{i+1}\left( e,\sigma _{1},\sigma _{1}\sigma _{2},\sigma
+_{1}\sigma _{2}\sigma _{3},...,\sigma _{1}\cdots \sigma _{i-1}\right)  \\
+&=&\sigma _{1}.\left( e,\sigma _{2},\sigma _{2}\sigma _{3},...,\sigma
+_{2}\cdots \sigma _{i}\right) -\left( e,\sigma _{1}\sigma _{2},\sigma
+_{1}\sigma _{2}\sigma _{3},...,\sigma _{1}\cdots \sigma _{i}\right) +... \\
+&&+\left( -1\right) ^{i+1}\left( e,\sigma _{1},\sigma _{1}\sigma _{2},\sigma
+_{1}\sigma _{2}\sigma _{3},...,\sigma _{1}\cdots \sigma _{i-1}\right)  \\
+&=&\sigma _{1}.\left[ \sigma _{2},...,\sigma _{i}\right] +\sum\limits_{j}%
+\left( -1\right) ^{j}\left[ \sigma _{1},...,\sigma _{j}\sigma
+_{j+1},...,\sigma _{i}\right] +\left( -1\right) ^{i+1}\left[ \sigma
+_{1},...,\sigma _{i-1}\right]
+\end{eqnarray*}
+\end{stepitemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Inhomogeneous Cochains}
+\begin{stepitemize}
+\item[] That is,
+\begin{eqnarray*}
+&&\delta _{i}\left[ \sigma _{1},...,\sigma _{i}\right]  \\
+&=&\sigma _{1}.\left[ \sigma _{2},...,\sigma _{i}\right] +\sum\limits_{j}%
+\left( -1\right) ^{j}\left[ \sigma _{1},...,\sigma _{j}\sigma
+_{j+1},...,\sigma _{i}\right] +\left( -1\right) ^{i+1}\left[ \sigma
+_{1},...,\sigma _{i-1}\right]
+\end{eqnarray*}
+
+\item[] An $i$-cochain is then the function $\left[ \sigma _{1},...,\sigma _{i}%
+\right] \mapsto a_{\sigma _{1},...,\sigma _{i}}$
+\item[]
+\item[] $\delta ^{i}:C^{i-1}\left( G,A\right) \longrightarrow C^{i}\left( G,A\right)
+$ with
+\begin{equation*}
+\delta ^{i}\left( a_{\sigma _{1},...,\sigma _{i}}\right) =\sigma
+_{1}.a_{\sigma _{2},...,\sigma _{i}}+\sum\limits_{j}\left( -1\right)
+^{j}a_{\sigma _{1},...,\sigma _{j}\sigma _{j+1},...,\sigma _{i}}+\left(
+-1\right) ^{i+1}a_{\sigma _{1},...,\sigma _{i-1}}
+\end{equation*}
+
+\end{stepitemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Inhomogeneous Cochains: Examples}
+\begin{itemize}
+\item $1$-cocycle $\iff \delta ^{1}\left( a_{\sigma _{1}}\right) =0\iff \sigma
+_{1}.a_{\sigma _{1}}-a_{\sigma _{1}\sigma _{2}}+a_{\sigma _{1}}=0\iff
+a_{\sigma _{1}\sigma _{2}}=\sigma _{1}.a_{\sigma _{1}}+a_{\sigma _{1}}$
+
+\item $1$-coboundary $\iff \sigma \longmapsto \sigma a-a$ so $Z^{1}\left(
+G,A\right) =H^{1}\left( G,A\right) =Hom\left( G,A\right) $
+
+\item $2$-cocyle $\iff \delta ^{2}\left( a_{\sigma _{1}\sigma _{2}}\right) =0\iff
+\sigma _{1}.a_{\sigma _{2}\sigma _{3}}-a_{\sigma _{1}\sigma _{2},\sigma
+_{3}}+a_{\sigma _{1},\sigma _{2}\sigma _{3}}-a_{\sigma _{1},\sigma _{2}}=0$
+
+\item $2$-coboundary $\iff $ $a_{\sigma _{1}\sigma _{2}}=\delta ^{1}\left(
+b\right) =\sigma _{1}.b_{\sigma _{1}}-b_{\sigma _{1}\sigma _{2}}+b_{\sigma
+_{1}}$
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Normalized Resolution}
+\begin{itemize}
+\item Same as $\left[ \sigma _{1},...,\sigma _{i}\right] $, but $\sigma _{j}\not=0$
+for all $j$
+
+\item If $\sigma _{j}\sigma _{j+1}=e$, then set $a_{\sigma _{1},...,\sigma
+_{j}\sigma _{j+1},...,\sigma _{i}}=0$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Group Extensions}
+\begin{stepitemize}
+\item $E$ is an extension of $G$ by $A$ if
+\begin{equation*}
+\left\{ e\right\} \longrightarrow A\overset{\imath }{\longrightarrow }E%
+\overset{\pi }{\longrightarrow }G\longrightarrow \left\{ e\right\}
+\end{equation*}
+
+\item[] \begin{block}{Theorem}%
+$\{$Equivalence classes of extensions of $G$ by $A\}\cong H^{2}\left(
+G,A\right) $\end{block}
+
+\item Aim:\ Want to define $E\mapsto c\left( E\right) \in H^{2}\left( G,A\right) $
+
+\end{stepitemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Group Extensions}
+\begin{block}{Theorem}%
+$A$ is a $G$-module.
+\end{block}
+
+\begin{block}{Proof}%
+\textcolor{stupid}{For $a\in A$ (abelian), $\sigma \in G$, and $s$ such that $\pi \circ s=id_{G}
+$ and $s\left( e\right) =e$, define $\imath \left( \sigma .a\right) :=%
+\widehat{\sigma }\imath \left( a\right) \widehat{\sigma }^{-1}\in \imath
+\left( A\right) $ where $\widehat{\sigma }=s\left( \sigma \right) \in E$}
+
+\textcolor{stupid}{Let $\imath \left( b\right) \widehat{\sigma }=s\left( \sigma \right) $ for
+some $b\in A$. Then $\,\imath \left( b\right) \widehat{\sigma }\imath \left(
+a\right) \widehat{\sigma }^{-1}\imath \left( b^{-1}\right) =\widehat{\sigma }%
+\imath \left( a\right) \widehat{\sigma }^{-1}$}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Group Extensions}
+\begin{block}{Theorem}%
+$A$ is a $G$-module.
+\end{block}
+
+\begin{block}{Proof}%
+For $a\in A$ (abelian), $\sigma \in G$, and $s$ such that $\pi \circ s=id_{G}
+$ and $s\left( e\right) =e$, define $\imath \left( \sigma .a\right) :=%
+\widehat{\sigma }\imath \left( a\right) \widehat{\sigma }^{-1}\in \imath
+\left( A\right) $ where $\widehat{\sigma }=s\left( \sigma \right) \in E$
+
+\textcolor{stupid}{Let $\imath \left( b\right) \widehat{\sigma }=s\left( \sigma \right) $ for
+some $b\in A$. Then $\,\imath \left( b\right) \widehat{\sigma }\imath \left(
+a\right) \widehat{\sigma }^{-1}\imath \left( b^{-1}\right) =\widehat{\sigma }%
+\imath \left( a\right) \widehat{\sigma }^{-1}$}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Group Extensions}
+\begin{block}{Theorem}%
+$A$ is a $G$-module.
+\end{block}
+
+\begin{block}{Proof}%
+For $a\in A$ (abelian), $\sigma \in G$, and $s$ such that $\pi \circ s=id_{G}
+$ and $s\left( e\right) =e$, define $\imath \left( \sigma .a\right) :=%
+\widehat{\sigma }\imath \left( a\right) \widehat{\sigma }^{-1}\in \imath
+\left( A\right) $ where $\widehat{\sigma }=s\left( \sigma \right) \in E$
+
+Let $\imath \left( b\right) \widehat{\sigma }=s\left( \sigma \right) $ for
+some $b\in A$. Then $\,\imath \left( b\right) \widehat{\sigma }\imath \left(
+a\right) \widehat{\sigma }^{-1}\imath \left( b^{-1}\right) =\widehat{\sigma }%
+\imath \left( a\right) \widehat{\sigma }^{-1}$
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Group Extensions}
+\begin{block}{Theorem}%
+Equivalent extensions define the same $G$-module structure on $A$
+\end{block}
+
+\begin{block}{Proof}%
+Let $\widehat{\sigma }^{\prime }=\beta \left( \widehat{\sigma }\right) $.
+Then $s\left( \widehat{\sigma }^{\prime }\right) =s\left( \widehat{\sigma }%
+\right) =\sigma $ and $\imath \left( \sigma .a\right) =\imath \left( \sigma
+^{\prime }.a\right) $
+\end{block}
+
+\begin{block}{Theorem}%
+\textcolor{stupid}{$a_{\sigma _{1},\sigma _{2}}:=s\left( \sigma _{1}\right) s\left( \sigma
+_{2}\right) s\left( \sigma _{1}\sigma _{2}\right) ^{-1}$ is a normalized $2$-cocycle}
+\end{block}
+
+\begin{block}{Proof}%
+\textcolor{stupid}{$\pi \left(
+a_{\sigma _{1}\sigma _{2}}\right) =e$}
+
+\textcolor{stupid}{$a_{\sigma _{1},e}=a_{e,\sigma _{2}}=e$}
+
+\textcolor{stupid}{$\forall \sigma _{1},\sigma _{2},\sigma _{3} \in G$, $\sigma _{1}.a_{\sigma
+_{2}\sigma _{3}}-a_{\sigma _{1}\sigma _{2},\sigma _{3}}+a_{\sigma
+_{1},\sigma _{2}\sigma _{3}}-a_{\sigma _{1},\sigma _{2}}=0$}
+
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Group Extensions}
+\begin{block}{Theorem}%
+Equivalent extensions define the same $G$-module structure on $A$
+\end{block}
+
+\begin{block}{Proof}%
+Let $\widehat{\sigma }^{\prime }=\beta \left( \widehat{\sigma }\right) $.
+Then $s\left( \widehat{\sigma }^{\prime }\right) =s\left( \widehat{\sigma }%
+\right) =\sigma $ and $\imath \left( \sigma .a\right) =\imath \left( \sigma
+^{\prime }.a\right) $
+\end{block}
+
+\begin{block}{Theorem}%
+$a_{\sigma _{1},\sigma _{2}}:=s\left( \sigma _{1}\right) s\left( \sigma
+_{2}\right) s\left( \sigma _{1}\sigma _{2}\right) ^{-1}$ is a normalized $2$-cocycle
+\end{block}
+
+\begin{block}{Proof}%
+$\pi \left(
+a_{\sigma _{1},\sigma _{2}}\right) =e$
+
+$a_{\sigma _{1},e}=a_{e,\sigma _{2}}=e$
+
+$\forall \sigma _{1},\sigma _{2},\sigma _{3} \in G$, $\sigma _{1}.a_{\sigma
+_{2}\sigma _{3}}-a_{\sigma _{1}\sigma _{2},\sigma _{3}}+a_{\sigma
+_{1},\sigma _{2}\sigma _{3}}-a_{\sigma _{1},\sigma _{2}}=0$
+
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Group Extensions}
+\begin{stepitemize}
+\item For $c^{-1}\left( E\right) $, given $a_{\sigma _{1}\sigma _{2}}$, define $%
+E:=A\times G$ with binary operation
+\begin{equation*}
+\left( a_{1},\sigma _{1}\right) \ast \left( a_{2},\sigma _{2}\right) =\left(
+a_{1}+\sigma _{1}\left( a_{2}\right) +a_{\sigma _{1}\sigma _{2}},\sigma
+_{1}\sigma _{2}\right)
+\end{equation*}%
+Unit $\left( 0,e\right) $ and $\left( a,\sigma \right) \ast \left( -\sigma
+^{-1}\left( a\right) -\sigma ^{-1}\left( a_{\sigma ,\sigma ^{-1}}\right)
+,\sigma ^{-1}\right) =\left( 0,e\right) $
+
+\item The induced map $\phi _{\ast }:H^{2}\left( G,A\right) \longrightarrow
+H^{2}\left( G,B\right) $ from $G$-map $\phi :A\longrightarrow B$ commutes
+with $c$ where $\phi _{\ast }\left( E\right) :=\left( B\times E\right) /N$
+where $N$ is the normal subgroup generated by $\left( \phi \left( a\right)
+,\imath \left( a\right) ^{-1}\right) $
+\end{stepitemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Group Cohomology}
+Put $G=\mathbb{Z}$ and consider%
+\begin{equation*}
+0\longrightarrow \mathbb{Z}\left[ \mathbb{Z}\right] \overset{\alpha }{%
+\longrightarrow }\mathbb{Z}\left[ \mathbb{Z}\right] \overset{\beta }{%
+\longrightarrow }\mathbb{Z}\longrightarrow 0
+\end{equation*}%
+$\alpha \left( \sigma \right) =\sigma -1$ is injective and $\beta \left(
+\sigma \right) =1$ is surjective, where $\left\langle \sigma \right\rangle =%
+\mathbb{Z}$ and $\beta \circ \alpha =0$
+
+\vspace{1cm}
+
+$H^{0}\left( \mathbb{Z},A\right) =A^{\sigma }$, $H^{1}\left( \mathbb{Z}%
+,A\right) =A/\sigma -1\left( A\right) $ and $H^{i}\left( \mathbb{Z},A\right)
+=0$ for $i\geq 2$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Group Cohomology}
+If $G$ is a cyclic group of order $n$, let $\mathbb{Z}\left[ \mathbb{Z}%
+\right] \overset{\alpha }{\longrightarrow }\mathbb{Z}\left[ \mathbb{Z}\right]
+$ and $\mathbb{Z}\left[ \mathbb{Z}\right] \overset{\beta }{\longrightarrow }%
+\mathbb{Z}\left[ \mathbb{Z}\right] $ be such that
+
+\begin{equation*}
+\alpha \left( a\right) =a\sigma -a\text{ and }\beta \left( a\right) =%
+\underset{i=0}{\overset{n-1}{\sum }}\sigma ^{i}a
+\end{equation*}%
+Then $\ker \alpha =\text{Im}\beta $ and $\text{Im}\alpha =\ker \beta $%
+\begin{equation*}
+...\overset{\beta }{\longrightarrow }\mathbb{Z}\left[ \mathbb{Z}\right]
+\overset{\alpha }{\longrightarrow }\mathbb{Z}\left[ \mathbb{Z}\right]
+\overset{\beta }{\longrightarrow }\mathbb{Z}\left[ \mathbb{Z}\right] \overset%
+{\alpha }{\longrightarrow }\mathbb{Z}\left[ \mathbb{Z}\right] \overset{\beta
+}{\longrightarrow }\mathbb{Z}\left[ \mathbb{Z}\right] \overset{\alpha }{%
+\longrightarrow }\mathbb{Z}\left[ \mathbb{Z}\right] \overset{\beta }{%
+\longrightarrow }\mathbb{Z}\longrightarrow
+\end{equation*}%
+Extend $\alpha :A\longrightarrow A$ and $\beta :A\longrightarrow A$ and
+write $_{N}A=\ker \beta $. Then $H^{0}\left( G,A\right) =A^{G}$, $%
+H^{2i+1}\left( G,A\right) =_{N}A/\left( \sigma -1\right) A$ and $%
+H^{2i+2}\left( G,A\right) =A^{G}/\beta \left( A\right) $
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Galois Cohomology}
+Now let $A=K^{\times }$ where $K|k$ is a finite Galois extension with cyclic
+Galois group $G$. Then $H^{1}\left( G,K^{\times }\right) =_{N}K^{\times
+}/\left( \sigma -1\right) K^{\times }=\left\{ e\right\} $
+\end{frame}
+
+\end{document}
