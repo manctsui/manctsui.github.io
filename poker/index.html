@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker Hands</title>
+    <style>
+        html {
+            font-family: 'Segoe UI', sans-serif;
+        }
+        body {
+            padding-left: 10vw;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: .7em;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 2em 0;
+        }
+        input {
+            padding: .1em;
+            width: 9ch;
+            box-sizing: border-box;
+        }
+        p {
+            max-width: 30em;
+        }
+        .c{
+            max-width: 30em;
+            text-align: center;
+        }
+        .red {
+            color: red;
+        }
+        #answer {
+            border: 1px solid black;
+            padding: 1em;
+        }
+        footer {
+            margin-top: 3em;
+            margin-bottom: 2em;
+            max-width: 35em;
+            font-size: 70%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Poker Hands Identified</h1>
+    <p>
+        The <strong>value</strong> of a card can be: 
+    </p>
+    <div class="c">1–10, 11 (J), 12 (Q), 13 (K), 14 (A), <s>15 (Joker)</s></div>
+    <p>
+        The <strong>suit</strong> of a card can be:
+    </p>
+    <div class="c">1 (diamonds <span class="red">♦</span>), 2 (clubs ♣), 3 (hearts <span class="red">♥</span>), 4 (spades ♠)</div>
+    <table>
+        <tr>
+            <th></th>
+            <th>Card 1</th>
+            <th>Card 2</th>
+            <th>Card 3</th>
+            <th>Card 4</th>
+            <th>Card 5</th>
+        </tr>
+        <tr>
+            <th>Value</th>
+            <td><input id="c00" type="number" value="1" min="1" max="14" onchange="hand()"></td>
+            <td><input id="c10" type="number" value="1" min="1" max="14" onchange="hand()"></td>
+            <td><input id="c20" type="number" value="1" min="1" max="14" onchange="hand()"></td>
+            <td><input id="c30" type="number" value="1" min="1" max="14" onchange="hand()"></td>
+            <td><input id="c40" type="number" value="1" min="1" max="14" onchange="hand()"></td>
+        </tr>
+        <tr>
+            <th>Suit</th>
+            <td><input id="c01" type="number" value="1" min="1" max="4" onchange="hand()"></td>
+            <td><input id="c11" type="number" value="1" min="1" max="4" onchange="hand()"></td>
+            <td><input id="c21" type="number" value="1" min="1" max="4" onchange="hand()"></td>
+            <td><input id="c31" type="number" value="1" min="1" max="4" onchange="hand()"></td>
+            <td><input id="c41" type="number" value="1" min="1" max="4" onchange="hand()"></td>
+        </tr>
+    </table>
+    <p id="answer">
+        Answer: <span id="hand"></span>.
+    </p>
+    <footer>
+        <p>
+            Poker hands according to <a href="https://en.wikipedia.org/wiki/List_of_poker_hands#High_card">List of Poker Hands</a> (Wikipedia).
+        </p>
+        <p>
+            This was an evening project. Note that I did not bother to check for duplicate cards.
+        </p>
+    </footer>
+    <script>
+        let a = [1, 1, 1, 1, 1], b = [1, 1, 1, 1, 1], adiff = [1, 1, 1, 1], bdiff = [1, 1, 1, 1], zeros = 0, zeroIndex = 0, text='';
+        function hand() {
+            for (let i = 0; i < 5; i++) {
+                a[i] = Number(document.getElementById('c' + i + '0').value); // value of i-th card
+                b[i] = Number(document.getElementById('c' + i + '1').value); // suit of i-th card
+            }
+            // Note: Sorting with no argument sorts as string
+            a.sort(function(x, y){return x - y})
+            b.sort(function(x, y){return x - y})
+            for (let i = 0; i < 4; i++) {
+                adiff[i] = a[i+1] - a[i];
+                bdiff[i] = b[i+1] - b[i];
+            }
+            zeros = adiff.filter(x => x==0).length;
+            zeroIndex = adiff.findIndex(x => x == 0);
+            // Cases from highest to lowest hands
+            if (zeros == 4) {
+                text = 'Five of a kind';
+            } else if (adiff.every(x => x==1) && bdiff.every(x => x==0)) {
+                text = 'Straight flush';
+            } else if (zeros == 3 && [0, 3].includes(adiff.findIndex(x => x > 0))) {
+                text = 'Four of a kind';
+            } else if (zeros == 3) {
+                text = 'Full house';
+            } else if (bdiff.every(x => x==0)) {
+                text = 'Flush';
+            } else if (adiff.every(x => x==1)) {
+                text = 'Straight';
+            } else if (zeros == 2 && adiff[zeroIndex+1] == 0) {
+                text = 'Three of a kind';
+            } else if (zeros == 2) {
+                text = 'Two pairs';
+            } else if (zeros == 1) {
+                text = 'One pair';
+            } else {
+                text = 'Highest Card has value ' + a[4];
+            }
+            document.getElementById('hand').innerText = text;
+        }
+    </script>
+</body>
+</html>
