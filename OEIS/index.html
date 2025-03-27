@@ -29,8 +29,13 @@
         ::selection {
             background-color: #fdff9c;
         }
+        #h1 *::selection {
+            background-color: rgba(0, 0, 0, .6);
+        }
         h1 {
             font-size: 3rem;
+            color: white;
+            margin-bottom: 0em;
         }
         figure {
             margin-top: 2em;
@@ -47,21 +52,34 @@
             transition: .3s;
             fill: rgb(235, 135, 135);
         }
+        h1 svg {
+            fill: white;
+        }
+        h1 svg:hover {
+            fill:black;
+        }
         #h1 {
-            border-top: 2px solid black;
-            border-bottom: 2px solid black;
-            margin: 4em 0 0.8em 0;
-            padding: 0.5em 0 0.8em 0;
+            /* border-top: 2px solid black;
+            border-bottom: 2px solid black; */
+            margin: 4em 0 1.5em 0;
+            padding: 0.5em 1em 1.5em 2em;
+            background-color: hsl(0, 92%, 60%);
+            /* background-color: #f73b3b; */
+            border-radius: 2em 2em;
+            color: hsl(0, 92%, 99%);
+            /* background: linear-gradient(145deg, #ff3f3f, #de3535); */
+            background: linear-gradient(315deg, rgb(255, 61, 61), rgb(222, 53, 53));
         }
         #tags {
-            margin-bottom: 4em;
+            margin-bottom: 1.8em;
         }
         .tag {
             font-size: 0.8em;
             color: white;
-            background-color: rgb(249, 103, 103);
-            padding: 0.2em 0.4em;
-            margin: 0.2em 0.1em 0 0;
+            /* background-color: rgb(249, 103, 103); */
+            background-color: hsla(0, 0%, 15%, 0.3);
+            padding: 0.3em 0.4em;
+            margin-right: 0.5em;
             border-radius: 7px;
         }
         figcaption {
@@ -73,13 +91,18 @@
             text-decoration: none;
         }
         .figure-website {
-            padding: 2em 0em 1em 2em;
-            background-color: rgb(255, 225, 225);
-            border-radius: 0.5em;
-            /* border: 1px solid black; */
+            padding: 2em 0em .8em 2em;
+            margin-bottom: 1.5em;
+            border-radius: 0.7em;
+            /* background-color: #ffb4b4; */
+            background: linear-gradient(5deg, rgba(255, 180, 180, 0.5), rgb(242, 53, 53)), url("data:image/svg+xml,%3Csvg width='5' height='5' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffa5a5' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
         }
         .figure-website img {
             max-width: min(35em, 94%);
+            transition-duration: 200ms;
+        }
+        .figure-website img:hover {
+            transform: scale(1.01);
         }
         #asterism {
             font-size: 2em;
@@ -89,11 +112,11 @@
 </head>
 <body>
     <div id="h1">
-        <h1>OEIS Redesign</h1>
-        March 2025
-    </div>
-    <div id="tags">
-        <span class="tag">UI/UX</span> <span class="tag">OEIS</span>
+        <h1>OEIS Redesign<a href="https://github.com/manctsui/OEIS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 0 155 90" class="footer-logo-mktg d-block" height="0.6em"><path d="m46 0c-25 0-46 20.6-46 46 0 20.4 13.2 37.7 31.5 43.8 2.3.4 3.2-1 3.2-2.2 0-1.1-.1-5-.1-8.6-11.6 2.1-14.6-3-15.5-5.4-.5-1.3-2.8-5.4-5-6.5-1.6-.9-3.9-3-.1-3.1 3.6-.1 6.2 3.3 7.1 5 4 7 11 5 13.4 3.8.4-3 1.6-5 2.9-6.2-10.3-1.2-21-5.1-21-22.8 0-5 1.8-9.2 5-12.4-.5-1.2-2.1-6 .5-12.2 0 0 4-1.2 12.7 5 3.7-1 7.6-1.6 11.5-1.6s7.8.5 11.5 1.6c8.8-6 12.7-5 12.7-5 2.5 6.3.9 11.1.5 12 3 3.2 5 7.3 5 12.4 0 17.7-10.8 21.6-21.1 22.8 1.7 1.4 3.1 4.2 3.1 8.5 0 6.2-.1 11.1-.1 12.7 0 1 1 3 3.2 2.2 18-6 31.4-23.4 31.4-44 .3-25.4-20.4-46-46-46"></path></svg></a></h1>
+        <div id="tags">
+            <span class="tag">UI/UX</span><span class="tag">OEIS</span>
+        </div>
+        <span>March 2025</span>
     </div>
     <p>
         <strong>OEIS</strong> is a database of interesting numeric sequences that first launched in book format in 1973 and later moved online in 1996.
@@ -102,7 +125,7 @@
         Here is what it looked like back then.
     </p>
     <figure class="figure-website">
-        <img width="90%" src="OEIS-original_web_page.png" loading="lazy">
+        <img width="90%" src="OEIS-original_web_page.png" alt="" loading="lazy">
         <figcaption>Sloane's integer sequence webpage in 1999<br>
             <a href="https://commons.wikimedia.org/w/index.php?curid=127926195">By MFH - Own work, CC BY-SA 4.0</a></figcaption>
     </figure>
@@ -110,20 +133,23 @@
         Compare that to today.
     </p>
     <figure class="figure-website">
-        <img src="OEIS-website.png" alt="OEIS Website" loading="lazy">
+        <img src="OEIS-website.png" alt="" loading="lazy">
         <figcaption>OEIS website in 2025</figcaption>
     </figure>
     <p>
-        Some things changed, but some things stay the same. Let me describe a few simple changes to update OEIS's UI.
+        Some things changed. But other things stayed the same. The homepage still uses system fonts, and the HTML is just as lightweight at 3.8KB gzipped, which is one way to make the webpage load <a href="https://endtimes.dev/why-your-website-should-be-under-14kb-in-size/">extremely fast</a>. 
+    </p>
+    <p>
+        But it's also 2025 and the UI could use an update. What follows are a few simple suggestions.
     </p>
     <h2>
-        The banner
+        Banner
     </h2>
     <figure>
         <img width="550px" src="banner2021.jpg" alt="Banner" loading="lazy">
     </figure>
     <p>
-        The main issue with the current banner is the kerning. The letters in the logo should not overlap (unless you are trying to emulate <a href="https://www.theverge.com/2022/11/22/23473452/kia-rebrand-kn-car-google-searches">Kia</a>), and the letters in title should be closer together. By the 2010s, &ldquo;ON-LINE&rdquo; is dash-free. The logo should be bigger and vertically centered with respect to the title and subtitle combined. 
+        The main issue with the current banner is the kerning. The letters in the logo should not overlap (unless you want to emulate <a href="https://www.theverge.com/2022/11/22/23473452/kia-rebrand-kn-car-google-searches">Kia</a>), and the letters in the title should be closer together. Also, &ldquo;ON-LINE&rdquo; is now overwhelmingly dash-free. The logo should be bigger and vertically centered with respect to both title and subtitle combined. 
     </p>
     <p>Here's one fix to these problems:</p>
     <figure>
@@ -176,10 +202,10 @@
         </svg>
     </figure>
     <p>
-        Notice that the banner text is now set in the same type to achieve visual consistency. I chose <a href="https://fonts.google.com/specimen/Ruwudu">Ruwudu</a> to preserve the <a href="https://en.wikipedia.org/wiki/Swash_(typography)">flourish</a> on the letter Q, and for its authoritative, taller letterforms, not unlike some older textbooks. Regrettably, the numerals in Ruwudu do not <a href="https://en.wikipedia.org/wiki/Text_figures">descend</a> like in the original banner. 
+        The logo text and banner text are now set in the same typeface to achieve visual consistency. I chose <a href="https://fonts.google.com/specimen/Ruwudu">Ruwudu</a> to preserve the <a href="https://en.wikipedia.org/wiki/Swash_(typography)">flourish</a> on the letter Q, and for its taller, more authoritative letterforms, not unlike some older textbooks. Regrettably, the numerals in Ruwudu do not <a href="https://en.wikipedia.org/wiki/Text_figures">descend</a> like in the original banner. 
     </p>
     <p>
-        On the logo itself, the red numbers are desaturated to put emphasis on the OEIS letters. The logo feels more vertically &ldquo;balanced&rdquo;, though I'm sure a professional can tweak it more. Here are the lines that helped me center the logo.
+        On the logo itself, the red numbers are desaturated to put emphasis on the OEIS lettermark. The logo is also now more vertically &ldquo;balanced&rdquo;. Here are the lines that helped me center the logo.
     </p>
     <figure>
         <svg width="600px" id="banner-lines" viewBox="0 6 100 20">
@@ -241,22 +267,25 @@
         </svg>
     </figure>
     <p>
-        Overall, the new banner is an SVG, so after subsetting Ruwudu, the new banner file size is ~7KB, compared to the original 42KB PNG.
+        Surely a professional can adjust it better.
+    </p>
+    <p>
+        As an added bonus, the new banner is an SVG file, so after subsetting Ruwudu, the new banner file size is ~7KB, which is significantly smaller in file size than the original 42KB PNG.
     </p>
 
-    <h2>The entries</h2>
+    <h2>Entry pages</h2>
     <p>
         Let us look now at an <a href="https://oeis.org/A024318">OEIS entry page</a>.
     </p>
     <figure class="figure-website">
-        <img src="OEIS-entries.png" alt="OEIS page for a given sequence" loading="lazy">
+        <img src="OEIS-entries.png" alt="" loading="lazy">
         <figcaption>OEIS page displaying information for a given sequence</figcaption>
     </figure>
     <p>
         Here we can make the rows easier to read with zebra stripes:
     </p>
     <figure class="figure-website">
-        <img src="OEIS-entries-striped.png" alt="Zebra stripes applied to the table rows" loading="lazy">
+        <img src="OEIS-entries-striped.png" alt="" loading="lazy">
         <figcaption>Zebra stripes applied to the table rows</figcaption>
     </figure>
     <p>
@@ -273,7 +302,7 @@
         The above suggestions are easily adoptable since we're merely sprinkling in CSS or replacing PNG with SVG (plus a font file). 
     </p>
     <p>
-        On the other hand, changing how the information within each table row is presented (like converting the formulas into MathJax, or offering syntax highlighting for Maple, Mathematica, etc. code) might require some JS + RegEx on the client-side with many exceptional cases, or going through the database itself and reformatting the information in each entry.
+        On the other hand, changing how the information within each table row is presented (like converting the formulas into MathJax, or offering code syntax highlighting) might require client-side RegEx parsing with exceptional cases, or going through the database itself and reformatting the information in each entry.
     </p>
     <p>
         If I have time, I will follow up with more extensive suggestions.
