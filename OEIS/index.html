@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Ruwudu&display=swap" rel="stylesheet">
+    <link href="data:," rel="icon">
     <style>
         html {
             font-size: 1rem;
@@ -40,6 +41,9 @@
         figure {
             margin-top: 2em;
             margin-bottom: 1em;
+        }
+        figure svg, figure img {
+            max-width: min(100vw, 36em);
         }
         svg {
             fill: black;
@@ -97,6 +101,11 @@
             /* background-color: #ffb4b4; */
             background: linear-gradient(5deg, rgba(255, 180, 180, 0.5), rgb(242, 53, 53)), url("data:image/svg+xml,%3Csvg width='5' height='5' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffa5a5' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
         }
+        @media (max-width: 800px) {
+            figure {
+                margin: 0;
+            }
+        }
         .figure-website img {
             max-width: min(35em, 94%);
             transition-duration: 200ms;
@@ -125,7 +134,7 @@
         Here is what it looked like back then.
     </p>
     <figure class="figure-website">
-        <img width="90%" src="OEIS-original_web_page.png" alt="" loading="lazy">
+        <img src="OEIS-original_web_page.png" alt="" loading="lazy">
         <figcaption>Sloane's integer sequence webpage in 1999<br>
             <a href="https://commons.wikimedia.org/w/index.php?curid=127926195">By MFH - Own work, CC BY-SA 4.0</a></figcaption>
     </figure>
@@ -146,14 +155,14 @@
         Banner
     </h2>
     <figure>
-        <img width="550px" src="banner2021.jpg" alt="Banner" loading="lazy">
+        <img src="banner2021.jpg" alt="Banner" loading="lazy">
     </figure>
     <p>
         The main issue with the current banner is the kerning. The letters in the logo should not overlap (unless you want to emulate <a href="https://www.theverge.com/2022/11/22/23473452/kia-rebrand-kn-car-google-searches">Kia</a>), and the letters in the title should be closer together. Also, &ldquo;ON-LINE&rdquo; is now overwhelmingly dash-free. The logo should be bigger and vertically centered with respect to both title and subtitle combined. 
     </p>
     <p>Here's one fix to these problems:</p>
     <figure>
-        <svg width="600px" viewBox="0 6 100 20">
+        <svg viewBox="0 6 100 20">
             <!-- Title -->
             <text x="20" y="10" font-size="5">THE ONLINE ENCYCLOPEDIA</text>
             <text x="20" y="15.5" font-size="5">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
@@ -208,7 +217,7 @@
         On the logo itself, the red numbers are desaturated to put emphasis on the OEIS lettermark. The logo is also now more vertically &ldquo;balanced&rdquo;. Here are the lines that helped me center the logo.
     </p>
     <figure>
-        <svg width="600px" id="banner-lines" viewBox="0 6 100 20">
+        <svg id="banner-lines" viewBox="0 6 100 20">
             <style>
                 #banner-lines #text text {
                     fill: rgb(96, 96, 96);
@@ -292,7 +301,7 @@
         Or by highlighting rows on hover:<code></code>
     </p>
     <figure class="figure-website"> 
-        <video src="oeis-entries-hover.mp4" autoplay loop controls width="90%"></video>
+        <video src="oeis-entries-hover.mp4" autoplay muted loop controls width="92%"></video>
         <figcaption>
             Video: table rows are highlighted upon cursor hover
         </figcaption>
