@@ -15,35 +15,47 @@
             font-family: Roboto, 'Segoe UI', sans-serif;
         }
         body {
-            margin: 0 auto;
-            padding: 0 1em 4em;
-            max-width: 38em;
             line-height: 1.4;
+            background-color: rgb(255, 235, 235);
+        }
+        main {
+            padding: 0 2em 4em;
+            margin: 0 auto;
+            max-width: 38em;
+        }
+        #h1 {
+            padding: 0.3em 1em 3em 2em;
+            margin: 0 auto;
+            max-width: 38em;
         }
         a {
-            color: rgb(61, 89, 210);
+            color: #3d59d2;
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
         }
         ::selection {
-            background-color: #fdff9c;
+            background-color: #ffe26c;
         }
-        #h1 *::selection {
-            background-color: rgba(0, 0, 0, .6);
+        header *::selection {
+            background-color: #2a2a2a;
         }
         h1 {
-            font-size: 3rem;
+            font-size: 4rem;
             color: white;
             margin-bottom: 0em;
         }
         figure {
-            margin-top: 2em;
-            margin-bottom: 1em;
+            margin: 1em 1em;
         }
-        figure svg, figure img {
-            max-width: min(100vw, 36em);
+        figure img {
+            max-width: min(90vw, 32em);
+        }
+        figure svg {
+            max-width: min(98vw, 37em);
+            background-color: white;
+            border: 1px solid black;
         }
         svg {
             fill: black;
@@ -62,17 +74,17 @@
         h1 svg:hover {
             fill:black;
         }
-        #h1 {
-            /* border-top: 2px solid black;
-            border-bottom: 2px solid black; */
-            margin: 4em 0 1.5em 0;
-            padding: 0.5em 1em 1.5em 2em;
-            background-color: hsl(0, 92%, 60%);
-            /* background-color: #f73b3b; */
-            border-radius: 2em 2em;
+        header {
+            transform: skewY(2deg) translateX(-1em);
+            margin: 4em -1em 3em 0;
             color: hsl(0, 92%, 99%);
-            /* background: linear-gradient(145deg, #ff3f3f, #de3535); */
             background: linear-gradient(315deg, rgb(255, 61, 61), rgb(222, 53, 53));
+        }
+        #figure-banner {
+            padding: 1em;
+            max-width: min(80vw, 34em);
+            border: 1px solid black;
+            background-color: white;
         }
         #tags {
             margin-bottom: 1.8em;
@@ -80,14 +92,13 @@
         .tag {
             font-size: 0.8em;
             color: white;
-            /* background-color: rgb(249, 103, 103); */
-            background-color: hsla(0, 0%, 15%, 0.3);
+            background-color: hsla(0, 0%, 0%, 0.6);
             padding: 0.3em 0.4em;
             margin-right: 0.5em;
             border-radius: 7px;
         }
         figcaption {
-            font-size: 0.75em;
+            font-size: 0.77em;
             padding: 0.4em 0;
             line-height: 1.4;
         }
@@ -95,15 +106,18 @@
             text-decoration: none;
         }
         .figure-website {
-            padding: 2em 0em .8em 2em;
+            padding: 1em 0 .8em 2em;
             margin-bottom: 1.5em;
-            border-radius: 0.7em;
-            /* background-color: #ffb4b4; */
-            background: linear-gradient(5deg, rgba(255, 180, 180, 0.5), rgb(242, 53, 53)), url("data:image/svg+xml,%3Csvg width='5' height='5' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffa5a5' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .figure-website img {
+            border: 1px solid black;
         }
         @media (max-width: 800px) {
             figure {
                 margin: 0;
+            }
+            .figure-website {
+                padding-left: 1.5em;
             }
         }
         .figure-website img {
@@ -117,205 +131,360 @@
             font-size: 2em;
             text-align: center;
         }
+        #h1-other {
+            margin-top: 1em;
+            transform: skewY(-2deg);
+        }
     </style>
 </head>
 <body>
-    <div id="h1">
-        <h1>OEIS Redesign<a href="https://github.com/manctsui/OEIS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 0 155 90" class="footer-logo-mktg d-block" height="0.6em"><path d="m46 0c-25 0-46 20.6-46 46 0 20.4 13.2 37.7 31.5 43.8 2.3.4 3.2-1 3.2-2.2 0-1.1-.1-5-.1-8.6-11.6 2.1-14.6-3-15.5-5.4-.5-1.3-2.8-5.4-5-6.5-1.6-.9-3.9-3-.1-3.1 3.6-.1 6.2 3.3 7.1 5 4 7 11 5 13.4 3.8.4-3 1.6-5 2.9-6.2-10.3-1.2-21-5.1-21-22.8 0-5 1.8-9.2 5-12.4-.5-1.2-2.1-6 .5-12.2 0 0 4-1.2 12.7 5 3.7-1 7.6-1.6 11.5-1.6s7.8.5 11.5 1.6c8.8-6 12.7-5 12.7-5 2.5 6.3.9 11.1.5 12 3 3.2 5 7.3 5 12.4 0 17.7-10.8 21.6-21.1 22.8 1.7 1.4 3.1 4.2 3.1 8.5 0 6.2-.1 11.1-.1 12.7 0 1 1 3 3.2 2.2 18-6 31.4-23.4 31.4-44 .3-25.4-20.4-46-46-46"></path></svg></a></h1>
-        <div id="tags">
-            <span class="tag">UI/UX</span><span class="tag">OEIS</span>
+    <header>
+        <div id="h1">
+            <h1>OEIS Redesign&nbsp;<a href="https://github.com/manctsui/OEIS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115 90" class="footer-logo-mktg d-block" height="0.6em"><path d="m46 0c-25 0-46 20.6-46 46 0 20.4 13.2 37.7 31.5 43.8 2.3.4 3.2-1 3.2-2.2 0-1.1-.1-5-.1-8.6-11.6 2.1-14.6-3-15.5-5.4-.5-1.3-2.8-5.4-5-6.5-1.6-.9-3.9-3-.1-3.1 3.6-.1 6.2 3.3 7.1 5 4 7 11 5 13.4 3.8.4-3 1.6-5 2.9-6.2-10.3-1.2-21-5.1-21-22.8 0-5 1.8-9.2 5-12.4-.5-1.2-2.1-6 .5-12.2 0 0 4-1.2 12.7 5 3.7-1 7.6-1.6 11.5-1.6s7.8.5 11.5 1.6c8.8-6 12.7-5 12.7-5 2.5 6.3.9 11.1.5 12 3 3.2 5 7.3 5 12.4 0 17.7-10.8 21.6-21.1 22.8 1.7 1.4 3.1 4.2 3.1 8.5 0 6.2-.1 11.1-.1 12.7 0 1 1 3 3.2 2.2 18-6 31.4-23.4 31.4-44 .3-25.4-20.4-46-46-46"></path></svg></a></h1>
+            <div id="h1-other">
+                <div id="tags">
+                    <span class="tag">UI/UX</span><span class="tag">OEIS</span>
+                </div>
+                <span>March 2025</span>
+            </div>
         </div>
-        <span>March 2025</span>
-    </div>
-    <p>
-        <strong>OEIS</strong> is a database of interesting numeric sequences that first launched in book format in 1973 and later moved online in 1996.
-    </p>
-    <p>
-        Here is what it looked like back then.
-    </p>
-    <figure class="figure-website">
-        <img src="OEIS-original_web_page.png" alt="" loading="lazy">
-        <figcaption>Sloane's integer sequence webpage in 1999<br>
-            <a href="https://commons.wikimedia.org/w/index.php?curid=127926195">By MFH - Own work, CC BY-SA 4.0</a></figcaption>
-    </figure>
-    <p>
-        Compare that to today.
-    </p>
-    <figure class="figure-website">
-        <img src="OEIS-website.png" alt="" loading="lazy">
-        <figcaption>OEIS website in 2025</figcaption>
-    </figure>
-    <p>
-        Some things changed. But other things stayed the same. The homepage still uses system fonts, and the HTML is just as lightweight at 3.8KB gzipped, which is one way to make the webpage load <a href="https://endtimes.dev/why-your-website-should-be-under-14kb-in-size/">extremely fast</a>. 
-    </p>
-    <p>
-        But it's also 2025 and the UI could use an update. What follows are a few simple suggestions.
-    </p>
-    <h2>
-        Banner
-    </h2>
-    <figure>
-        <img src="banner2021.jpg" alt="Banner" loading="lazy">
-    </figure>
-    <p>
-        The main issue with the current banner is the kerning. The letters in the logo should not overlap (unless you want to emulate <a href="https://www.theverge.com/2022/11/22/23473452/kia-rebrand-kn-car-google-searches">Kia</a>), and the letters in the title should be closer together. Also, &ldquo;ON-LINE&rdquo; is now overwhelmingly dash-free. The logo should be bigger and vertically centered with respect to both title and subtitle combined. 
-    </p>
-    <p>Here's one fix to these problems:</p>
-    <figure>
-        <svg viewBox="0 6 100 20">
-            <!-- Title -->
-            <text x="20" y="10" font-size="5">THE ONLINE ENCYCLOPEDIA</text>
-            <text x="20" y="15.5" font-size="5">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
-            <path d="M20 17.5h70" stroke="black" stroke-width=".2"></path>
-            <text x="47" y="22" font-size="3" id="by">founded in 1964 by N. J. A. Sloane</text>
-            <!-- LOGO -->
-            <g font-size="4.9" transform="translate(-0.8 0.9)">
-                <text x="5" y="13">O</text>
-                <text x="8.4" y="13">E</text>
-                <text x="5.8" y="17">I</text>
-                <text x="8.5" y="17">S</text>
-            </g>
-            <!-- Top row numbers -->
-            <g font-size="2.9" transform="translate(.6 0.4)">
-            <text x="0" y="9" class="no">0</text>
-            <text x="2.6" y="9" class="no">1</text>
-            <text x="5.2" y="9" class="no">3</text>
-            <text x="7.8" y="9" class="no">6</text>
-            <text x="10.4" y="9" class="no">2</text>
-            <text x="13" y="9" class="no">7</text>
-            </g>
-            <!-- Bottom row numbers -->
-            <g font-size="2.9" transform="translate(0 0.2)">
-                <text x="0" y="20.8" class="no">10</text>
-                <text x="4.1" y="20.8" class="no">22</text>
-                <text x="8.2" y="20.8" class="no">11</text>
-                <text x="12.3" y="20.8" class="no">21</text>
-            </g>
-            <!-- Vertical right -->
-            <g font-size="2.9" transform="translate(0 0.2)">
-                <text x="12.1" y="12" class="no">13</text>
-                <text x="12.1" y="14.8" class="no">20</text>
-                <text x="12.1" y="17.8" class="no">12</text>
-            </g>
-            <!-- Vertical left -->
-            <g font-size="2.9" transform="translate(0 0.2)">
-                <text x="0.1" y="17.8" class="no">23</text>
-            </g>
-            <g font-size="3.8" transform="scale(1 1.3)">
-                <text x=".9" y="11.2" class="no" >⁝</text>
-            </g>
-            <!-- Dashed guide lines -->
-            <!-- <path d="M0.3 7.3h90" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
-            <path d="M0.3 14h90" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
-            <path d="M0.3 21h90" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path> -->
-        </svg>
-    </figure>
-    <p>
-        The logo text and banner text are now set in the same typeface to achieve visual consistency. I chose <a href="https://fonts.google.com/specimen/Ruwudu">Ruwudu</a> to preserve the <a href="https://en.wikipedia.org/wiki/Swash_(typography)">flourish</a> on the letter Q, and for its taller, more authoritative letterforms, not unlike some older textbooks. Regrettably, the numerals in Ruwudu do not <a href="https://en.wikipedia.org/wiki/Text_figures">descend</a> like in the original banner. 
-    </p>
-    <p>
-        On the logo itself, the red numbers are desaturated to put emphasis on the OEIS lettermark. The logo is also now more vertically &ldquo;balanced&rdquo;. Here are the lines that helped me center the logo.
-    </p>
-    <figure>
-        <svg id="banner-lines" viewBox="0 6 100 20">
-            <style>
-                #banner-lines #text text {
-                    fill: rgb(96, 96, 96);
-                }
-                #banner-lines #text path {
-                    stroke: rgb(96, 96, 96);
-                }
-            </style>
-            <!-- Title -->
-            <g id="text">
+    </header>
+    <main>
+        <p>
+            <strong>OEIS</strong> is a database of interesting numeric sequences that first launched in book format in 1973 and then as a website in 1996.
+        </p>
+        <p>
+            Here is what it looked like back then.
+        </p>
+        <figure class="figure-website">
+            <img src="OEIS-original_web_page.png" alt="" loading="lazy">
+            <figcaption>Sloane's integer sequence webpage in 1999<br>
+                <a href="https://commons.wikimedia.org/w/index.php?curid=127926195">By MFH - Own work, CC BY-SA 4.0</a></figcaption>
+        </figure>
+        <p>
+            Compare that to today.
+        </p>
+        <figure class="figure-website">
+            <img src="OEIS-website.png" alt="" loading="lazy">
+            <figcaption>OEIS website in 2025</figcaption>
+        </figure>
+        <p>
+            Some things changed. But other things stayed the same. The homepage still uses system fonts, and the HTML is just as lightweight at 3.8KB gzipped, which is one way of making the webpage load <a href="https://endtimes.dev/why-your-website-should-be-under-14kb-in-size/">extremely fast</a>. 
+        </p>
+        <p>
+            But it's also 2025 and the UI could use an update. What follows are a few simple suggestions.
+        </p>
+        <h2>
+            Banner
+        </h2>
+        <figure>
+            <img id="figure-banner" src="banner2021.jpg" alt="Banner" loading="lazy">
+        </figure>
+        <p>
+            The main issue with the current banner is the kerning. The letters in the logo should not overlap (unless you want to emulate <a href="https://www.theverge.com/2022/11/22/23473452/kia-rebrand-kn-car-google-searches">Kia</a>), and the letters in the title should be closer together. Also, &ldquo;ON-LINE&rdquo; is now overwhelmingly dash-free. The logo should be bigger and vertically centered with respect to both title and subtitle combined. 
+        </p>
+        <p>Here's one fix to these problems:</p>
+        <figure>
+            <svg viewBox="-5 1 100 28">
+                <!-- Title -->
                 <text x="20" y="10" font-size="5">THE ONLINE ENCYCLOPEDIA</text>
                 <text x="20" y="15.5" font-size="5">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
                 <path d="M20 17.5h70" stroke="black" stroke-width=".2"></path>
                 <text x="47" y="22" font-size="3" id="by">founded in 1964 by N. J. A. Sloane</text>
-            </g>
-            <!-- LOGO -->
-            <g font-size="4.9" transform="translate(-0.8 0.9)">
-                <text x="5" y="13">O</text>
-                <text x="8.4" y="13">E</text>
-                <text x="5.8" y="17">I</text>
-                <text x="8.5" y="17">S</text>
-            </g>
-            <!-- Top row numbers -->
-            <g font-size="2.9" transform="translate(.6 0.4)">
-            <text x="0" y="9" class="no">0</text>
-            <text x="2.6" y="9" class="no">1</text>
-            <text x="5.2" y="9" class="no">3</text>
-            <text x="7.8" y="9" class="no">6</text>
-            <text x="10.4" y="9" class="no">2</text>
-            <text x="13" y="9" class="no">7</text>
-            </g>
-            <!-- Bottom row numbers -->
-            <g font-size="2.9" transform="translate(0 0.2)">
-                <text x="0" y="20.8" class="no">10</text>
-                <text x="4.1" y="20.8" class="no">22</text>
-                <text x="8.2" y="20.8" class="no">11</text>
-                <text x="12.3" y="20.8" class="no">21</text>
-            </g>
-            <!-- Vertical right -->
-            <g font-size="2.9" transform="translate(0 0.2)">
-                <text x="12.1" y="12" class="no">13</text>
-                <text x="12.1" y="14.8" class="no">20</text>
-                <text x="12.1" y="17.8" class="no">12</text>
-            </g>
-            <!-- Vertical left -->
-            <g font-size="2.9" transform="translate(0 0.2)">
-                <text x="0.1" y="17.8" class="no">23</text>
-            </g>
-            <g font-size="3.8" transform="scale(1 1.3)">
-                <text x=".9" y="11.2" class="no" >⁝</text>
-            </g>
-            <!-- Dashed guide lines -->
-            <path d="M0.3 7.5h90" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
-            <path d="M0.3 14.3h90" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
-            <path d="M0.3 21h90" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
-        </svg>
-    </figure>
-    <p>
-        Surely a professional can adjust it better.
-    </p>
-    <p>
-        As an added bonus, the new banner is an SVG file, so after subsetting Ruwudu, the new banner file size is ~7KB, which is significantly smaller in file size than the original 42KB PNG.
-    </p>
-
-    <h2>Entry pages</h2>
-    <p>
-        Let us look now at an <a href="https://oeis.org/A024318">OEIS entry page</a>.
-    </p>
-    <figure class="figure-website">
-        <img src="OEIS-entries.png" alt="" loading="lazy">
-        <figcaption>OEIS page displaying information for a given sequence</figcaption>
-    </figure>
-    <p>
-        Here we can make the rows easier to read with zebra stripes:
-    </p>
-    <figure class="figure-website">
-        <img src="OEIS-entries-striped.png" alt="" loading="lazy">
-        <figcaption>Zebra stripes applied to the table rows</figcaption>
-    </figure>
-    <p>
-        Or by highlighting rows on hover:<code></code>
-    </p>
-    <figure class="figure-website"> 
-        <video src="oeis-entries-hover.mp4" autoplay muted loop controls width="92%"></video>
-        <figcaption>
-            Video: table rows are highlighted upon cursor hover
-        </figcaption>
-    </figure>
-    <h2>That's it for now</h2>
-    <p>
-        The above suggestions are easily adoptable since we're merely sprinkling in CSS or replacing PNG with SVG (plus a font file). 
-    </p>
-    <p>
-        On the other hand, changing how the information within each table row is presented (like converting the formulas into MathJax, or offering code syntax highlighting) might require client-side RegEx parsing with exceptional cases, or going through the database itself and reformatting the information in each entry.
-    </p>
-    <p>
-        If I have time, I will follow up with more extensive suggestions.
-    </p>
-    <div id="asterism">&#8258;</div>
+                <!-- LOGO -->
+                <g transform="scale(1.13) translate(-1.6 -1.5)">
+                    <g font-size="4.9" transform="translate(-0.8 0.9)">
+                        <text x="5" y="13">O</text>
+                        <text x="8.4" y="13">E</text>
+                        <text x="5.8" y="17">I</text>
+                        <text x="8.5" y="17">S</text>
+                    </g>
+                    <!-- Top row numbers -->
+                    <g font-size="2.9" transform="translate(.6 0.4)">
+                    <text x="0" y="9" class="no">0</text>
+                    <text x="2.6" y="9" class="no">1</text>
+                    <text x="5.2" y="9" class="no">3</text>
+                    <text x="7.8" y="9" class="no">6</text>
+                    <text x="10.4" y="9" class="no">2</text>
+                    <text x="13" y="9" class="no">7</text>
+                    </g>
+                    <!-- Bottom row numbers -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="0" y="20.8" class="no">10</text>
+                        <text x="4.1" y="20.8" class="no">22</text>
+                        <text x="8.2" y="20.8" class="no">11</text>
+                        <text x="12.3" y="20.8" class="no">21</text>
+                    </g>
+                    <!-- Vertical right -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="12.1" y="12" class="no">13</text>
+                        <text x="12.1" y="14.8" class="no">20</text>
+                        <text x="12.1" y="17.8" class="no">12</text>
+                    </g>
+                    <!-- Vertical left -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="0.1" y="17.8" class="no">23</text>
+                    </g>
+                    <g font-size="3.8" transform="scale(1 1.3)">
+                        <text x=".9" y="11.2" class="no" >⁝</text>
+                    </g>
+                </g>
+            </svg>
+        </figure>
+        <p>
+            The logo text and banner text are now set in the same typeface to achieve visual consistency. I chose <a href="https://fonts.google.com/specimen/Ruwudu">Ruwudu</a> to preserve the <a href="https://en.wikipedia.org/wiki/Swash_(typography)">flourish</a> on the letter Q, and for its taller, more authoritative letterforms, not unlike some older textbooks. Regrettably, the numerals in Ruwudu do not <a href="https://en.wikipedia.org/wiki/Text_figures">descend</a> like in the original banner. 
+        </p>
+        <p>
+            On the logo itself, the red numbers are desaturated to put emphasis on the OEIS lettermark. The logo is also more vertically &ldquo;balanced&rdquo; using some guiding lines:
+        </p>
+        <figure>
+            <svg id="banner-lines" viewBox="-5 1 100 28">
+                <style>
+                    #banner-lines #text text {
+                        fill: rgb(96, 96, 96);
+                    }
+                    #banner-lines #text path {
+                        stroke: rgb(96, 96, 96);
+                    }
+                </style>
+                <!-- Title -->
+                <g id="text">
+                    <text x="20" y="10" font-size="5">THE ONLINE ENCYCLOPEDIA</text>
+                    <text x="20" y="15.5" font-size="5">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
+                    <path d="M20 17.5h70" stroke="black" stroke-width=".2"></path>
+                    <text x="47" y="22" font-size="3" id="by">founded in 1964 by N. J. A. Sloane</text>
+                </g>
+                <g transform="scale(1.13) translate(-1.6 -1.5)">
+                    <g font-size="4.9" transform="translate(-0.8 0.9)">
+                        <text x="5" y="13">O</text>
+                        <text x="8.4" y="13">E</text>
+                        <text x="5.8" y="17">I</text>
+                        <text x="8.5" y="17">S</text>
+                    </g>
+                    <!-- Top row numbers -->
+                    <g font-size="2.9" transform="translate(.6 0.4)">
+                    <text x="0" y="9" class="no">0</text>
+                    <text x="2.6" y="9" class="no">1</text>
+                    <text x="5.2" y="9" class="no">3</text>
+                    <text x="7.8" y="9" class="no">6</text>
+                    <text x="10.4" y="9" class="no">2</text>
+                    <text x="13" y="9" class="no">7</text>
+                    </g>
+                    <!-- Bottom row numbers -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="0" y="20.8" class="no">10</text>
+                        <text x="4.1" y="20.8" class="no">22</text>
+                        <text x="8.2" y="20.8" class="no">11</text>
+                        <text x="12.3" y="20.8" class="no">21</text>
+                    </g>
+                    <!-- Vertical right -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="12.1" y="12" class="no">13</text>
+                        <text x="12.1" y="14.8" class="no">20</text>
+                        <text x="12.1" y="17.8" class="no">12</text>
+                    </g>
+                    <!-- Vertical left -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="0.1" y="17.8" class="no">23</text>
+                    </g>
+                    <g font-size="3.8" transform="scale(1 1.3)">
+                        <text x=".9" y="11.2" class="no" >⁝</text>
+                    </g>
+                </g>
+                <!-- Dashed guide lines -->
+                <path d="M-1 7h90" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
+                <path d="M-1 14.3h90" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
+                <path d="M-1 22h90" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
+            </svg>
+        </figure>
+        <p>
+            Surely a professional can tweak this better. For instance, one could right- or left-align the subtitle to the title:
+        </p>
+        <figure>
+            <svg viewBox="-8 1 103 28">
+                <!-- Title -->
+                <text x="20" y="10" font-size="5">THE ONLINE ENCYCLOPEDIA</text>
+                <text x="20" y="15.5" font-size="5">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
+                <path d="M20 17.5h66" stroke="black" stroke-width=".2"></path>
+                <text x="43.2" y="22" font-size="3" id="by">founded in 1964 by N. J. A. Sloane</text>
+                <!-- LOGO -->
+                <g transform="scale(1.13) translate(-1.6 -1.5)">
+                    <g font-size="4.9" transform="translate(-0.8 0.9)">
+                        <text x="5" y="13">O</text>
+                        <text x="8.4" y="13">E</text>
+                        <text x="5.8" y="17">I</text>
+                        <text x="8.5" y="17">S</text>
+                    </g>
+                    <!-- Top row numbers -->
+                    <g font-size="2.9" transform="translate(.6 0.4)">
+                    <text x="0" y="9" class="no">0</text>
+                    <text x="2.6" y="9" class="no">1</text>
+                    <text x="5.2" y="9" class="no">3</text>
+                    <text x="7.8" y="9" class="no">6</text>
+                    <text x="10.4" y="9" class="no">2</text>
+                    <text x="13" y="9" class="no">7</text>
+                    </g>
+                    <!-- Bottom row numbers -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="0" y="20.8" class="no">10</text>
+                        <text x="4.1" y="20.8" class="no">22</text>
+                        <text x="8.2" y="20.8" class="no">11</text>
+                        <text x="12.3" y="20.8" class="no">21</text>
+                    </g>
+                    <!-- Vertical right -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="12.1" y="12" class="no">13</text>
+                        <text x="12.1" y="14.8" class="no">20</text>
+                        <text x="12.1" y="17.8" class="no">12</text>
+                    </g>
+                    <!-- Vertical left -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="0.1" y="17.8" class="no">23</text>
+                    </g>
+                    <g font-size="3.8" transform="scale(1 1.3)">
+                        <text x=".9" y="11.2" class="no" >⁝</text>
+                    </g>
+                </g>
+            </svg>
+        </figure>
+        <figure>
+            <svg viewBox="-8 1 103 28">
+                <!-- Title -->
+                <text x="20" y="10" font-size="5">THE ONLINE ENCYCLOPEDIA</text>
+                <text x="20" y="15.5" font-size="5">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
+                <path d="M20 17.5h66" stroke="black" stroke-width=".2"></path>
+                <text x="20.2" y="22" font-size="3" id="by">Founded in 1964 by N. J. A. Sloane</text>
+                <!-- LOGO -->
+                <g transform="scale(1.13) translate(-1.6 -1.5)">
+                    <g font-size="4.9" transform="translate(-0.8 0.9)">
+                        <text x="5" y="13">O</text>
+                        <text x="8.4" y="13">E</text>
+                        <text x="5.8" y="17">I</text>
+                        <text x="8.5" y="17">S</text>
+                    </g>
+                    <!-- Top row numbers -->
+                    <g font-size="2.9" transform="translate(.6 0.4)">
+                    <text x="0" y="9" class="no">0</text>
+                    <text x="2.6" y="9" class="no">1</text>
+                    <text x="5.2" y="9" class="no">3</text>
+                    <text x="7.8" y="9" class="no">6</text>
+                    <text x="10.4" y="9" class="no">2</text>
+                    <text x="13" y="9" class="no">7</text>
+                    </g>
+                    <!-- Bottom row numbers -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="0" y="20.8" class="no">10</text>
+                        <text x="4.1" y="20.8" class="no">22</text>
+                        <text x="8.2" y="20.8" class="no">11</text>
+                        <text x="12.3" y="20.8" class="no">21</text>
+                    </g>
+                    <!-- Vertical right -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="12.1" y="12" class="no">13</text>
+                        <text x="12.1" y="14.8" class="no">20</text>
+                        <text x="12.1" y="17.8" class="no">12</text>
+                    </g>
+                    <!-- Vertical left -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="0.1" y="17.8" class="no">23</text>
+                    </g>
+                    <g font-size="3.8" transform="scale(1 1.3)">
+                        <text x=".9" y="11.2" class="no" >⁝</text>
+                    </g>
+                </g>
+            </svg>
+        </figure>
+        <p>
+            The message &ldquo;The OEIS is supported by the many generous donors to the OEIS Foundation&rdquo; often appears above the banner. This, too, can be incorporated into the banner itself, though one risks cluttering the banner, making it more like a business card.
+            <!-- Shrink subtitle text to decrease clutter i.e. to direct the eye first to the title and logo first, and the subtitle last. -->
+        </p>        
+        <figure>
+            <svg viewBox="-11 1 115 32">
+                <!-- Title -->
+                <text x="20" y="10.5" font-size="5.8">THE ONLINE ENCYCLOPEDIA</text>
+                <text x="20" y="16.7" font-size="5.8">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
+                <path d="M20 19h70" stroke="black" stroke-width=".2"></path>
+                <text x="20" y="23.2" font-size="2.6" id="by">Founded in 1964 by N. J. A. Sloane</text>
+                <text x="20" y="26.4" font-size="2.6" id="by">Supported by <a href="" color><tspan fill="#3d59d2">many generous donors</tspan></a></text>
+                <!-- LOGO -->
+                <g transform="scale(1.37) translate(-4.2 -2.3)">
+                    <g font-size="4.9" transform="translate(-0.8 0.9)">
+                        <text x="5" y="13">O</text>
+                        <text x="8.4" y="13">E</text>
+                        <text x="5.8" y="17">I</text>
+                        <text x="8.5" y="17">S</text>
+                    </g>
+                    <!-- Top row numbers -->
+                    <g font-size="2.9" transform="translate(.6 0.4)">
+                    <text x="0" y="9" class="no">0</text>
+                    <text x="2.6" y="9" class="no">1</text>
+                    <text x="5.2" y="9" class="no">3</text>
+                    <text x="7.8" y="9" class="no">6</text>
+                    <text x="10.4" y="9" class="no">2</text>
+                    <text x="13" y="9" class="no">7</text>
+                    </g>
+                    <!-- Bottom row numbers -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="0" y="20.8" class="no">10</text>
+                        <text x="4.1" y="20.8" class="no">22</text>
+                        <text x="8.2" y="20.8" class="no">11</text>
+                        <text x="12.3" y="20.8" class="no">21</text>
+                    </g>
+                    <!-- Vertical right -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="12.1" y="12" class="no">13</text>
+                        <text x="12.1" y="14.8" class="no">20</text>
+                        <text x="12.1" y="17.8" class="no">12</text>
+                    </g>
+                    <!-- Vertical left -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="0.1" y="17.8" class="no">23</text>
+                    </g>
+                    <g font-size="3.8" transform="scale(1 1.3)">
+                        <text x=".9" y="11.2" class="no" >⁝</text>
+                    </g>
+                </g>
+            </svg>
+        </figure>
+        <p>
+            At a technical level, our new banner is an SVG file. Which comes with its advantages. For one, inline SVG can be animated. For another, the new banner (SVG and the Ruwudu font file after font subsetting) is significantly smaller (7KB vs 42KB).
+        </p>
+    
+        <h2>Entry pages</h2>
+        <p>
+            Let us look now at an <a href="https://oeis.org/A024318">OEIS entry page</a>.
+        </p>
+        <figure class="figure-website">
+            <img src="OEIS-entries.png" alt="">
+            <figcaption>OEIS page displaying information for a given sequence</figcaption>
+        </figure>
+        <p>
+            Here we can make the rows easier to read with zebra stripes:
+        </p>
+        <figure class="figure-website">
+            <img src="OEIS-entries-striped.png" alt="" loading="lazy">
+            <figcaption>Zebra stripes applied to the table rows</figcaption>
+        </figure>
+        <p>
+            Or by highlighting rows on hover:<code></code>
+        </p>
+        <figure class="figure-website"> 
+            <video src="oeis-entries-hover.mp4" autoplay muted loop controls width="92%"></video>
+            <figcaption>
+                Video: table rows are highlighted upon cursor hover
+            </figcaption>
+        </figure>
+        <h2>That's it for now</h2>
+        <p>
+            The above suggestions are easily adoptable since we're merely sprinkling in CSS or replacing PNG with SVG (plus a font file). 
+        </p>
+        <p>
+            On the other hand, changing how the information within each table row is presented (like converting the formulas into MathJax, or offering code syntax highlighting) might require client-side RegEx parsing with exceptional cases, or going through the database itself and reformatting the information in each entry.
+        </p>
+        <p>
+            If I have time, I will follow up with more extensive suggestions.
+        </p>
+        <div id="asterism">&#8258;</div>
+    </main>
 </body>
 </html>
