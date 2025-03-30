@@ -183,16 +183,18 @@
         <p>
             The main issue with the current banner is the kerning. The letters in the logo should not overlap (unless you want to emulate <a href="https://www.theverge.com/2022/11/22/23473452/kia-rebrand-kn-car-google-searches">Kia</a>), and the letters in the title should be closer together. Also, &ldquo;ON-LINE&rdquo; is now overwhelmingly dash-free. The logo should be bigger and vertically centered with respect to both title and subtitle combined. 
         </p>
-        <p>Here's one fix to these problems:</p>
+        <p>
+            Here's one fix to these problems:
+        </p>
         <figure>
-            <svg viewBox="-5 1 100 28">
+            <svg viewBox="-8 1 103 28">
                 <!-- Title -->
                 <text x="20" y="10" font-size="5">THE ONLINE ENCYCLOPEDIA</text>
                 <text x="20" y="15.5" font-size="5">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
-                <path d="M20 17.5h70" stroke="black" stroke-width=".2"></path>
-                <text x="47" y="22" font-size="3" id="by">founded in 1964 by N. J. A. Sloane</text>
+                <path d="M20 17.5h66" stroke="black" stroke-width=".2"></path>
+                <text x="42.7" y="22" font-size="3" id="by">Founded in 1964 by N. J. A. Sloane</text>
                 <!-- LOGO -->
-                <g transform="scale(1.13) translate(-1.6 -1.5)">
+                <g transform="scale(1.13) translate(-1 -1.5)">
                     <g font-size="4.9" transform="translate(-0.8 0.9)">
                         <text x="5" y="13">O</text>
                         <text x="8.4" y="13">E</text>
@@ -232,29 +234,70 @@
             </svg>
         </figure>
         <p>
-            The logo text and banner text are now set in the same typeface to achieve visual consistency. I chose <a href="https://fonts.google.com/specimen/Ruwudu">Ruwudu</a> to preserve the <a href="https://en.wikipedia.org/wiki/Swash_(typography)">flourish</a> on the letter Q, and for its taller, more authoritative letterforms, not unlike some older textbooks. Regrettably, the numerals in Ruwudu do not <a href="https://en.wikipedia.org/wiki/Text_figures">descend</a> like in the original banner. 
+            Or the left-aligned version:
+        </p>
+        <figure>
+            <svg viewBox="-8 1 103 28">
+                <!-- Title -->
+                <text x="20" y="10" font-size="5">THE ONLINE ENCYCLOPEDIA</text>
+                <text x="20" y="15.5" font-size="5">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
+                <path d="M20 17.5h66" stroke="black" stroke-width=".2"></path>
+                <text x="20.2" y="22" font-size="3" id="by">Founded in 1964 by N. J. A. Sloane</text>
+                <!-- LOGO -->
+                <g transform="scale(1.13) translate(-1 -1.5)">
+                    <g font-size="4.9" transform="translate(-0.8 0.9)">
+                        <text x="5" y="13">O</text>
+                        <text x="8.4" y="13">E</text>
+                        <text x="5.8" y="17">I</text>
+                        <text x="8.5" y="17">S</text>
+                    </g>
+                    <!-- Top row numbers -->
+                    <g font-size="2.9" transform="translate(.6 0.4)">
+                    <text x="0" y="9" class="no">0</text>
+                    <text x="2.6" y="9" class="no">1</text>
+                    <text x="5.2" y="9" class="no">3</text>
+                    <text x="7.8" y="9" class="no">6</text>
+                    <text x="10.4" y="9" class="no">2</text>
+                    <text x="13" y="9" class="no">7</text>
+                    </g>
+                    <!-- Bottom row numbers -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="0" y="20.8" class="no">10</text>
+                        <text x="4.1" y="20.8" class="no">22</text>
+                        <text x="8.2" y="20.8" class="no">11</text>
+                        <text x="12.3" y="20.8" class="no">21</text>
+                    </g>
+                    <!-- Vertical right -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="12.1" y="12" class="no">13</text>
+                        <text x="12.1" y="14.8" class="no">20</text>
+                        <text x="12.1" y="17.8" class="no">12</text>
+                    </g>
+                    <!-- Vertical left -->
+                    <g font-size="2.9" transform="translate(0 0.2)">
+                        <text x="0.1" y="17.8" class="no">23</text>
+                    </g>
+                    <g font-size="3.8" transform="scale(1 1.3)">
+                        <text x=".9" y="11.2" class="no" >⁝</text>
+                    </g>
+                </g>
+            </svg>
+        </figure>
+        <p>
+            The banner text is now set in the same typeface to achieve visual consistency. I chose <a href="https://fonts.google.com/specimen/Ruwudu">Ruwudu</a> to preserve the <a href="https://en.wikipedia.org/wiki/Swash_(typography)">flourish</a> on the letter Q, and its taller letterforms help exude gravitas, not unlike some older textbooks. Regrettably, the numerals in Ruwudu do not <a href="https://en.wikipedia.org/wiki/Text_figures">descend</a> like in the original banner. 
         </p>
         <p>
             On the logo itself, the red numbers are desaturated to put emphasis on the OEIS lettermark. The logo is also more vertically &ldquo;balanced&rdquo; using some guiding lines:
         </p>
         <figure>
-            <svg id="banner-lines" viewBox="-5 1 100 28">
-                <style>
-                    #banner-lines #text text {
-                        fill: rgb(96, 96, 96);
-                    }
-                    #banner-lines #text path {
-                        stroke: rgb(96, 96, 96);
-                    }
-                </style>
+            <svg viewBox="-8 1 103 28">
                 <!-- Title -->
-                <g id="text">
-                    <text x="20" y="10" font-size="5">THE ONLINE ENCYCLOPEDIA</text>
-                    <text x="20" y="15.5" font-size="5">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
-                    <path d="M20 17.5h70" stroke="black" stroke-width=".2"></path>
-                    <text x="47" y="22" font-size="3" id="by">founded in 1964 by N. J. A. Sloane</text>
-                </g>
-                <g transform="scale(1.13) translate(-1.6 -1.5)">
+                <text x="20" y="10" font-size="5">THE ONLINE ENCYCLOPEDIA</text>
+                <text x="20" y="15.5" font-size="5">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
+                <path d="M20 17.5h66" stroke="black" stroke-width=".2"></path>
+                <text x="42.7" y="22" font-size="3" id="by">Founded in 1964 by N. J. A. Sloane</text>
+                <!-- LOGO -->
+                <g transform="scale(1.13) translate(-1 -1.5)">
                     <g font-size="4.9" transform="translate(-0.8 0.9)">
                         <text x="5" y="13">O</text>
                         <text x="8.4" y="13">E</text>
@@ -292,110 +335,16 @@
                     </g>
                 </g>
                 <!-- Dashed guide lines -->
-                <path d="M-1 7h90" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
-                <path d="M-1 14.3h90" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
-                <path d="M-1 22h90" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
+                <path d="M-4 7h94" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
+                <path d="M-4 14.4h94" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
+                <path d="M-4 22h94" stroke="black" stroke-width=".2" stroke-dasharray="1,1"></path>
             </svg>
         </figure>
         <p>
-            Surely a professional can tweak this better. For instance, one could right- or left-align the subtitle to the title:
+            Surely a professional can tweak this better.
         </p>
-        <figure>
-            <svg viewBox="-8 1 103 28">
-                <!-- Title -->
-                <text x="20" y="10" font-size="5">THE ONLINE ENCYCLOPEDIA</text>
-                <text x="20" y="15.5" font-size="5">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
-                <path d="M20 17.5h66" stroke="black" stroke-width=".2"></path>
-                <text x="43.2" y="22" font-size="3" id="by">founded in 1964 by N. J. A. Sloane</text>
-                <!-- LOGO -->
-                <g transform="scale(1.13) translate(-1.6 -1.5)">
-                    <g font-size="4.9" transform="translate(-0.8 0.9)">
-                        <text x="5" y="13">O</text>
-                        <text x="8.4" y="13">E</text>
-                        <text x="5.8" y="17">I</text>
-                        <text x="8.5" y="17">S</text>
-                    </g>
-                    <!-- Top row numbers -->
-                    <g font-size="2.9" transform="translate(.6 0.4)">
-                    <text x="0" y="9" class="no">0</text>
-                    <text x="2.6" y="9" class="no">1</text>
-                    <text x="5.2" y="9" class="no">3</text>
-                    <text x="7.8" y="9" class="no">6</text>
-                    <text x="10.4" y="9" class="no">2</text>
-                    <text x="13" y="9" class="no">7</text>
-                    </g>
-                    <!-- Bottom row numbers -->
-                    <g font-size="2.9" transform="translate(0 0.2)">
-                        <text x="0" y="20.8" class="no">10</text>
-                        <text x="4.1" y="20.8" class="no">22</text>
-                        <text x="8.2" y="20.8" class="no">11</text>
-                        <text x="12.3" y="20.8" class="no">21</text>
-                    </g>
-                    <!-- Vertical right -->
-                    <g font-size="2.9" transform="translate(0 0.2)">
-                        <text x="12.1" y="12" class="no">13</text>
-                        <text x="12.1" y="14.8" class="no">20</text>
-                        <text x="12.1" y="17.8" class="no">12</text>
-                    </g>
-                    <!-- Vertical left -->
-                    <g font-size="2.9" transform="translate(0 0.2)">
-                        <text x="0.1" y="17.8" class="no">23</text>
-                    </g>
-                    <g font-size="3.8" transform="scale(1 1.3)">
-                        <text x=".9" y="11.2" class="no" >⁝</text>
-                    </g>
-                </g>
-            </svg>
-        </figure>
-        <figure>
-            <svg viewBox="-8 1 103 28">
-                <!-- Title -->
-                <text x="20" y="10" font-size="5">THE ONLINE ENCYCLOPEDIA</text>
-                <text x="20" y="15.5" font-size="5">OF INTEGER SEQUENCES<tspan dx=".8" dy="-1.3" font-size="3">®</tspan></text>
-                <path d="M20 17.5h66" stroke="black" stroke-width=".2"></path>
-                <text x="20.2" y="22" font-size="3" id="by">Founded in 1964 by N. J. A. Sloane</text>
-                <!-- LOGO -->
-                <g transform="scale(1.13) translate(-1.6 -1.5)">
-                    <g font-size="4.9" transform="translate(-0.8 0.9)">
-                        <text x="5" y="13">O</text>
-                        <text x="8.4" y="13">E</text>
-                        <text x="5.8" y="17">I</text>
-                        <text x="8.5" y="17">S</text>
-                    </g>
-                    <!-- Top row numbers -->
-                    <g font-size="2.9" transform="translate(.6 0.4)">
-                    <text x="0" y="9" class="no">0</text>
-                    <text x="2.6" y="9" class="no">1</text>
-                    <text x="5.2" y="9" class="no">3</text>
-                    <text x="7.8" y="9" class="no">6</text>
-                    <text x="10.4" y="9" class="no">2</text>
-                    <text x="13" y="9" class="no">7</text>
-                    </g>
-                    <!-- Bottom row numbers -->
-                    <g font-size="2.9" transform="translate(0 0.2)">
-                        <text x="0" y="20.8" class="no">10</text>
-                        <text x="4.1" y="20.8" class="no">22</text>
-                        <text x="8.2" y="20.8" class="no">11</text>
-                        <text x="12.3" y="20.8" class="no">21</text>
-                    </g>
-                    <!-- Vertical right -->
-                    <g font-size="2.9" transform="translate(0 0.2)">
-                        <text x="12.1" y="12" class="no">13</text>
-                        <text x="12.1" y="14.8" class="no">20</text>
-                        <text x="12.1" y="17.8" class="no">12</text>
-                    </g>
-                    <!-- Vertical left -->
-                    <g font-size="2.9" transform="translate(0 0.2)">
-                        <text x="0.1" y="17.8" class="no">23</text>
-                    </g>
-                    <g font-size="3.8" transform="scale(1 1.3)">
-                        <text x=".9" y="11.2" class="no" >⁝</text>
-                    </g>
-                </g>
-            </svg>
-        </figure>
         <p>
-            The message &ldquo;The OEIS is supported by the many generous donors to the OEIS Foundation&rdquo; often appears above the banner. This, too, can be incorporated into the banner itself, though one risks cluttering the banner, making it more like a business card.
+            The message &ldquo;The OEIS is supported by the many generous donors to the OEIS Foundation&rdquo; often appears above the banner. This, too, can be incorporated into the banner itself, though one risks cluttering it into a &ldquo;business card&rdquo;.
             <!-- Shrink subtitle text to decrease clutter i.e. to direct the eye first to the title and logo first, and the subtitle last. -->
         </p>        
         <figure>
