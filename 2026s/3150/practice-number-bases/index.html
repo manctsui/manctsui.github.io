@@ -260,7 +260,7 @@
             <p>
                 $(11000_{2})^2$ is an $n$-digit number when written in binary. What is $n$?
             </p>
-            Answer: <input type="numeric" data-answer="9">
+            Answer: <input type="numeric" data-answer="10">
             <button type="button" onclick="checkAnswer(this)">Check Answer</button>
             <div class="feedback"></div>
             <button onclick="solution(this)">Show Solution</button>
@@ -276,17 +276,17 @@
                     &=2^9+2^6\\
                     \end{align*}
                     $$
-                    So in binary, $(11000_{2})^2$ is a nine-digit number, i.e., $n=9$.
+                    So the number $(11000_{2})^2$ in binary has ten digits ($2^9$ in binary is a string with a 1 followed by 9 zeroes, for a total of ten digits).
                 </p>
                 <p>
                     <b>Solution 2.</b>
-                    Notice that $(11_{2})^2=3^2=9=101_2$, so
+                    Notice that $(11_{2})^2=3^2=9=1001_2$, so
                 </p>
                 $$
-                (11000_{2})^2=(11_{2}\times 1000_{2})^2=(11_2)^2\times 1000000_2=101000000_2
+                (11000_{2})^2=(11_{2}\times 1000_{2})^2=(11_2)^2\times 1000000_2=1001000000_2.
                 $$
                 <p>
-                    This number has nine digits.
+                    This number has ten digits.
                 </p>
             </div>
         </div>
