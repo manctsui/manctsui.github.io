@@ -9,9 +9,9 @@
         table {border-collapse: collapse;}
         #course-schedule th, #course-schedule td {border: 2px solid; padding: 0.5em 0.8em;text-align: left;}
         #course-schedule th.lesson {width: 45%;}
-        #course-schedule th.full-notes {width: 18%;}
-        #course-schedule th.short-notes {width: 18%;}
-        #course-schedule th.practice {width: 19%;}
+        #course-schedule th.textbook {width: 25%;}
+        #course-schedule th.notes {width: 15%;}
+        #course-schedule th.practice {width: 15%;}
         #course-schedule tr:nth-child(odd) {background-color: #ededed;}
         #course-schedule tr.highlight {background-color: #fff8a9;}
         #course-schedule tr.highlight ul {font-size: 0.8em; list-style-type: "~ ";}
@@ -39,6 +39,10 @@
             font-size: 1.2em;
             /* font-weight: bold; */
             /* color: rgb(126, 126, 126); */
+        }
+        
+        .unit {
+            font-size: 0.7em;
         }
     </style>
 </head>
@@ -109,16 +113,17 @@
     <table id="course-schedule">
         <tr>
             <th class="lesson">Schedule</th>
-            <th class="full-notes">Full Notes</th>
-            <th class="short-notes">Short Notes</th>
+            <th class="textbook">Reading</th>
+            <th class="notes">Notes</th>
             <th class="practice">Practice Problems</th>
         </tr>
         <tr>
             <td>
+                <div class="unit">Numbers</div>
                 1 - Number bases
             </td>
             <td>
-                <!-- <a href="">PDF</a> -->
+                <a href="https://richardhammack.github.io/DiscreteWSP/Chapter1.pdf">Hammack §1.4-1.5</a>
             </td>
             <td>
                 <!-- <a href="">PDF</a> -->
