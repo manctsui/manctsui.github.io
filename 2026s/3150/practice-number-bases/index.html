@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="nofollow, noindex" />
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" rel="preload" as="style" crossorigin="anonymous" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" onload='this.onload=null,this.rel="stylesheet"'><script crossorigin="anonymous" defer="defer" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script><script crossorigin="anonymous" defer="defer" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:&#34;$$&#34;,right:&#34;$$&#34;,display:!0},{left:&#34;$&#34;,right:&#34;$&#34;,display:!1}],throwOnError:!1,trust:!0})"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="preload" as="style" crossorigin="anonymous" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" onload="this.onload=null,this.rel=&#34;stylesheet&#34;">
+    <title>Practice: Number Bases</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Lucida Grande', 'Open Sans', sans-serif;
+            font-size: 1.1rem;
+            margin: auto;
+            max-width: 45em;
+            padding: 1em
+        }
+
+        p {
+            line-height: 1.6
+        }
+
+        a {
+            color: #0067ce;
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        h1 {
+            font-size: 1.7em;
+            font-weight: 600;
+            margin: 0em 0em 1em;
+        }
+
+        h2 {
+            font-size: 1.4em;
+            font-weight: 400;
+            margin-bottom: 0.3em;
+        }
+
+        h3 {
+            font-size: 1.5em
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        #course-title {
+            margin-top: 2em;
+            font-size: 1.2em;
+            /* font-weight: bold; */
+            /* color: rgb(126, 126, 126); */
+        }
+
+        .problem {
+            border: 2px solid black;
+            padding: 2em;
+            margin-bottom: 2em;
+        }
+
+        input {
+            width: 8em;
+            margin-left: 0.6em;
+            padding: 0.5em;
+            border-radius: 0.6em;
+            border: 1px solid black;
+        }
+
+        button {
+            margin: 1.4em 0;
+            display: block;
+            outline: 0;
+            border: none;
+            cursor: pointer;
+            height: 44px;
+            padding: 14px 17px;
+            border-radius: 10px;
+            background-color: #01aaf33a;
+            color: #222;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        button:hover {
+            background-color: #01aaf31b;
+        }
+
+        .feedback {
+            font-weight: bold;
+            margin-bottom: 1.4em;
+        }
+
+        .correct {
+            color: #186d2c;
+        }
+
+        .incorrect {
+            color: #ad2e3b;
+        }
+
+        #problems {
+            /* white-space: pre-wrap; */
+            counter-reset: problem;
+        }
+
+        #problems .problem::before {
+            counter-increment: problem;
+            content: "Problem " counter(problem) ".";
+            /* display: block; */
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+
+        .solution {
+            border: 2px solid black;
+            border-radius: 8px;
+            margin: 1em 0;
+            padding: 0 1em;
+            display: block;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="course-title">
+        <a href="../">MATH 03150 | 2026 Spring</a>
+    </div>
+    <h1>
+        Practice: Number Bases
+    </h1>
+
+    <div id="problems">
+        
+        <div class="problem">
+            <p>
+                Convert the hexadecimal number $20_{16}$ to decimal (base 10). 
+            </p>
+            Answer: <input type="numeric" data-answer="32">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> 
+                $$
+                20_{16}=2\cdot 16+0\cdot 1=\boxed{32}.
+                $$
+
+            </div>
+            <p>
+                <b>Trivia:</b> The <a href="https://en.wikipedia.org/wiki/Whitespace_character">whitespace character</a> is the $20_{16}$-th character in <a href="https://en.wikipedia.org/wiki/ASCII#Character_set">ASCII</a>, so URLs use %20 to encode this character.
+            </p>
+        </div>
+
+        <div class="problem">
+            <p>
+                Convert $2102_{3}$ to binary.
+            </p>
+            Answer: <input type="numeric" data-answer="1000001">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> We first convert $2102_{3}$ from base 3 to base 10:
+                </p>
+                $$
+                2102_{3} = 2\cdot 3^3+1\cdot 3^2+0\cdot 3^1+2\cdot 3^0=54+9+2=65
+                $$
+                <p>
+                    Next we can either do repeated long division by $2$ to obtain the binary form of $65$, or we notice that the highest power of $2$ that goes into $65$ is $64$ so
+                </p>
+                $$
+                65=64+1=2^{6}+1=\boxed{1000001_2}
+                $$
+
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                Convert $110000_{2}$ to ternary.
+            </p>
+            Answer: <input type="numeric" data-answer="1210">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b> We first convert $110000_{2}$ from base 2 to base 10:
+                </p>
+                $$
+                110000_{2} = 2^5+2^4=32+16=48
+                $$
+                <p>
+                    Next we do repeated long division by $3$ to obtain the ternary form of $48$:
+                </p>
+                $$
+                \begin{align*}
+                48&=16\cdot3+0\\
+                16&=5\cdot3+1\\
+                5&=1\cdot3+2\\
+                1&=0\cdot3+1\\
+                \end{align*}
+                $$
+                <p>
+                    Reading the remainders from the bottom up shows that 
+                </p>
+                $$
+                110000_{2}=48=\boxed{1210_3}
+                $$
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                The HEX color code for the RGB color $(37, 178, 86)$ is $\#$<input type="numeric" data-answer="25b256">.
+            </p>
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> We must convert each of $R$, $G$, $B$ into hexadecimal.
+                </p>
+                $$
+                \begin{align*}
+                R&=37=2\cdot16+5=25_{16}\\
+                G&=178=11\cdot16+2=b2_{16}\\
+                B&=86=5\cdot16+6=56_{16}\\
+                \end{align*}
+                $$
+                <p>
+                    Therefore the HEX code for this color is obtained by concatenating the two-digit hexadecimals we found: $\#25b256$.
+                </p>
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                Find the value of $n$ such that $79_{13}=144_{n}$.
+            </p>
+            Answer: <input type="numeric" data-answer="8">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> We wish to have $7\cdot 13+9=1\cdot n^2+4n+4$ or $100=n^2+4n+4=(n+2)^2$. Taking square roots gives $\pm10=n+2$ so $n=8$ is the only positive solution.
+                </p>
+            </div>
+        </div>
+
+    
+        <div class="problem"> (Review of exponents)
+            <p>
+                $(11000_{2})^2$ is an $n$-digit number when written in binary. What is $n$?
+            </p>
+            Answer: <input type="numeric" data-answer="9">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> We write this number out as:
+                    $$
+                    \begin{align*}
+                    (11000_{2})^2&=(2^4+2^3)^2\\
+                    &=(2^4)^2+2(2^4)(2^3)+(2^3)^2\\
+                    &=2^8+2^8+2^6\\
+                    &=2\cdot2^8+2^6\\
+                    &=2^9+2^6\\
+                    \end{align*}
+                    $$
+                    So in binary, $(11000_{2})^2$ is a nine-digit number, i.e., $n=9$.
+                </p>
+                <p>
+                    <b>Solution 2.</b>
+                    Notice that $(11_{2})^2=3^2=9=101_2$, so
+                </p>
+                $$
+                (11000_{2})^2=(11_{2}\times 1000_{2})^2=(11_2)^2\times 1000000_2=101000000_2
+                $$
+                <p>
+                    This number has nine digits.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(button) {
+            const container = button.parentElement;
+            const input = container.querySelector("input");
+            const feedback = container.querySelector(".feedback");
+            const correct = input.dataset.answer.toLowerCase();
+            // console.log(input.dataset.answer);
+
+            if (input.value === "") {
+                feedback.textContent = "⚠️ Enter a number first.";
+                feedback.className = "feedback incorrect";
+                return;
+            }
+
+            if (input.value.toLowerCase() === correct) {
+                feedback.textContent = "✅ Correct!";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = "❌ Incorrect. Try again.";
+                feedback.className = "feedback incorrect";
+            }
+        }
+
+        function solution(button) {
+            const container = button.parentElement;
+            const x = container.querySelector(".solution");
+            if (x.style.display === "none" || x.style.display === "") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        } 
+    </script>
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>
