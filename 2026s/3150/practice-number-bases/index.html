@@ -122,6 +122,10 @@
             display: block;
             display: none;
         }
+
+        footer {
+            margin: 4em 0;
+        }
     </style>
 </head>
 
@@ -290,6 +294,67 @@
                 </p>
             </div>
         </div>
+
+        <div class="problem">
+            <p>
+                Find a digit $d$ such that $d13_{6}=1d1_{8}$.
+            </p>
+            Answer: <input type="numeric" data-answer="2">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> 
+                    $$
+                    \begin{align*}
+                    &&d\cdot6^2+1\cdot 6+3&=1\cdot 8^2+d\cdot8+1\\
+                    \Rightarrow &&
+                    36d+6+3&=64+8d+1\\
+                    \Rightarrow && 
+                    28d&=56\\
+                    \Rightarrow && 
+                    d&=2\\
+                    \end{align*}
+                    $$
+                </p>
+            </div>
+        </div>
+        
+        <div class="problem">
+            <p>
+                Find a base $b$ such that $34_{b}\times21_{b}=1044_{b}$.
+            </p>
+            Answer: <input type="numeric" data-answer="7">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> 
+                    $$
+                    \begin{align*}
+                    &&(3b+4)(2b+1)&=b^3+4b+4\\
+                    \Rightarrow &&
+                    6b^2+11b+4&=b^3+4b+4\\
+                    \Rightarrow && 
+                    0&=b^3-6b^2-7b\\
+                    \Rightarrow &&
+                    0&=b^2-6b-7\\
+                    \Rightarrow &&
+                    0&=(b+1)(b-7)\\
+                    \Rightarrow &&
+                    b=-1&\text{\; or\; }b=7\\
+                    \end{align*}
+                    $$
+                </p>
+                <p>
+                    Since we only consider positive number bases in this class, we must have $b=7$.
+                </p>
+            </div>
+        </div>
+
+        
     </div>
 
     <script>
