@@ -8,9 +8,9 @@
         body{font-family:'Segoe UI','Lucida Grande','Open Sans',sans-serif;font-size:1.1rem;margin:auto;max-width:45em;padding:1em}p{line-height:1.6}a{color:#0067ce;text-decoration:none}a:hover{text-decoration:underline}h1{font-size:1.7em;font-weight:600;margin-top: 0em;}h2{font-size: 1.4em;font-weight:400; margin-bottom: 0.3em;}h3{font-size:1.5em}
         table {border-collapse: collapse;}
         #course-schedule th, #course-schedule td {border: 2px solid; padding: 0.5em 0.8em;text-align: left;}
-        #course-schedule th.lesson {width: 45%;}
+        #course-schedule th.lesson {width: 40%;}
         #course-schedule th.textbook {width: 25%;}
-        #course-schedule th.notes {width: 15%;}
+        #course-schedule th.notes {width: 12%;}
         #course-schedule th.practice {width: 15%;}
         #course-schedule tr:nth-child(odd) {background-color: #ededed;}
         #course-schedule tr.highlight {background-color: #fff8a9;}
@@ -24,7 +24,6 @@
         #course-info ul > li {line-height: 1.5;}
         #course-info td {padding: 0.4em 0.8em;}
         #course-info tr:nth-child(odd) {background-color: #ededed;}
-        #course-info tr:hover {background-color: #fff8a9;}
         #course-info tr {
             vertical-align: top; 
             /* border-bottom: 3px solid black; */
@@ -41,8 +40,11 @@
             /* color: rgb(126, 126, 126); */
         }
         
-        .unit {
+        .unit, small {
             font-size: 0.7em;
+        }
+        .here {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -130,6 +132,116 @@
             </td>
             <td>
                 <a href="practice-number-bases/">Problems</a>
+            </td>
+        </tr>
+        <tr>
+            <td class="here">
+                <div class="unit">Numbers</div>
+                2 - Divisibility, Euclidean algorithm
+            </td>
+            <td>
+                <a href="https://userpages.cs.umbc.edu/lomonaco/f14/653/handouts/EU-Alg.pdf">Lomonaco pages 1-5</a>
+            </td>
+            <td>
+                <a href="2 - Divisibility, Euclidean algorithm.pdf">PDF</a>
+            </td>
+            <td>
+                <a href="practice-divisibility/">Problems</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="unit">Numbers</div>
+                3 - Modular arithmetic
+            </td>
+            <td>
+                <a href="https://discrete.openmathbooks.org/pdfs/dmoi4.pdf#page=455">Levin §6.2.2-6.2.3</a>
+            </td>
+            <td>
+                <!-- <a href="">PDF</a> -->
+            </td>
+            <td>
+                <!-- <a href="practice-modular-arithmetic/">Problems</a> -->
+            </td>
+        </tr>
+        <!-- <tr>
+            <td>
+                <div class="unit">Numbers</div>
+                4 - Fermat's little theorem
+            </td>
+            <td>
+                <a href="https://www.cs.carleton.edu/faculty/dln/book/ch07_number-theory_2021_September_08.pdf">Liben-Nowell §7.4</a>
+            </td>
+            <td>
+                <a href="">PDF</a>
+            </td>
+            <td>
+                <a href="">Problems</a>
+            </td>
+        </tr> -->
+        <tr>
+            <td>
+                <div class="unit">Sets and combinatorics</div>
+                4 - Sets
+            </td>
+            <td>
+                <a href="https://www.cs.carleton.edu/faculty/dln/book/ch02_basic-data-types_2021_October_05.pdf">Liben-Nowell §2.3</a><br>
+                <small>Skip page 35 on partitions.</small>
+            </td>
+            <td>
+                <!-- <a href="">PDF</a> -->
+            </td>
+            <td>
+                <!-- <a href="practice-sets/">Problems</a> -->
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="unit">Sets and combinatorics</div>
+                5 - Venn diagrams
+            </td>
+            <td>
+                <a href="https://www.cs.carleton.edu/faculty/dln/book/ch09_counting_2021_September_08.pdf">Liben-Nowell §9.2</a><br>
+                <small>Read pages 1-7 on the sum rule and pages 10-14 on inclusion-exclusion.</small>
+            </td>
+            <td>
+                <!-- <a href="">PDF</a> -->
+            </td>
+            <td>
+                <!-- <a href="practice-sets/">Problems</a> -->
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="unit">Sets and combinatorics</div>
+                6 - Sequences and product rule
+            </td>
+            <td>
+                <a href="https://www.cs.carleton.edu/faculty/dln/book/ch02_basic-data-types_2021_October_05.pdf">Liben-Nowell §2.4</a><br>
+                <small>pages 48-51</small><br><br>
+                <a href="https://www.cs.carleton.edu/faculty/dln/book/ch09_counting_2021_September_08.pdf">Liben-Nowell §9.2</a><br>
+                <small>Finish section.</small>
+            </td>
+            <td>
+                <!-- <a href="">PDF</a> -->
+            </td>
+            <td>
+                <!-- <a href="practice-sets/">Problems</a> -->
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="unit">Sets and combinatorics</div>
+                7 - Combinatorics and permutations
+            </td>
+            <td>
+                <a href="https://www.cs.carleton.edu/faculty/dln/book/ch09_counting_2021_September_08.pdf">Liben-Nowell §9.4</a>
+            </td>
+            <td>
+                <!-- <a href="">PDF</a> -->
+            </td>
+            <td>
+                <!-- <a href="practice-sets/">Problems</a> -->
             </td>
         </tr>
         <tr>
