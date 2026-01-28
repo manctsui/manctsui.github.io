@@ -127,6 +127,11 @@
         footer {
             margin: 4em 0;
         }
+
+        .show {
+            display: contents; 
+        }
+        
     </style>
 </head>
 
@@ -159,6 +164,28 @@
             <p>
                 <b>Trivia:</b> The <a href="https://en.wikipedia.org/wiki/Whitespace_character">whitespace character</a> is the $20_{16}$-th character in <a href="https://en.wikipedia.org/wiki/ASCII#Character_set">ASCII</a>, so URLs use %20 to encode this character.
             </p>
+        </div>
+
+        <div class="problem">
+            <p>
+                Convert the hexadecimal number $ABC_{16}$ to decimal (base 10). 
+            </p>
+            Answer: <input type="numeric" data-answer="2748">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> 
+                $$
+                \begin{align*}
+                    ABC_{16}&=A\cdot 16^2+B\cdot 16+C\\
+                    &=10\cdot 16^2+11\cdot 16+12\\
+                    &=2560+176+12\\
+                    &=\boxed{2748}.
+                \end{align*}
+                $$
+            </div>
         </div>
 
         <div class="problem">
@@ -217,6 +244,24 @@
                 </p>
                 $$
                 110000_{2}=48=\boxed{1210_3}
+                $$
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                Convert $121_{3}$ to base 10.
+            </p>
+            Answer: <input type="numeric" data-answer="16">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b>
+                </p>
+                $$
+                121_{3} = 1\cdot 3^2+2\cdot 3^1+1\cdot 3^0=9+6+1=16
                 $$
             </div>
         </div>
