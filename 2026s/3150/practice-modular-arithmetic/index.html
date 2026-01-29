@@ -196,6 +196,107 @@
         <div class="problem">
             <p>
                 Compute the remainder of the division $N\div M$ where 
+                $$N=9876543210123456789,\quad M=4.$$
+            </p>
+            Answer: <input type="numeric" data-answer="1">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> Since $4$ divides $100$, any integer that ends in two zeroes are divisible by $4$, so
+                </p>
+                    $$
+                    \begin{align*}
+                    9876543210123456789&= 9876543210123456700+89\\
+                    &\equiv 0+89\\
+                    &\equiv 1&&\pmod{4}\\
+                    \end{align*}
+                    $$
+                <p>
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                Compute the remainder of the division $N\div M$ where 
+                $$N=9876543210123456789,\quad M=8.$$
+            </p>
+            Answer: <input type="numeric" data-answer="1">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> Since $8$ divides $1000$, any integer that ends in three zeroes are divisible by $8$, so
+                </p>
+                    $$
+                    \begin{align*}
+                    12345678987654321&= 12345678987654000+321\\
+                    &\equiv 0+321\\
+                    &\equiv 320+1\\
+                    &\equiv 0+1&&\pmod{8}\\
+                    \end{align*}
+                    $$
+                <p>
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                Compute the remainder of the division $N\div M$ where 
+                $$N=9876543210123456789,\quad M=8.$$
+            </p>
+            Answer: <input type="numeric" data-answer="5">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> Since $8$ divides $1000$, any integer that ends in three zeroes are divisible by $8$, so
+                </p>
+                    $$
+                    \begin{align*}
+                    9876543210123456789&= 9876543210123456000+789\\
+                    &\equiv 0+789\\
+                    &\equiv 789-800\\
+                    &\equiv -11\\
+                    &\equiv -11+16\\
+                    &\equiv 5&&\pmod{8}\\
+                    \end{align*}
+                    $$
+                <p>
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                Compute the remainder of the division $N\div M$ where 
+                $$N=9876543210123456789,\quad M=25.$$
+            </p>
+            Answer: <input type="numeric" data-answer="14">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> Since $25$ divides $100$, any integer that ends in two zeroes are divisible by $25$, so
+                </p>
+                    $$
+                    \begin{align*}
+                    9876543210123456789&= 9876543210123456700+89\\
+                    &\equiv 0+89\\
+                    &\equiv 89-75\\
+                    &\equiv 14&&\pmod{25}\\
+                    \end{align*}
+                    $$
+                <p>
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                Compute the remainder of the division $N\div M$ where 
                 $$N=123456,\quad M=101.$$
             </p>
             Answer: <input type="numeric" data-answer="34">
