@@ -319,11 +319,11 @@
             </div>
         </div>
 
-        <div class="problem">
+        <div class="problem"> (Corrected on Jan. 29, 2026)
             <p>
                 Find the remainder of the division $ABCDE_{16}\div F_{16}$. Write your answer in base 10.
             </p>
-            Answer: <input type="numeric" data-answer="12">
+            Answer: <input type="numeric" data-answer="0">
             <button type="button" onclick="checkAnswer(this)">Check Answer</button>
             <div class="feedback"></div>
             <button onclick="solution(this)">Show Solution</button>
@@ -344,15 +344,21 @@
                     ABCDE_{16}&\equiv A\cdot 16^4+B\cdot 16^3+C\cdot 16^2+D\cdot 16+E\\
                     &\equiv A\cdot 1^4+B\cdot 1^3+C\cdot 1^2+D\cdot 1+E\\
                     &\equiv A+B+C+D+E\\
-                    &\equiv 10+11+(-4)+(-3)+(-2)\\
-                    &\equiv 12\pmod{15}
+                    &\equiv 10+11+(-3)+(-2)+(-1)\\
+                    &\equiv 0\pmod{15}
                     \end{align*}
                     $$
                 <p>
                     So the remainder of the division is $12$.
                 </p>
                 <p>
-                    Here we used the fact that $C=12\equiv -4\pmod{16}$, $D=13\equiv -3$, and $E=14\equiv -2$ to make hand calculations easier.
+                    Here we used the fact that 
+                    <ul>
+                        <li>$C=12\equiv -3\pmod{15}$,</li>
+                        <li>$D=13\equiv -2\pmod{15}$,</li>
+                        <li>$E=14\equiv -1\pmod{15}$</li>
+                    </ul>
+                    to make hand calculations easier.
                 </p>
             </div>
         </div>
@@ -363,15 +369,17 @@
             </p>
             <button onclick="solution(this)">Show Solution</button>
             <div class="solution">
-                <b>Solution.</b> The only values of $n^2\pmod 3$ are 
-                $$
-                0^2\equiv 0,\quad 2^2\equiv 2,\quad 2^2\equiv 1 \pmod 3
-                $$
-                However
-                $$
-                14502884\equiv 1+4+5+0+2+8+8+4\equiv 2\pmod{3}
-                $$
-                so $14502884$ is not a square number.
+                <p>
+                    <b>Solution.</b> The only values of $n^2\pmod 3$ are 
+                    $$
+                    0^2\equiv 0,\quad 2^2\equiv 2,\quad 2^2\equiv 1 \pmod 3
+                    $$
+                    However
+                    $$
+                    14502884\equiv 1+4+5+0+2+8+8+4\equiv 2\pmod{3}
+                    $$
+                    so $14502884$ is not a square number.
+                </p>
             </div>
         </div>
 
