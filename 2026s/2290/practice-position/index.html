@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="nofollow, noindex" />
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" rel="preload" as="style" crossorigin="anonymous" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" onload='this.onload=null,this.rel="stylesheet"'><script crossorigin="anonymous" defer="defer" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script><script crossorigin="anonymous" defer="defer" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:&#34;$$&#34;,right:&#34;$$&#34;,display:!0},{left:&#34;$&#34;,right:&#34;$&#34;,display:!1}],throwOnError:!1,trust:!0})"></script>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="preload" as="style" crossorigin="anonymous" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" onload="this.onload=null,this.rel=&#34;stylesheet&#34;">
+    <link href="data:," rel="icon">
+    <title>Practice: Position in Distribution</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Lucida Grande', 'Open Sans', sans-serif;
+            font-size: 1.1rem;
+            margin: auto;
+            max-width: 45em;
+            padding: 1em
+        }
+
+        p {
+            line-height: 1.6
+        }
+
+        a {
+            color: #0067ce;
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        h1 {
+            font-size: 1.7em;
+            font-weight: 600;
+            margin: 0em 0em 1em;
+        }
+
+        h2 {
+            font-size: 1.4em;
+        }
+        h2:before {
+            content: "#"
+        }
+
+        h3 {
+            font-size: 1.5em
+        }
+        pre {
+            border-radius: 0.4em;
+            max-width: 35em;
+            padding: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        #course-title {
+            margin-top: 2em;
+            font-size: 1.2em;
+            /* font-weight: bold; */
+            /* color: rgb(126, 126, 126); */
+        }
+
+        .problem {
+            border: 2px solid black;
+            padding: 2em;
+            margin-bottom: 2em;
+        }
+
+        input {
+            width: 8em;
+            margin-left: 0.6em;
+            padding: 0.5em;
+            border-radius: 0.6em;
+            border: 1px solid black;
+        }
+
+        button {
+            margin: 1.4em 0;
+            display: block;
+            outline: 0;
+            border: none;
+            cursor: pointer;
+            height: 44px;
+            padding: 14px 17px;
+            border-radius: 10px;
+            background-color: #01aaf33a;
+            color: #222;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        button:hover {
+            background-color: #01aaf31b;
+        }
+
+        .feedback {
+            font-weight: bold;
+            margin-bottom: 1.4em;
+        }
+
+        .correct {
+            color: #186d2c;
+        }
+
+        .incorrect {
+            color: #ad2e3b;
+        }
+
+        #problems {
+            /* white-space: pre-wrap; */
+            counter-reset: problem;
+        }
+
+        #problems .problem::before {
+            counter-increment: problem;
+            content: "Problem " counter(problem) ".";
+            /* display: block; */
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+
+        .solution {
+            border: 2px solid black;
+            border-radius: 8px;
+            margin: 1em 0;
+            padding: 0 1em;
+            display: block;
+            display: none;
+        }
+
+        footer {
+            margin: 4em 0;
+        }
+
+        .show {
+            display: contents; 
+        }
+
+        input[type='radio'] {
+            accent-color: #232323;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="course-title">
+        <a href="../">STAT 02290 | 2026 Spring</a>
+    </div>
+    <h1>
+        Practice: Position in Distribution
+    </h1>
+    <h2>
+        Standard Normal Distributions
+    </h2>
+    <div id="problems">
+        
+        <div class="problem">
+            <p>
+                Determine the output of the following R code.
+            </p>
+<pre><code class="language-r">> pnorm(1.234)+pnorm(-1.234)</code></pre>
+            Answer: <input type="numeric" data-answer="1">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b>
+                    The area represented by <code>pnorm(1.234)</code> is given as shown:
+                </p>
+                <figure>
+                    <!-- Graphics via https://ztable.io/ -->
+                    <img src="z-1.png" alt="" width="300px">
+                </figure>
+                <p>
+                    The area represented by <code>pnorm(-1.234)</code> is given as shown:
+                </p>
+                <figure>
+                    <img src="z-2.png" alt="" width="300px">
+                </figure>
+                <p>
+                    By symmetry, <code>pnorm(-1.234)</code> is equal to the area to the right of $z=1.23$:
+                </p>
+                <figure>
+                    <img src="z-3.png" alt="" width="300px">
+                </figure>
+                <p>
+                    So together, <code>pnorm(1.234)+pnorm(-1.234)</code> gives the entire area (namely, $1$) underneath the entire standard normal distribution.
+                </p>
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                Which number below is closest to the output of the following R code?
+                <pre><code class="language-r">> pnorm(1)-pnorm(-1)</code></pre>
+            </p>
+            
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" class="correctMC" value="A">
+                    $0.68$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" value="B">
+                    $0.95$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer"  value="C">
+                    $0.997$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" value="D">
+                    $0.32$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" value="E">
+                    $0.05$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer"  value="F">
+                    $0.003$
+                </label>
+            </div>
+            <button type="button" onclick="checkAnswerMC(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b> <code>pnorm(1)-pnorm(-1)</code> records the area between $z=-1$ to $z=1$ under the standard normal distribution.
+                    By the 68-95-99.7 Rule, this area is $\approx0.68$:
+                </p>
+                <figure>
+                    <img src="z-6.png" alt="" width="300px">
+                </figure>
+            </div>
+        </div>
+        
+        <div class="problem">
+            <p>
+                Which number below is closest to the output of the R code <code>pnorm(-2)</code>?
+            </p>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" value="A">
+                    $0.32$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" value="B">
+                    $0.16$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" value="C">
+                    $0.05$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" class="correctMC" value="D">
+                    $0.025$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer"  value="E">
+                    $0.003$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer"  value="F">
+                    $0.0015$
+                </label>
+            </div>
+            <button type="button" onclick="checkAnswerMC(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b>
+                </p>
+                    By the 68-95-99.7 Rule, the area under the standard normal distribution from $z=-2$ to $z=2$ is $\approx0.95$:
+                <p>
+                <figure>
+                    <img src="z-4.png" alt="" width="300px">
+                </figure>
+                <p>
+                    Therefore its complement has area $\approx1-0.95=0.05$, half of which is $0.025$:
+                </p>
+                <figure>
+                    <img src="z-5.png" alt="" width="300px">
+                </figure>
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                Which number below is closest to the output of the R code <code>pnorm(2)</code>?
+            </p>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" value="A">
+                    $0.68$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" value="B">
+                    $0.84$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" value="C">
+                    $0.95$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" class="correctMC" value="D">
+                    $0.975$
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer"  value="E">
+                    $0.997$
+                </label>
+            </div>
+            <button type="button" onclick="checkAnswerMC(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b>
+                </p>
+                    By the 68-95-99.7 Rule, the area under the standard normal distribution from $z=-2$ to $z=2$ is $\approx0.95$:
+                <p>
+                <figure>
+                    <img src="z-4.png" alt="" width="300px">
+                </figure>
+                <p>
+                    Therefore its complement has area $\approx1-0.95=0.05$, half of which is $0.025$:
+                </p>
+                <figure>
+                    <img src="z-7.png" alt="" width="300px">
+                </figure>
+                <p>
+                    The complement of this gives the area from $z=-\infty$ to $z=2$, which is $\approx1-0.025=0.975$:
+                </p>
+                <figure>
+                    <img src="z-8.png" alt="" width="300px">
+                </figure>
+                
+            </div>
+        </div>
+        <h2>
+            Boxplots, Quartiles, IQR, Outliers
+        </h2>
+<div class="problem">
+            <p>
+                TODO
+            </p>
+            Answer: <input type="numeric" data-answer="">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b>
+                    TODO
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(button) {
+            const container = button.parentElement;
+            const input = container.querySelector("input");
+            const feedback = container.querySelector(".feedback");
+            const correct = input.dataset.answer.toLowerCase();
+            // console.log(input.dataset.answer);
+
+            if (input.value === "") {
+                feedback.textContent = "⚠️ Enter an answer first.";
+                feedback.className = "feedback incorrect";
+                return;
+            }
+
+            if (input.value.toLowerCase() === correct) {
+                feedback.textContent = "✅ Correct!";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = "❌ Incorrect. Try again.";
+                feedback.className = "feedback incorrect";
+            }
+        }
+
+        function solution(button) {
+            const container = button.parentElement;
+            const x = container.querySelector(".solution");
+            if (x.style.display === "none" || x.style.display === "") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        } 
+
+        function checkAnswerMC(button) {
+            const container = button.parentElement;
+            const selected = container.querySelector('input[name="answer"]:checked');
+            const feedback = container.querySelector(".feedback");
+
+            if (!selected) {
+                feedback.textContent = "⚠️ Select an answer first.";
+                feedback.className = "feedback incorrect";
+                return;
+            }
+            
+            if (selected.className === "correctMC") {
+                feedback.textContent = "✅ Correct!";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = "❌ Incorrect. Try again.";
+                feedback.className = "feedback incorrect";
+            }
+        }
+    </script>
+
+    <!-- Prism core -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <!-- Autoloader plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <!-- Optional: configure autoloader (recommended) -->
+    <script>
+    Prism.plugins.autoloader.languages_path =
+        "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/";
+    </script>
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>
