@@ -142,6 +142,14 @@
 
         input[type='radio'] {
             accent-color: #232323;
+            width: 20px;
+            margin-right: 30px;
+            flex: 0 0 auto;
+        }
+        .option {
+            display: flex;
+            margin-bottom: 0.6em;
+            align-items: center;
         }
     </style>
 </head>
@@ -201,38 +209,38 @@
             </p>
             
             <div class="option">
+                <input type="radio" name="answer" class="correctMC" value="A">
                 <label>
-                    <input type="radio" name="answer" class="correctMC" value="A">
                     $0.68$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer" value="B">
                 <label>
-                    <input type="radio" name="answer" value="B">
                     $0.95$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer"  value="C">
                 <label>
-                    <input type="radio" name="answer"  value="C">
                     $0.997$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer" value="D">
                 <label>
-                    <input type="radio" name="answer" value="D">
                     $0.32$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer" value="E">
                 <label>
-                    <input type="radio" name="answer" value="E">
                     $0.05$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer"  value="F">
                 <label>
-                    <input type="radio" name="answer"  value="F">
                     $0.003$
                 </label>
             </div>
@@ -255,38 +263,38 @@
                 Which number below is closest to the output of the R code <code>pnorm(-2)</code>?
             </p>
             <div class="option">
+                <input type="radio" name="answer" value="A">
                 <label>
-                    <input type="radio" name="answer" value="A">
                     $0.32$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer" value="B">
                 <label>
-                    <input type="radio" name="answer" value="B">
                     $0.16$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer" value="C">
                 <label>
-                    <input type="radio" name="answer" value="C">
                     $0.05$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer" class="correctMC" value="D">
                 <label>
-                    <input type="radio" name="answer" class="correctMC" value="D">
                     $0.025$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer"  value="E">
                 <label>
-                    <input type="radio" name="answer"  value="E">
                     $0.003$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer"  value="F">
                 <label>
-                    <input type="radio" name="answer"  value="F">
                     $0.0015$
                 </label>
             </div>
@@ -316,32 +324,32 @@
                 Which number below is closest to the output of the R code <code>pnorm(2)</code>?
             </p>
             <div class="option">
+                <input type="radio" name="answer" value="A">
                 <label>
-                    <input type="radio" name="answer" value="A">
                     $0.68$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer" value="B">
                 <label>
-                    <input type="radio" name="answer" value="B">
                     $0.84$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer" value="C">
                 <label>
-                    <input type="radio" name="answer" value="C">
                     $0.95$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer" class="correctMC" value="D">
                 <label>
-                    <input type="radio" name="answer" class="correctMC" value="D">
                     $0.975$
                 </label>
             </div>
             <div class="option">
+                <input type="radio" name="answer"  value="E">
                 <label>
-                    <input type="radio" name="answer"  value="E">
                     $0.997$
                 </label>
             </div>
@@ -375,18 +383,62 @@
         <h2>
             Boxplots, Quartiles, IQR, Outliers
         </h2>
-<div class="problem">
+<div class="problem"> (AP Statistics Practice Exam)
             <p>
-                TODO
+                Janelle collected data on the amount of time in minutes each person in a large sample of customers spent in a local store. The data also included recording the gender of each customer. These data were used to generate the boxplots shown below. Which of the following statements is true?
+                <img src="boxplot-1.png" alt="Boxplot of male and boxplot of female time spent in minutes" width="500">
             </p>
-            Answer: <input type="numeric" data-answer="">
-            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="option">
+                <input type="radio" name="answer" value="A">
+                <label>
+                    (A) The range in the amount of time in minutes males in the sample of customers spent in the store is approximately 40 minutes.
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" name="answer" value="B">
+                <label>
+                    (B) The mean amount of time in minutes males in the sample of customers spent in the store is approximately 20 minutes.
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" name="answer"  value="C">
+                <label>
+                    (C) The third quartile of the amount of time in minutes males in the sample of customers spent in the store is approximately 45 minutes.
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" name="answer" value="D">
+                <label>
+                    (D) The interquartile range of the amount of time in minutes females in the sample of customers spent in the store is 15 minutes.
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" name="answer" class="correctMC" value="E">
+                <label>
+                    (E) Approximately half of the males in the sample of customers spent at least as much time in the store as any female in the sample of customers.
+                </label>
+            </div>
+            <button type="button" onclick="checkAnswerMC(this)">Check Answer</button>
             <div class="feedback"></div>
             <button onclick="solution(this)">Show Solution</button>
             <div class="solution">
                 <p>
                    <b>Solution.</b>
-                    TODO
+                </p>
+                <p>
+                    (A) is false: the range is the maximum data value (for male, $\approx90$) minus the minimum data value (for male, $\approx5$).
+                </p>
+                <p>
+                    (B) is false: from the boxplot, the male dataset without the outliers is roughly symmetric so its mean would be approximately equal to the median of $20$. However, the presence of the two extreme outliers at 60 and 90 skews the mean of the overall male dataset to be significantly larger than the median of $20$.
+                </p>
+                <p>
+                    (C) is false: the male Q3 is approximately 29, not 45.
+                </p>
+                <p>
+                    (D) is false: for females, IQR = Q3 - Q1 ≈ 17 - 8 = 9, not 15.
+                </p>
+                <p>
+                    (E) is true: the male dataset to the right of the median consists of 50% the dataset, and the male median time is greater than every point of the female dataset.
                 </p>
             </div>
         </div>
