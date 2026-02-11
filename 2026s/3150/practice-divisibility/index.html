@@ -172,6 +172,78 @@
     <footer>
 
     </footer>
+    <script>
+        // Only for the Bezout's theorem problem.
+        function checkAnswerOne(button) {
+            const container = button.parentElement;
+            const input = container.querySelectorAll("input");
+            const feedback = container.querySelector(".feedback");
+
+            if (input[0].value === "" && input[1].value === "") {
+                feedback.textContent = "⚠️ Enter an answer first.";
+                feedback.className = "feedback incorrect";
+            } else if (input[0].value === "") {
+                feedback.textContent = "⚠️ Enter an answer for \\(m\\).";
+                feedback.className = "feedback incorrect";
+                renderMathInElement(feedback);
+            } else if (input[1].value === "") {
+                feedback.textContent = "⚠️ Enter an answer for \\(n\\).";
+                feedback.className = "feedback incorrect";
+                renderMathInElement(feedback);
+            } else if (!Number.isInteger(Number(input[0].value)) || !Number.isInteger(Number(input[1].value))) {
+                console.log(input[0].value);
+                console.log(Number.isInteger(Number(input[0].value)));
+                console.log(input[1].value);
+                console.log(Number.isInteger(Number(input[1].value)));
+                feedback.textContent = "❌ Incorrect: \\(m\\) and \\(n\\) must be integers. Try again.";
+                renderMathInElement(feedback);
+                feedback.className = "feedback incorrect";
+            } else if (170051*input[0].value + 170*input[1].value != 17) {
+                feedback.textContent = "❌ Incorrect. Try again.";
+                feedback.className = "feedback incorrect";
+            }
+            else {
+                feedback.textContent = "✅ Correct!";
+                feedback.className = "feedback correct";
+            }
+        }
+
+        
+        // Only for the Bezout's theorem problem.
+        function checkAnswerTwo(button) {
+            const container = button.parentElement;
+            const input = container.querySelectorAll("input");
+            const feedback = container.querySelector(".feedback");
+
+            if (input[0].value === "" && input[1].value === "") {
+                feedback.textContent = "⚠️ Enter an answer first.";
+                feedback.className = "feedback incorrect";
+            } else if (input[0].value === "") {
+                feedback.textContent = "⚠️ Enter an answer for \\(m\\).";
+                feedback.className = "feedback incorrect";
+                renderMathInElement(feedback);
+            } else if (input[1].value === "") {
+                feedback.textContent = "⚠️ Enter an answer for \\(n\\).";
+                feedback.className = "feedback incorrect";
+                renderMathInElement(feedback);
+            } else if (!Number.isInteger(Number(input[0].value)) || !Number.isInteger(Number(input[1].value))) {
+                console.log(input[0].value);
+                console.log(Number.isInteger(Number(input[0].value)));
+                console.log(input[1].value);
+                console.log(Number.isInteger(Number(input[1].value)));
+                feedback.textContent = "❌ Incorrect: \\(m\\) and \\(n\\) must be integers. Try again.";
+                renderMathInElement(feedback);
+                feedback.className = "feedback incorrect";
+            } else if (623*input[0].value + 300*input[1].value != 1) {
+                feedback.textContent = "❌ Incorrect. Try again.";
+                feedback.className = "feedback incorrect";
+            }
+            else {
+                feedback.textContent = "✅ Correct!";
+                feedback.className = "feedback correct";
+            }
+        }
+    </script>
 </body>
 
 </html>
