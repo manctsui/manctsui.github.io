@@ -5,135 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="nofollow, noindex" />
+    <link type="text/css" rel="stylesheet" href="../style.css">
+    <script type="text/javascript" src="../quiz.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" rel="preload" as="style" crossorigin="anonymous" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" onload='this.onload=null,this.rel="stylesheet"'><script crossorigin="anonymous" defer="defer" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script><script crossorigin="anonymous" defer="defer" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:&#34;$$&#34;,right:&#34;$$&#34;,display:!0},{left:&#34;$&#34;,right:&#34;$&#34;,display:!1}],throwOnError:!1,trust:!0})"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="preload" as="style" crossorigin="anonymous" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" onload="this.onload=null,this.rel=&#34;stylesheet&#34;">
     <link href="data:," rel="icon">
     <title>Practice: Summary Parameters</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', 'Lucida Grande', 'Open Sans', sans-serif;
-            font-size: 1.1rem;
-            margin: auto;
-            max-width: 45em;
-            padding: 1em
-        }
-
-        p {
-            line-height: 1.6
-        }
-
-        a {
-            color: #0067ce;
-            text-decoration: none
-        }
-
-        a:hover {
-            text-decoration: underline
-        }
-
-        h1 {
-            font-size: 1.7em;
-            font-weight: 600;
-            margin: 0em 0em 1em;
-        }
-
-        h2 {
-            font-size: 1.4em;
-            font-weight: 400;
-            margin-bottom: 0.3em;
-        }
-
-        h3 {
-            font-size: 1.5em
-        }
-
-        table {
-            border-collapse: collapse;
-        }
-
-        #course-title {
-            margin-top: 2em;
-            font-size: 1.2em;
-            /* font-weight: bold; */
-            /* color: rgb(126, 126, 126); */
-        }
-
-        .problem {
-            border: 2px solid black;
-            padding: 2em;
-            margin-bottom: 2em;
-        }
-
-        input {
-            width: 8em;
-            margin-left: 0.6em;
-            padding: 0.5em;
-            border-radius: 0.6em;
-            border: 1px solid black;
-        }
-
-        button {
-            margin: 1.4em 0;
-            display: block;
-            outline: 0;
-            border: none;
-            cursor: pointer;
-            height: 44px;
-            padding: 14px 17px;
-            border-radius: 10px;
-            background-color: #01aaf33a;
-            color: #222;
-            font-size: 16px;
-            font-weight: 500;
-        }
-        button:hover {
-            background-color: #01aaf31b;
-        }
-
-        .feedback {
-            font-weight: bold;
-            margin-bottom: 1.4em;
-        }
-
-        .correct {
-            color: #186d2c;
-        }
-
-        .incorrect {
-            color: #ad2e3b;
-        }
-
-        #problems {
-            /* white-space: pre-wrap; */
-            counter-reset: problem;
-        }
-
-        #problems .problem::before {
-            counter-increment: problem;
-            content: "Problem " counter(problem) ".";
-            /* display: block; */
-            font-weight: bold;
-            margin-bottom: 1em;
-        }
-
-        .solution {
-            border: 2px solid black;
-            border-radius: 8px;
-            margin: 1em 0;
-            padding: 0 1em;
-            display: block;
-            display: none;
-        }
-
-        footer {
-            margin: 4em 0;
-        }
-
-        .show {
-            display: contents; 
-        }
-    </style>
 </head>
-
 <body>
     <div id="course-title">
         <a href="../">STAT 02290 | 2026 Spring</a>
@@ -262,13 +139,68 @@
             </div>
         </div>
 
+        <div class="problem"> (AP Statistics Practice Exam)
+            <p>
+                A random sample of 25 households from the Mountainview School District was surveyed. In this survey, data were collected on the age of the youngest child living in each household. The histogram below displays the data collected in the survey.
+            </p>
+            <figure>
+                <img src="hist-1.png" alt="Histogram of age of youngest child living in households of Mountainview School District" width="420px">
+            </figure>
+            <p>
+                In which of the following intervals is the median of these data located?
+            </p>
+            <div class="option">
+                <input type="radio" name="answer" value="A">
+                <label>
+                    0 years old to less than 2 years old
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" name="answer" value="B">
+                <label>
+                    4 years old to less than 6 years old
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" name="answer"  value="C">
+                <label>
+                    6 years old to less than 8 years old
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" name="answer" value="D" class="correctMC">
+                <label>
+                    8 years old to less than 10 years old
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" name="answer" value="E">
+                <label>
+                    10 years old to less than 12 years old
+                </label>
+            </div>
+            <button type="button" onclick="checkAnswerMC(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b> The median of 25 data points is at the 13th position from the minimum (left). Since $4+1+2+5=12$ and $4+1+2+5+3=15$, the median is in the bar between age 8 and age 10.
+                </p>
+                <figure>
+                    <img src="z-6.png" alt="" width="300px">
+                </figure>
+            </div>
+        </div>
+
         
 
         <div class="problem">
             <p>
-                TODO: Celsius to Farenheit via reverse formula $F = (9/5)C+32$
+                The distribution of the (historical) daily maximum temperatures in Glassboro in February has a mean $5^{\circ}C$ of and a median of $10^{\circ}C$.
+                Express this population standard deviation in terms of Fahrenheit.
+                Use the formula $F = (9/5)C+32$.
             </p>
-            Answer: <input type="numeric" data-answer="80">
+            Answer: <input type="numeric" data-answer="18">
             <button type="button" onclick="checkAnswer(this)">Check Answer</button>
             <div class="feedback"></div>
             <button onclick="solution(this)">Show Solution</button>
@@ -276,46 +208,13 @@
                 <p>
                    <b>Solution.</b>
                 </p>
-                    TODO.
+                    The additive part of $F = (9/5)C+32$ does not affect the population standard deviation, so the population standard deviation in Fahrenheit is $\frac{9}{5}\times 10=18^{\circ}F$.
                 <p>
             </div>
         </div>
         
     </div>
 
-    <script>
-        function checkAnswer(button) {
-            const container = button.parentElement;
-            const input = container.querySelector("input");
-            const feedback = container.querySelector(".feedback");
-            const correct = input.dataset.answer.toLowerCase();
-            // console.log(input.dataset.answer);
-
-            if (input.value === "") {
-                feedback.textContent = "⚠️ Enter an answer first.";
-                feedback.className = "feedback incorrect";
-                return;
-            }
-
-            if (input.value.toLowerCase() === correct) {
-                feedback.textContent = "✅ Correct!";
-                feedback.className = "feedback correct";
-            } else {
-                feedback.textContent = "❌ Incorrect. Try again.";
-                feedback.className = "feedback incorrect";
-            }
-        }
-
-        function solution(button) {
-            const container = button.parentElement;
-            const x = container.querySelector(".solution");
-            if (x.style.display === "none" || x.style.display === "") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        } 
-    </script>
 
     <footer>
 
