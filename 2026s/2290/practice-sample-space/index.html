@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="nofollow, noindex" />
+    <link type="text/css" rel="stylesheet" href="../style.css">
+    <script type="text/javascript" src="../quiz.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" rel="preload" as="style" crossorigin="anonymous" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" onload='this.onload=null,this.rel="stylesheet"'><script crossorigin="anonymous" defer="defer" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script><script crossorigin="anonymous" defer="defer" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:&#34;$$&#34;,right:&#34;$$&#34;,display:!0},{left:&#34;$&#34;,right:&#34;$&#34;,display:!1}],throwOnError:!1,trust:!0})"></script>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="preload" as="style" crossorigin="anonymous" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" onload="this.onload=null,this.rel=&#34;stylesheet&#34;">
+    <link href="data:," rel="icon">
+    <title>Practice: Sample Space, Events, Counting</title>
+</head>
+
+<body>
+    <div id="course-title">
+        <a href="../">STAT 02290 | 2026 Spring</a>
+    </div>
+    <h1>
+        Practice: Sample Space, Events, Counting
+    </h1>
+    <h2>
+        Sample Space and Events
+    </h2>
+    <div id="problems">
+        
+        <div class="problem">
+            <p>
+                Give a probability model for the chance process of rolling two fair, six-sided dice by writing down the sample space. Then state the size of this sample space.
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> The sample space is the set
+                   $$
+                   \{1,2,3,4,5,6\}^2=\{(1,1),(1,2),\dots,(6,6)\}.
+                   $$
+                   The cardinality or size of this sample space is $6\times 6 = 36$.
+                </p>
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                Identify the sample space of the following probability experiment: dentifying a person’s eye color (blue, brown, green, hazel, gray, other) and hair color (blonde, black, brown, red, other). Next, determine the size of this sample space.
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> The sample space is the set {blue, brown, green, hazel, gray, other} x {blonde, black, brown, red, other}.
+                   The cardinality or size of this sample space is $6\times 5 = 30$.
+                </p>
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                Identify the sample space of the following probability experiment: dentifying a person’s eye color (blue, brown, green, hazel, gray, other) and hair color (blonde, black, brown, red, other). Next, determine the size of this sample space.
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> The sample space is the set {blue, brown, green, hazel, gray, other} x {blonde, black, brown, red, other}.
+                   The cardinality or size of this sample space is $6\times 5 = 30$.
+                </p>
+            </div>
+        </div>
+ 
+        <h2>
+            Counting
+        </h2>
+        <div class="problem">
+            <p>
+                What is the maximum number of guesses you would need to try to figure out the correct 4-digit passcode for the keypad shown in the picture? 
+            </p>
+            <figure>
+                <img src="keypad-1.webp" alt="Keypad with digits 1, 7, 9, 0 erased." width="350px" loading="lazy">
+                <figcaption>
+                    Image from <a href="https://www.reddit.com/r/funny/comments/1kvb9u/i_wonder_what_the_code_could_be/">Reddit</a>.
+                </figcaption>
+            </figure>
+            Answer: <input type="numeric" data-answer="24">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> We can reasonably guess that only the digits 1, 7, 9, and 0 are part of the 4-digit passcode. There are $4!=4\times 3\times 2\times 1 = 24$ permutations of the word "1234".
+                </p>
+            </div>
+        </div>
+        <div class="problem">
+            <p>
+                What is the maximum number of guesses you would need to try to figure out the correct 4-digit passcode for the keypad shown in the picture, assuming that the digit 5 is used twice in the passcode?
+            </p>
+            <figure>
+                <img src="keypad-2.webp" alt="Keypad with digits 1, 7, 9, 0 partially erased." width="350px" loading="lazy">
+                <figcaption>
+                    Image from <a href="https://www.reddit.com/r/Wellworn/comments/n13ugc/the_numbers_on_this_keypad_i_wonder_what_the_code/">Reddit</a>.
+                </figcaption>
+            </figure>
+            Answer: <input type="numeric" data-answer="12">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b> We can reasonably guess that only the digits 2, 4, and 5 are part of the 4-digit passcode, with the digit 5 being used twice. The number of permutations of the word "2355" is $4!/2=12$.
+                </p>
+            </div>
+        </div>
+
+        <div class="problem">
+            <p>
+                What is the maximum number of guesses you would need to try to figure out the correct 4-digit passcode for the keypad shown in the picture?
+            </p>
+            <figure>
+                <img src="keypad-3.webp" alt="Keypad with digits 4 and 7 erased." width="350px" loading="lazy">
+                <figcaption>
+                    Image from <a href="https://www.reddit.com/r/funny/comments/9gte0x/i_forgot_the_4_digit_code_to_the_office_can/">Reddit</a>.
+                </figcaption>
+            </figure>
+            Answer: <input type="numeric" data-answer="14">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                <b>Solution 1.</b> We must count the number of 4-digit strings of 4's and 7's that use both 4 and 7 at least once each. These are permutations of 4777, 4477, and 4447, so the answer
+                $$
+                \frac{4!}{1!3!} +\frac{4!}{2!2!} +\frac{4!}{3!1!} = 4+ 6+4=14.
+                $$
+                </p>
+                
+                <p>
+                <b>Solution 2.</b> We count using complements. There are $2^4$-many 4-digit strings composed from the letters 4 and 7. Of these, we discard the 4-digit strings 4444 and 7777, so the answer is $2^4-2=16-2=14$. 
+                </p>
+            </div>
+        </div>
+    
+        <div class="problem"> (JP Morgan interview, rated easy)
+            <p>
+                Imagine you are in 3D space. How many paths are there from $(0,0,0)$ to $(2,2,2)$ if you can move only up, right, and forward, one unit at a time?
+            </p>
+            Answer: <input type="numeric" data-answer="90">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                <b>Solution.</b> All such paths from $(0,0,0)$ to $(2,2,2)$ must use 2 U's (ups), 2 R's (rights), and 2 F's (forwards), so we are counting the number of permutations of the word "UURRFF". The answer is therefore
+                $$
+                \frac{6!}{2!2!2!}=\frac{6\times 5\times 4\times 3\times 2}{2\times 2\times 2} = 90
+                $$
+                </p>
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- Prism core -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <!-- Autoloader plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <!-- Optional: configure autoloader (recommended) -->
+    <script>
+    Prism.plugins.autoloader.languages_path =
+        "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/";
+    </script>
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>
