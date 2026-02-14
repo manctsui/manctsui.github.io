@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="nofollow, noindex" />
+    <link type="text/css" rel="stylesheet" href="../style.css">
+    <script type="text/javascript" src="../quiz.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" rel="preload" as="style" crossorigin="anonymous" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" onload='this.onload=null,this.rel="stylesheet"'><script crossorigin="anonymous" defer="defer" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script><script crossorigin="anonymous" defer="defer" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:&#34;$$&#34;,right:&#34;$$&#34;,display:!0},{left:&#34;$&#34;,right:&#34;$&#34;,display:!1}],throwOnError:!1,trust:!0})"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="preload" as="style" crossorigin="anonymous" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" onload="this.onload=null,this.rel=&#34;stylesheet&#34;">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+    <link href="data:," rel="icon">
+    <title>Practice: Venn Diagrams</title>
+</head>
+
+<body>
+    <div id="course-title">
+        <a href="../">MATH 03150 | 2026 Spring</a>
+    </div>
+    <h1>
+        Practice: Venn Diagrams
+    </h1>
+
+    <div id="problems">
+
+        <h2>
+            Venn diagrams
+        </h2>
+        <div class="problem"> (Basic)
+            <p>
+                Draw the Venn diagram of $\sim(A \cap B)$.
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b>
+                </p>
+                <figure>
+                    <img src="venn-7.png" alt="" width="540px">
+                </figure>
+            </div>
+        </div>
+        <div class="problem"> (Basic)
+            <p>
+                Draw the Venn diagram of $A\cup (\sim B)$.
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b>
+                </p>
+                <figure>
+                    <img src="venn-4.png" alt="" width="180px">
+                </figure>
+            </div>
+        </div>
+        <div class="problem"> (Basic)
+            <p>
+                Draw the Venn diagram of $A\cap (B\cup C)$.
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b>
+                </p>
+                <figure>
+                    <img src="venn-1.png" alt="" width="180px">
+                </figure>
+            </div>
+        </div>
+        <div class="problem"> (Basic)
+            <p>
+                Draw the Venn diagram of $(A-B)\cap C$.
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b>
+                </p>
+                <figure>
+                    <img src="venn-2.png" alt="" width="180px">
+                </figure>
+            </div>
+        </div>
+        <div class="problem"> (Basic)
+            <p>
+                Draw the Venn diagram of $(B\cup C)-A$.
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b>
+                </p>
+                <figure>
+                    <img src="venn-3.png" alt="" width="180px">
+                </figure>
+            </div>
+        </div>
+        <div class="problem"> (Basic)
+            <p>
+                Put the following Venn diagram into set notation.
+            </p>
+            <figure>
+                <img src="venn-6.png" alt="" width="180px">
+            </figure>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b> $(\sim A)\cap B\cap (\sim C)$
+                </p>
+            </div>
+        </div>
+        <div class="problem"> (Medium)
+            <p>
+                Put the following Venn diagram into set notation.
+            </p>
+            <figure>
+                <img src="venn-5.png" alt="" width="180px">
+            </figure>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution 1.</b> $(A\cup B)-C$
+                </p>
+                <p>
+                    <b>Solution 2.</b> Do disjunctive normal form. We take the union of the three shaded regions (left, middle, right), so
+                    $$
+                    (A\;\cap \sim B\;\cap \sim C)\cup(A\cap B\;\cap \sim C)\cup (\sim A\;\cap \sim B\;\cap \sim C).
+                    $$
+                </p>
+            </div>
+        </div>
+        
+        
+        <h2>
+            Counting with inclusion-exclusion and with complements
+        </h2>
+        <div class="problem"> (Basic)
+            <p>
+                Find the cardinality of $\{1, 2, 3,\dots, 720\}-A$ where 
+                $$A=\{n\in \mathbb{Z}:n\equiv 0\;(\bmod\;8)\}.$$
+            </p>
+            Answer: <input type="numeric" data-answer="630">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b>
+                    To count those numbers $1,2,\dots,720$ that are not divisible by $8$, it is easier to count those numbers that are divisible by $8$.
+                </p>
+                <p>
+                    We now want to omit elements of $A$, which have the form $n=8q$, in the range $1\le 8q\le 720$. Dividing by $8$ gives
+                </p>
+                $$
+                \frac18\le q\le 90
+                $$
+                <p>
+                    So we must omit the values $q=1,2,\dots,90$ which amounts to omitting $90$ elements of $A$ from the set $\{1,2,3,\dots,720\}$.
+                </p>
+                <p>
+                    Therefore $\{1, 2, 3,\dots, 720\}-A$ has $720-90=630$ elements.
+                </p>
+                <p>
+                    <b>Note:</b> A brute-force check in Python shows our answer is correct. 
+                </p>
+<pre><code class="language-python">> # range(1,721) lists out 1, 2, 3, ..., 720
+> x = [i for i in range(1, 721) if i%8 != 0]
+> len(x)
+</code></pre>
+            </div>
+        </div>
+
+        <div class="problem"> (Basic)
+            <p>
+                How many natural numbers from 0 to 100 have no 7 in their digits? 
+            </p>
+            Answer: <input type="numeric" data-answer="82">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b>
+                    We count by complement. Of the 101 numbers from 0 to 100, there are 10 numbers whose units place have a 7 (i.e. 07, 17, 27, ..., 97), and there are 10 numbers whose tens place have a 7 (i.e. 70, 71, ..., 79), and exactly one number with 7 in both places (77), so 10+10-1 = 19 numbers have a 7 in some of their digits. Therefore 101-19 = 82 numbers from 0 to 100 have no 7's in their digits.
+                </p>
+            </div>
+        </div>
+
+        <div class="problem"> (Basic)
+            <p>
+                Let $A=\{3n:n\in \mathbb{N}\}$ and $B=\{5n:n\in \mathbb{N}\}$. Find the cardinality of the set $(A\cap [0,100])\cup (B\cap [0,100])$
+            </p>
+            Answer: <input type="numeric" data-answer="48">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b>
+                    Clearly $B\cap [0,100]=\{0, 5, 10,\dots,95, 100\}$ has $21$ elements.
+                </p>
+                <p>
+                    $A\cap [0,100]=\{0, 3, 6,\dots,96, 99\}$ has $\lfloor\frac{100}{3}\rfloor-\lceil\frac{0}{3}\rceil+1=33-0+1=34$ elements, where $\lfloor x\rfloor$ rounds down the number $x$ and $\lceil x\rceil$ rounds up the number $x$.
+                </p>
+                <p>
+                    Finally the intersection $(A\cap [0,100])\cap (B\cap [0,100])=\{0,15,30,45,60,75,90\}$ has 7 elements.
+                </p>
+                <p>
+                    By inclusion-exclusion, the set $(A\cap [0,100])\cup (B\cap [0,100])$ has cardinality
+                    $$
+                    21+34-7 = 48\text{ elements.}
+                    $$
+                </p>
+                <p>
+                    <b>Note:</b> A brute-force check in Python shows our answer is correct. 
+                </p>
+<pre><code class="language-python">> x = [i for i in range(0,101) if i%3 == 0 or i%5 == 0]
+> len(x)
+</code></pre>
+            </div>
+        </div>
+
+
+        <div class="problem"> (Hard)
+            <p>
+                How many numbers in $1, 2, 3,\dots, 998, 999, 1000$ are divisible by $20$, $25$, or $30$?
+            </p>
+            Answer: <input type="numeric" data-answer="109">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                <b>Solution.</b>
+                    Let $A$, $B$, $C$ be the sets of numbers divisible by $20$, $25$, and $110$, respectively, which are in the range $1, 2, 3,\dots, 998, 999, 1000$. Then
+                    $$
+                    |A|=\frac{1000}{20}=50,\quad
+                    |B|=\frac{1000}{25}=40,\quad
+                    |C|=\left\lfloor\frac{1000}{30}\right\rfloor=33.
+                    $$
+                    Next, since $20=2^2\cdot 5^1$ and $25=5^2$, any number divisible by $20$ and $25$ must also be divisible by $2^2\cdot 5^2=100$, so $A\cap B$ consists of numbers in our range divisible by $100$. Likewise $A\cap C$ consists of numbers divisible by $220$, $B\cap C$ consists of numbers divisible by $550$, and $A\cap B\cap C$ consists of numbers divisible by $1100$. Therefore:
+                    $$
+                    |A\cap B|=\frac{1000}{100}=10,\quad
+                    |A\cap C|=\left\lfloor\frac{1000}{220}\right\rfloor=4,\quad
+                    |B\cap C|=|\{550\}|=1
+                    $$
+                    and
+                    $$
+                    |A\cap B\cap C|=0
+                    $$
+                    By inclusion-exclusion, the answer is:
+                    $$
+                    50+40+33-10-4+0=109
+                    $$
+                </p>
+            </div>
+        </div>        
+    </div>
+    <footer>
+
+    </footer>
+    <!-- Prism core -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <!-- Autoloader plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <!-- Optional: configure autoloader (recommended) -->
+    <script>
+    Prism.plugins.autoloader.languages_path =
+        "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/";
+    </script>
+</body>
+
+</html>

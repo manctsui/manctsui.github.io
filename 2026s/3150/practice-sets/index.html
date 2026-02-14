@@ -23,39 +23,151 @@
     <div id="problems">
         
         <h2>
-            Intervals
+            Set roster notation
         </h2>
-        <div class="problem">
+        <div class="problem"> (Basic)
             <p>
-                Compute the remainder of the division $N\div M$ where 
-                $$N=24\cdot 25\cdot 26-47\cdot 48,\quad M=23.$$
+                List the elements of the set $\{x\in \mathbb{Z}: 1 &lt; |x| &lt; 5\}$.
             </p>
-            Answer: <input type="numeric" data-answer="4">
-            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
-            <div class="feedback"></div>
             <button onclick="solution(this)">Show Solution</button>
             <div class="solution">
                 <p>
-                   <b>Solution.</b>
+                   <b>Solution.</b> $\{-4, -3, -2, 2, 3, 4\}$
                 </p>
-                Since $24$, $25$, $26$, $47$, and $48$ leave remainders $1$, $2$, $3$, $1$, and $2$, respectively, when we divide them by $23$, we find that:
-                    $$
-                    \begin{align*}
-                    N&\equiv 24\cdot 25\cdot 26-47\cdot 48\pmod{23}\\
-                    &\equiv 1\cdot 2\cdot 3-1\cdot 2\pmod{23}\\
-                    &\equiv 4\pmod{23}\\
-                    \end{align*}
-                    $$
-                <p>
             </div>
         </div>
         
-
-
-        <div class="problem">
+        <div class="problem"> (Basic)
             <p>
-                Compute the remainder of the division $N\div M$ where 
-                $$N=9876543210123456789,\quad M=25.$$
+                List the elements of the set $\{x\in \mathbb{Q}: x^5+x^3−2=0\}$.
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b> By the rational roots test, a rational root $\frac{p}{q}$ of $f(x)=x^5+x^3-2$ must have its numerator $p$ divide the constant term $-2$ and its denominator $q$ divide $1$. So the possibilities for $p$ are $\pm 1$ or $\pm 2$; the possibilities for $q$ are $\pm 1$. Overall, $\frac{p}{q}$ could be $\pm 2$ or $\pm 1$.
+                </p>
+                <p>
+                    We check $f(1)=1^5+1^3-2=0$ so $1$ is a root. Also, $f(-1)=-4$ and $|f(\pm2)|$ is to large to equal $0$. So $\{x\in \mathbb{Q}: x^5+x^3−2=0\}=\{1\}$.
+                </p>
+            </div>
+        </div>
+        
+        <h2>
+            Operations on finite sets
+        </h2>
+        <div class="problem"> (Basic)
+            <p>
+                List the elements of the set $(A\cup B)\cup (B\cap C)$ where $A=\{1, 2, 3, a, b, c, d\}$, $B=\{a, d, e, 1, 3, 5\}$, and $C=\{1, 2, 4, b, b, a\}$.
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b>
+                    $$
+                    \begin{align*}
+                    A\cup B &= \{1, 2, 3, 5, a, b, c, d, e\}\\
+                    B\cap C &= \{a, 1\}\\
+                    \Longrightarrow\quad(A\cup B)\cup (B\cap C) &= \{1, 2, 3, 5, a, b, c, d, e\}
+                    \end{align*}
+                    $$
+                </p>
+            </div>
+        </div>
+        <div class="problem"> (Basic)
+            <p>
+                List the elements of the set $(A\cup B)- (B\cap C)$ where $A=\{1, 2, 3, a, b, c, d\}$, $B=\{a, d, e, 1, 3, 5\}$, and $C=\{1, 2, 4, b, b, a\}$.
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b>
+                    $$
+                    \begin{align*}
+                    A\cup B &= \{1, 2, 3, 5, a, b, c, d, e\}\\
+                    B\cap C &= \{a, 1\}\\
+                    \Longrightarrow\quad(A\cup B)- (B\cap C) &= \{2, 3, 5, b, c, d, e\}
+                    \end{align*}
+                    $$
+                </p>
+            </div>
+        </div>
+        <div class="problem"> (Basic)
+            <p>
+                Let $U=\{a, b, c, d, e, f, g, h\}$ be the universe.
+                List the elements of the set 
+                $$(\sim\{a, c, e, g\})-\{a,b,c,d\}$$
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b> Recall that $\sim A$ is the complement of $A$. 
+                    $$
+                    \begin{align*}
+                    \sim\{a, c, e, g\}&=\{b,d,f,h\}\\
+                    \Longrightarrow\quad(\sim\{a, c, e, g\})-\{a,b,c,d\} &= \{f, h\}
+                    \end{align*}
+                    $$
+                </p>
+            </div>
+        </div>
+        <div class="problem"> (Basic)
+            <p>
+                Let $U=\{1, 2, 3,\dots,10\}$ be the universe.
+                List the elements of the set 
+                $$\sim P-\sim O$$
+                where $P=\{2, 3, 5, 7\}$ and $O=\{1, 3, 5, 7, 9\}$
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution.</b>
+                    $$
+                    \begin{align*}
+                    \sim P - \sim O&=\,\sim\{2, 3, 5, 7\}-\sim \{1, 3, 5, 7, 9\}\\
+                    &= \{1,4,6,8,9,10\} - \{2,4,6,8,10\}\\
+                    &= \{1, 9\} 
+                    \end{align*}
+                    $$
+                </p>
+            </div>
+        </div>
+
+
+        <h2>
+            Intervals
+        </h2>
+        <div class="problem"> (Basic)
+            <p>
+                Let $A=(0,3)$ and $B=[1,2]$. 
+            </p>
+            <p>
+                Graph the set $A-(\sim B)$ on the number line.
+            </p>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                    <b>Solution 1.</b>
+                    Since $B=[1,2]$, its complement $\sim B=\;\sim[1,2]$ looks like:
+                    <figure>
+                        <img src="interval-2.png" alt="" width="700px">
+                    </figure>
+                    So $A-(\sim B)$ looks like:
+                    <figure>
+                        <img src="interval-1.png" alt="" width="700px">
+                    </figure>
+                </p>
+                <p>
+                    <b>Solution 2.</b>
+                    In general, $S-T=S\cap (\sim T)$ for any two sets $S$ and $T$. So here we have $A-(\sim T)=A\cap (\sim\sim B)=A\cap B=(0,3)\cap [1,2]=[1,2]$.
+                </p>
+            </div>
+        </div>
+        <h2>
+            Cardinality
+        </h2>
+        <div class="problem"> (Basic)
+            <p>
+                Find the cardinality of the set $\{7n:n\in \mathbb{Z}\}\cap [0, 91]$.
             </p>
             Answer: <input type="numeric" data-answer="14">
             <button type="button" onclick="checkAnswer(this)">Check Answer</button>
@@ -63,31 +175,95 @@
             <button onclick="solution(this)">Show Solution</button>
             <div class="solution">
                 <p>
-                   <b>Solution.</b> Since $25$ divides $100$, any integer that ends in two zeroes are divisible by $25$, so
+                   <b>Solution.</b>
+                </p>
+                <p>
+                    Elements of this set are bound by $0\le 7n\le 91$. Dividing by $7$ gives
+                    $$
+                    0\le n\le 13
+                    $$
+                    So the cardinality of this set is 
+                    $$
+                    \text{max integer}-\text{min integer}+1 = 13-0+1=\boxed{14}
+                    $$
                 </p>
             </div>
         </div>
-
-        <div class="problem">
+        
+        <div class="problem"> (Basic)
             <p>
-                Show that $14502884$ is not a square number.
+                Find the cardinality of the set $\{n\in \mathbb{Z}:n\equiv 2\pmod{13}\}\cap [0, 100]$.
             </p>
+            Answer: <input type="numeric" data-answer="8">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
             <button onclick="solution(this)">Show Solution</button>
             <div class="solution">
                 <p>
-                    <b>Solution.</b> The only values of $n^2\pmod 3$ are 
+                   <b>Solution.</b>
+                </p>
+                <p>
+                    Elements of this set leave remainder $2$ when divided by $13$ so have the form $n=13q+2$.
+                    
+                    The bound additionally reads as $0\le 13q+2\le 100$. Subtracting by $2$ gives
                     $$
-                    0^2\equiv 0,\quad 2^2\equiv 2,\quad 2^2\equiv 1 \pmod 3
+                    -2\le 13q\le 98
                     $$
-                    However
+                    Then dividing by $13$ gives
                     $$
-                    14502884\equiv 1+4+5+0+2+8+8+4\equiv 2\pmod{3}
+                    -\frac{2}{13}\le q\le \frac{98}{13}=7+\frac{7}{13}
                     $$
-                    so $14502884$ is not a square number.
+                    So $q$ can be the integers $0$, $1$, $2$, ..., $7$. The size of this set is therefore $8$.
                 </p>
             </div>
         </div>
 
+        <div class="problem"> (Medium)
+            <p>
+                Find the cardinality of the set $\{1_2, 11_2, 111_2, 1111_2\}\cup \{1_3, 11_3, 111_3, 1111_3\}$. As a reminder $111_2$ is a number written in base 2, and $1111_3$ is a number written in base 3.
+            </p>
+            Answer: <input type="numeric" data-answer="6">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b>
+                </p>
+                <p>
+                    We can write elements in both sets in base 10:
+                </p>
+                $$
+                \begin{align*}
+                \{1_2, 10_2, 100_2, 1000_2\} & = \{1, 2, 4, 8\}\\
+                \{1_3, 11_3, 111_3, 1111_3\} & = \{1, 4, 13, 40\}
+                \end{align*}
+                $$
+                <p>
+                    So their union is $\{1, 2, 4, 8, 13, 40\}$ which has $6$ elements.
+                </p>
+            </div>
+        </div>
+
+        <div class="problem"> (Medium)
+            <p>
+                Find the cardinality of the set $A\cap B\cap C$ where $A = \{7n:n\in \mathbb{Z}\}$, $B=[-50, 700]$, and $C = \{5n:n\in \mathbb{Z}\}$.
+            </p>
+            Answer: <input type="numeric" data-answer="22">
+            <button type="button" onclick="checkAnswer(this)">Check Answer</button>
+            <div class="feedback"></div>
+            <button onclick="solution(this)">Show Solution</button>
+            <div class="solution">
+                <p>
+                   <b>Solution.</b>
+                </p>
+                <p>
+                    To find the elements simultaneously in all three sets, we find elements common to both $A$ and $C$ first. Since $A$ is the set of multiples of $7$ and $C$ is the set of multiples of $5$, their intersection $A\cap C$ is the set of the multiples of $7\cdot 5 = 35$.
+
+                    The intersection $A\cap B\cap C=(A\cap C)\cap [-50, 700]$ now consists of the only negative multiple $-35$ as well as $700/35+1=21$ nonnegative multiples of $35$, so $|A\cap B\cap C|=21+1=22$.
+                </p>
+            </div>
+        </div>
 
     </div>
 
