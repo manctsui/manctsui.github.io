@@ -8,18 +8,18 @@
     <style>
         body{font-family:'Segoe UI','Lucida Grande','Open Sans',sans-serif;font-size:1.1rem;margin:auto;max-width:45em;padding:1em}p{line-height:1.6}a{color:#0067ce;text-decoration:none}a:hover{text-decoration:underline}h1{font-size:1.7em;font-weight:600;margin-top: 0em;}h2{font-size: 1.4em;font-weight:400; margin-bottom: 0.3em;}h3{font-size:1.5em}
         table {border-collapse: collapse;}
-        #course-schedule th, #course-schedule td {border: 2px solid; padding: 0.5em 0.8em;text-align: left;}
-        #course-schedule th.lesson {width: 40%;}
-        #course-schedule th.textbook {width: 25%;}
-        #course-schedule th.notes {width: 12%;}
-        #course-schedule th.practice {width: 15%;}
-        #course-schedule tr:nth-child(odd) {background-color: #ededed;}
-        #course-schedule tr.highlight {background-color: #fff8a9;}
-        #course-schedule tr.highlight ul {font-size: 0.8em; list-style-type: "~ ";}
-        #course-schedule tr.highlight li {margin-bottom: 0.8em}
-        #course-schedule tr:hover{background-color: #b9ff84;}
+        .course-schedule th, .course-schedule td {border: 2px solid; padding: 0.5em 0.8em;text-align: left;}
+        .course-schedule th.lesson {width: 40%;}
+        .course-schedule th.textbook {width: 25%;}
+        .course-schedule th.notes {width: 12%;}
+        .course-schedule th.practice {width: 15%;}
+        .course-schedule tr:nth-child(odd) {background-color: #ededed;}
+        .course-schedule tr.highlight {background-color: #fff8a9;}
+        .course-schedule tr.highlight ul {font-size: 0.8em; list-style-type: "~ ";}
+        .course-schedule tr.highlight li {margin-bottom: 0.8em}
+        .course-schedule tr:hover{background-color: #b9ff84;}
         footer{padding-bottom: 3em;}
-        #course-schedule {margin-top: 2em;}
+        .course-schedule {margin-top: 2em;}
         
         #course-info ul {list-style-type: none; padding-left: 0;}
         #course-info ul > li {line-height: 1.5;}
@@ -114,7 +114,7 @@
         Lessons and exams follow the schedule below.
     </p> 
     
-    <table id="course-schedule">
+    <table class="course-schedule">
         <tr>
             <th class="lesson">Schedule</th>
             <th class="textbook">Reading</th>
@@ -217,7 +217,7 @@
             </td>
         </tr>
         <tr class="highlight">
-            <td class="here">
+            <td>
                 Exam 1
                 <ul>
                     <li>Section 1:<br> Wednesday, February 18, 2026</li>
@@ -231,10 +231,22 @@
             <td>
             </td>
         </tr>
+        </table>
+        <p>
+            New policy after Exam 1: <br>
+            The optional homework in lecture notes can be turned in with your quiz to increase that week's quiz grade by up to 50%, capping out at the maximum quiz grade.
+        </p>
+
+        <table class="course-schedule">
         <tr>
-            <td>
+            <th class="lesson">Schedule</th>
+            <th class="textbook">Reading</th>
+            <th class="notes">Notes</th>
+        </tr>
+        <tr>
+            <td class="here">
                 <div class="unit">Sets and combinatorics</div>
-                7 - Sequences and product rule
+                7 - Products
             </td>
             <td>
                 <a href="https://www.cs.carleton.edu/faculty/dln/book/ch02_basic-data-types_2021_October_05.pdf">Liben-Nowell §2.4</a><br>
@@ -243,16 +255,13 @@
                 <small>Finish section.</small>
             </td>
             <td>
-                <!-- <a href="">PDF</a> -->
-            </td>
-            <td>
-                <!-- <a href="practice-sets/">Problems</a> -->
+                <a href="7 - Products.pdf">PDF</a>
             </td>
         </tr>
         <tr>
             <td>
                 <div class="unit">Sets and combinatorics</div>
-                8 - Combinatorics and permutations
+                8 - Combinations and permutations
             </td>
             <td>
                 <a href="https://www.cs.carleton.edu/faculty/dln/book/ch09_counting_2021_September_08.pdf">Liben-Nowell §9.4</a>
@@ -260,15 +269,34 @@
             <td>
                 <!-- <a href="">PDF</a> -->
             </td>
+        </tr>
+        <tr>
             <td>
-                <!-- <a href="practice-sets/">Problems</a> -->
+                <div class="unit">Logic</div>
+                9 - Propositional logic
+            </td>
+            <td>
+                <a href="https://www.cs.carleton.edu/faculty/dln/book/ch03_logic_2021_September_08.pdf">Liben-Nowell §3.2</a>
+            </td>
+            <td>
+                <!-- <a href="">PDF</a> -->
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="unit">Logic</div>
+                10 - Truth tables
+            </td>
+            <td>
+                <a href="https://www.cs.carleton.edu/faculty/dln/book/ch03_logic_2021_September_08.pdf">Liben-Nowell §3.2</a>
+            </td>
+            <td>
+                <!-- <a href="">PDF</a> -->
             </td>
         </tr>
         <tr>
             <td>
                 TBD
-            </td>
-            <td>
             </td>
             <td>
             </td>
@@ -284,10 +312,6 @@
                 </ul>
             </td>
             <td>
-                
-            </td>
-
-            <td>
             </td>
             <td>
             </td>
@@ -299,8 +323,6 @@
             <td>
             </td>
 
-            <td>
-            </td>
             <td>
             </td>
         </tr>
@@ -317,16 +339,11 @@
             </td>
             <td>
             </td>
-            <td>
-            </td>
         </tr>
         <tr>
             <td>
                 TBD
             </td>
-            <td>
-            </td>
-
             <td>
             </td>
             <td>
@@ -341,10 +358,6 @@
                 </ul>
             </td>
             <td>
-                
-            </td>
-            <td>
-
             </td>
             <td>
             </td>
