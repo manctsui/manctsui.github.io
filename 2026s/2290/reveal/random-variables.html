@@ -1,0 +1,535 @@
+<!-- 
+Reveal-JS
+Fragment: https://revealjs.com/fragments/
+
+Note: 
+- span class fragment gets rendered before KaTeX fragments, so turn all span class fragments into KaTeX fragments to preserve order 
+- Also to use htmlClass requires KaTeX trust setting to be TRUE.
+- Use \f{#1} macro to shorthand "\htmlClass{fragment}{#1}".
+- fragment highlight-color behavior allows pausing before class name "highlight-color" is applied, allowing for animation effect; does this work for other type of class effects? Yes: see https://revealjs.com/fragments/
+
+Note:
+- In live server, use add in ?print-pdf and then print.
+- In reveal options, set pdfSeparateFragments: false or true to include/exclude pauses.
+-->
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Random Variables</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-plugins/menu/font-awesome/css/fontawesome.css">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<style>
+		.keyword {
+			border-radius: 10px; margin: 0px 1px; padding: 1px 10px 1px 10px; background-color: rgba(255, 251, 0); color: black;
+		}
+		* {
+			text-align: left;
+			font-size: 80%;
+		}
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- ------------------------------------------------------------------------------------ 
+				Title slide 
+				------------------------------------------------------------------------------------ -->
+				<section data-transition="fade">
+					<h1  class="fragment fade-out" style="position: absolute; margin-top: 22vh;">
+						Random Variables
+					</h1>
+					<div class="background-blob">
+						<svg width="700" height="400" viewBox="-160 -50 370 370" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<linearGradient id="blobGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+									<stop offset="0%" style="stop-opacity:1">
+									<animate attributeName="stop-color" values="#ff9562; #a662ff; #4f50a0; #c790ff; #1fd080; #eba4ff; #ff9562; #ff3080; #70e7f1; #765dd0; #ff9562;" dur="27s" repeatCount="indefinite" />
+									</stop>
+									<stop offset="100%" style="stop-opacity:1">
+									<animate attributeName="stop-color" values="#ff75d2; #769dd0; #39ff7a; #ff3080; #70e7f1; #ff8585; #ff75d2; #c790ff; #1f80d0; #a662ff; #ff75d2;" dur="27s" repeatCount="indefinite" />
+									</stop>
+								</linearGradient>
+							</defs>
+							<path fill="url(#blobGradient)">
+								<animate attributeName="d" 
+										dur="20s" 
+										repeatCount="indefinite" 
+										values="M 249,150 C 249,173 237,189 220,209 C 204,228 190,242 167,247 C 143,251 126,244 102,232 C 77,220 52,211 44,188 C 36,165 48,141 60,117 C 71,93 81,83 102,68 C 124,52 146,35 169,39 C 192,44 203,69 219,91 C 235,113 249,126 249,150 Z;
+										M 271,152 C 271,180 255,197 236,222 C 216,247 202,273 174,278 C 146,284 124,266 96,249 C 68,232 45,221 36,194 C 27,167 38,144 50,115 C 61,86 69,63 93,50 C 117,37 142,43 170,49 C 199,55 215,61 235,82 C 255,103 271,124 271,152.5 Z;
+										M 245,150 C 244,175 239,193 223,211 C 207,229 190,233 165,239 C 140,244 122,250 97,240 C 73,230 55,215 43,188 C 30,162 26,135 37,108 C 47,82 70,68 96,57 C 122,46 140,50 166,55 C 193,60 213,64 229,83 C 244,102 246,124 245,150 Z;
+										M 220,150 C 222,177 221,199 204,221 C 188,243 166,255 139,258 C 111,262 92,253 68,238 C 45,224 29,210 20,186 C 11,161 16,140 26,115 C 35,91 47,75 69,62 C 91,49 111,46 137,51 C 163,55 180,65 197,84 C 214,104 219,122 220,150 Z;
+										M 256,152.5 C 250,183 243,188 227,215 C 211,241 200,279 175,284 C 150,289 119,260 102,239 C 85,217 108,202 90,174 C 73,147 14,127 15,102 C 16,77 61,70 94,51 C 126,33 144,7 177,9 C 211,11 246,32 261,60 C 277,89 263,121 256,152.5 Z;
+										M 305,176 C 307,206 294,235 272,256 C 250,277 228,273 195,282 C 161,291 133,313 104,301 C 75,289 54,254 50,222 C 46,190 71,171 85,143 C 99,115 99,95 121,81 C 143,67 166,69 194,74 C 222,79 237,86 259,106 C 281,127 302,146 305,176 Z;
+										M 248,150 C 250,175 246,192 230,217 C 215,242 197,272 172,274 C 146,277 130,247 103,231 C 76,214 51,216 36,191 C 21,166 15,129 29,106 C 43,83 80,85 107,76 C 134,66 143,55 166,58 C 188,61 202,73 218,92 C 235,110 245,124 248,150 Z;
+										M 230,152 C 228,182 248,201 237,223 C 225,246 200,259 172,265 C 144,270 123,264 95,251 C 67,237 37,221 32,196 C 27,170 59,152 71,123 C 84,94 73,71 94,51 C 114,32 144,22 174,26 C 205,30 237,46 248,72 C 259,97 232,122 230,152 Z;
+										M 270,150 C 272,170 237,181 218,207 C 199,233 195,276 173,281 C 150,285 132,247 104,229 C 76,211 46,216 33,192 C 20,168 24,132 39,109 C 53,86 80,94 107,76 C 134,58 153,13 173,19 C 192,24 185,77 205,103 C 224,129 267,129 270,150 Z;
+										M 249,150 C 249,173 237,189 220,209 C 204,228 190,242 167,247 C 143,251 126,244 102,232 C 77,220 52,211 44,188 C 36,165 48,141 60,117 C 71,93 81,83 102,68 C 124,52 146,35 169,39 C 192,44 203,69 219,91 C 235,113 249,126 249,150 Z;
+										" />
+							</path>
+						</svg>
+    				</div>
+				</section>
+				<!-- ------------------------------------------------------------------------------------ 
+				RV definition 1
+				------------------------------------------------------------------------------------ -->
+				<section data-auto-animate data-transition="fade">
+					<div style="position: absolute; background-color: rgba(25, 25, 25, 0); width: 32rem; height: 17rem;z-index: 1;"></div>
+					<div>
+						<img src="/random-variable-assets/13-qual-var.svg" alt="" width="37%">
+						<img src="/random-variable-assets/13-arrow.svg" alt="" width="20%" style="padding-bottom:1em;" class="fragment" data-fragment-index="2">
+						<img src="/random-variable-assets/13-quant-var.svg" alt="" width="30%" data-id="quant-var">
+					</div>
+					<div class="fragment" data-fragment-index="3">
+						Formally, a <div class="keyword" data-id="rv" style="display: inline-block;">random variable</div> converts qualitative/quantative variable to quantitative variable.
+					</div>
+				</section>
+				<!-- ------------------------------------------------------------------------------------ 
+				RV definition 2
+				------------------------------------------------------------------------------------ -->
+				<section data-auto-animate data-transition="fade">
+					<div style="position: absolute; background-color: rgba(25, 25, 25, 0.9); width: 32rem; height: 17rem;z-index: 1;"></div>
+					<div>
+						<img src="/random-variable-assets/13-qual-var.svg" alt="" width="37%">
+						<img src="/random-variable-assets/13-arrow.svg" alt="" width="20%" style="padding-bottom:1em;">
+						<img src="/random-variable-assets/13-quant-var-2.svg" alt="" width="30%" style="" data-id="quant-var">
+					</div>
+					<div>
+						But we think of a <div class="keyword" data-id="rv" style="display: inline-block;">random variable</div> as the resulting quantitative variable.
+					</div>
+				</section>
+				<!-- ------------------------------------------------------------------------------------ 
+				Example 1: Binomial RV
+				------------------------------------------------------------------------------------ -->
+				<section data-auto-animate data-transition="fade">
+					<div style="font-weight: bold;opacity: 70%;color: #6eb2ff;">Example 1. (Binomial random variable $X$)</div>
+					<div data-id="ex-binom">$X=$ number of heads if a fair coin is flipped 3 times</div>
+					<p data-id="ex-binom-0"><span class="fragment">$P(X=0)=$ </span><span class="fragment"> probability of 0 head&ensp;</span> <span class="fragment">$=\frac{1}{8}$
+						<span style="font-size: 60%; margin-left: 2rem;display: inline-block;vertical-align: middle;line-height: normal;opacity: 80%;color: #6eb2ff;">TTT</span>
+					</span>
+					</p>
+					<p data-id="ex-binom-1"><span class="fragment">$P(X=1)=$ </span><span class="fragment"> probability of 1 head&ensp;</span> <span class="fragment">$=\frac{3}{8}$
+						<span style="font-size: 60%; margin-left: 2rem;display: inline-block;vertical-align: middle;line-height: normal;opacity: 80%;color: #6eb2ff;">HTT<br style="display: block; margin-top: -2rem;">THT<br style="display: block; margin-top: -2rem;">TTH</span>
+					</span>
+					</p>
+					<p data-id="ex-binom-2" class="fragment">$P(X=2)=$ probability of 2 heads $=\frac{3}{8}$
+						<span style="font-size: 60%; margin-left: 2rem;display: inline-block;vertical-align: middle;line-height: normal;opacity: 80%;color: #6eb2ff;">THH<br style="display: block; margin-top: -2rem;">HTH<br style="display: block; margin-top: -2rem;">HHT</span>
+					</p>
+					<p data-id="ex-binom-3" class="fragment">$P(X=3)=$ probability of 3 heads $=\frac{1}{8}$
+						<span style="font-size: 60%; margin-left: 2rem;display: inline-block;vertical-align: middle;line-height: normal;opacity: 80%;color: #6eb2ff;">HHH</span>
+					</p>
+				</section>
+				<!-- ------------------------------------------------------------------------------------ 
+				Example 1: Binomial RV, continued
+				------------------------------------------------------------------------------------ -->
+				<section data-auto-animate data-transition="fade">
+					<div class="fragment">
+						<div style="position: absolute;margin: 7rem 0 0 20rem; width: 18rem;">
+							<img src="/random-variable-assets/13-quant-var-3.svg" alt="" width="100%" data-id="quant-var">
+						</div>
+						<div style="position: absolute;margin: 23rem 0 0 21rem; width: 15rem; font-size: 50%;">
+							Probability distribution or probability mass function (PMF) of $X$
+						</div>
+						<div style="position: absolute;margin: 10rem 0 0 25rem; width: 18rem; font-size: 40%;">
+							$P(X=k)$
+						</div>
+					</div>
+					<div class="fragment">
+						<div style="position: absolute;margin: 7rem 0 0 37rem; width: 18rem;">
+							<img src="/random-variable-assets/13-quant-var-4.svg" alt="" width="100%" data-id="quant-var">
+						</div>
+						<div style="position: absolute;margin: 23rem 0 0 38rem; width: 17rem; font-size: 50%;">
+							Cumulative distribution function (CDF) of $X$
+						</div>
+						<div style="position: absolute;margin: 10rem 0 0 42rem; width: 18rem; font-size: 40%;">
+							$P(X\le k)$
+						</div>
+					</div>
+					
+
+					<div style="font-weight: bold;opacity: 70%;color: #6eb2ff;">Example 1. (Binomial random variable $X$)</div>
+					<div data-id="ex-binom">$X=$ number of heads if a fair coin is flipped 3 times</div>
+					<p data-id="ex-binom-0">$P(X=0)=\frac{1}{8}$<span style="font-size: 60%; margin-left: 2rem;display: inline-block;vertical-align: middle;line-height: normal;opacity: 80%;color: #6eb2ff;visibility: hidden;">TTT</span></p>
+					<p  data-id="ex-binom-1">$P(X=1)=\frac{3}{8}$<span style="visibility: hidden;font-size: 60%; margin-left: 2rem;display: inline-block;vertical-align: middle;line-height: normal;opacity: 80%;color: #6eb2ff;">HTT<br style="display: block; margin-top: -2rem;">THT<br style="display: block; margin-top: -2rem;">TTH</span></p>
+					<p  data-id="ex-binom-2">$P(X=2)=$ $\frac{3}{8}$<span style="visibility: hidden;font-size: 60%; margin-left: 2rem;display: inline-block;vertical-align: middle;line-height: normal;opacity: 80%;color: #6eb2ff;">HHT<br style="display: block; margin-top: -2rem;">HTH<br style="display: block; margin-top: -2rem;">THH</span></p>
+					<p  data-id="ex-binom-3">$P(X=3)=$ $\frac{1}{8}$<span style="font-size: 60%; margin-left: 2rem;display: inline-block;vertical-align: middle;line-height: normal;opacity: 80%;color: #6eb2ff;visibility: hidden;">HHH</span></p>
+				</section>
+				<!-- ------------------------------------------------------------------------------------ 
+				Example 1: Binomial RV, general
+				------------------------------------------------------------------------------------ -->
+				<section data-auto-animate data-transition="fade">
+					<div style="font-weight: bold;opacity: 70%;color: #6eb2ff;">General binomial RV $X$:</div>
+					<p style="font-size: 80%;margin-top: -1em;">
+						$X=$ # of heads in $n$ flips of a coin with probability $\begin{cases}p&\text{heads}\\q&\text{tails}\end{cases}$
+					</p>
+					<p style="font-size: 80%;margin-top: -1em;" class="fragment">
+						$\Rightarrow\boxed{P(X=k)=\binom{n}{k}p^{k}q^{n-k}}$
+					</p>
+					<p style="font-size: 80%;margin-top: 2em;" class="fragment">
+						<span style="font-weight: bold;opacity: 70%;color: #6eb2ff;">Example 2.</span> Prob. of exactly 2 answers correct on 10 ABCD questions: 
+					</p>
+					<p style="font-size: 80%;" class="fragment">
+						$\Rightarrow n=10,k=2,p=0.25,q=0.75$
+					</p>
+					<p style="font-size: 80%;" class="fragment">
+						$\Rightarrow P(X=2)=\binom{10}{\,2}(0.25)^{2}(0.75)^{8}$
+					</p>
+				</section>
+				<!-- ------------------------------------------------------------------------------------ 
+				Example 3: Geometric RV
+				------------------------------------------------------------------------------------ -->
+				<section data-auto-animate data-transition="fade">
+					<div style="font-weight: bold;opacity: 70%;color: #6eb2ff;">General geometric RV $Y\sim \text{Geometric}(p)$:</div>
+					<p style="font-size: 80%;">
+						$Y=$ # of T's before an H flipping a coin w. probability $\begin{cases}p&\text{heads}\\q&\text{tails}\end{cases}$
+					</p>
+					<p style="font-size: 80%;margin-top: -1em;" class="fragment">
+						$\Rightarrow\boxed{P(Y=k)=q^{k}p}$
+					</p>
+					<p style="font-size: 80%;margin-top: 2em;" class="fragment">
+						<span style="font-weight: bold;opacity: 70%;color: #6eb2ff;">Example 3.</span> Prob. a fair dice is rolled 4 times before a 5th roll is a 1. 
+					</p>
+					<p style="font-size: 80%;" class="fragment">
+						$\Rightarrow P(Y=4)=(5/6)^{4}\cdot (1/6)$
+					</p>
+				</section>
+				<!-- ------------------------------------------------------------------------------------ 
+				Example 3: In-class example
+				------------------------------------------------------------------------------------ -->
+				<section data-auto-animate data-transition="fade">
+					<div style="font-weight: bold;opacity: 70%;color: #6eb2ff;">In-class exercise</div>
+					<p style="font-size: 80%;">
+						Graph the PMF and CDF of the geometric random variable $Y\sim \text{Geometric}(1/2)$ where probability $p$ of heads (aka success) is $1/2$.
+					</p>
+				</section>
+
+				
+				<section data-auto-animate data-transition="fade">
+					<p style="font-size: 70%;margin-top: -1em;">
+						Binomial and geometric RVs are <span class="keyword">discrete RVs</span>.
+					</p>
+					<p style="font-size: 70%" class="fragment">
+						But there are also <span class="keyword">continuous RVs</span>.
+					</p>
+				</section>
+				<!-- ------------------------------------------------------------------------------------ 
+				Slide: You try now: binomial, geometric, PMF, CDF. Include: probability it takes at least 3 flips of a coin to get ...
+				------------------------------------------------------------------------------------ -->
+
+				<!-- ------------------------------------------------------------------------------------ 
+				Summary of previous slides: discrete RV's.
+				------------------------------------------------------------------------------------ -->
+
+				<section data-auto-animate data-transition="fade">
+					<div class="fragment" data-fragment-index="4">
+						<div style="position: absolute;margin: 20rem 0 0 0rem; width: 18rem;">
+							<img src="/random-variable-assets/13-uniform-pdf.svg" alt="" width="100%" data-id="quant-var">
+						</div>
+						<div style="position: absolute;margin: 33rem 0 0 0rem; width: 15rem; font-size: 50%;">
+							Probability density function (PDF) of $X$
+						</div>
+						<div style="position: absolute;margin: 23rem 0 0 7rem; width: 18rem; font-size: 40%;color:black;">
+							$P(X=x)$
+						</div>
+					</div>
+					
+					<p style="font-size: 70%;margin-top: 2em;" class="fragment" data-fragment-index="1">
+						Domino's Pizza is done at a time $X$ that varies <span class="fragment" data-fragment-index="3">uniformly</span> between 15 and 25 min.
+					</p>
+					<p style="font-size: 70%;" class="fragment" data-fragment-index="5">
+						PDF of $X$ is constant with total area 1, so $f(x)=p(X=x)=1/(25-15)=0.1$ if $15\le x\le 25$ and $f(x)=0$ otherwise.
+					</p>
+				</section>
+				<!-- Continued uniform 2 -->
+				<section data-auto-animate data-transition="fade">
+					<div>
+						<div style="position: absolute;margin: 22rem 0 0 0rem; width: 18rem;">
+							<img src="/random-variable-assets/13-uniform-pdf.svg" alt="" width="100%" data-id="quant-var">
+						</div>
+						<div style="position: absolute;margin: 30em 0 0 0rem; width: 15rem; font-size: 50%;">
+							Probability density function (PDF) of $X$
+						</div>
+						<div style="position: absolute;margin: 25rem 0 0 7rem; width: 18rem; font-size: 40%;color:black;">
+							$P(X=x)$
+						</div>
+					</div>
+					
+					<div style="font-weight: bold;opacity: 70%;color: #6eb2ff;">Uniform RV $X\sim U(15,20)$:</div>
+					<p style="font-size: 70%">
+						Domino's Pizza is done at a time $X$ that varies <span>uniformly</span> between 15 and 25 min.
+					</p>
+					<p style="font-size: 70%;">
+						PDF of $X$ is constant with total area 1, so $f(x)=p(X=x)=1/(25-15)=0.1$ if $15\le x\le 25$ and $f(x)=0$ otherwise.
+					</p>
+					<p style="font-size: 70%;" class="fragment">
+						<span style="font-weight: bold;opacity: 70%;color: #ff5d8b;">Q:</span> Probability the pizza is done between 20 and 23 minutes?
+					</p>
+					<p style="font-size: 70%;" class="fragment">
+						<span style="font-weight: bold;opacity: 70%;color: #ff5d8b;">A:</span> 
+						$\int_{20}^{23}f(x)\,dx=\int_{20}^{23}0.1\,dx=0.3=30\%$.
+					</p>
+				</section>
+				
+				<!-- Continued uniform 3 -->
+				<section data-auto-animate data-transition="fade">
+					<div>
+						<div style="position: absolute;margin: 22rem 0 0 0rem; width: 18rem;">
+							<img src="/random-variable-assets/13-uniform-pdf-2.svg" alt="" width="100%" data-id="quant-var">
+						</div>
+						<div style="position: absolute;margin: 30em 0 0 0rem; width: 15rem; font-size: 50%;">
+							Probability density function (PDF) of $X$
+						</div>
+						<div style="position: absolute;margin: 25rem 0 0 5.4rem; width: 18rem; font-size: 40%;color:black;">
+							$\int_{20}^{23}P(X=x)\,dx$
+						</div>
+					</div>
+					
+					<div style="font-weight: bold;opacity: 70%;color: #6eb2ff;">Uniform RV $X\sim U(15,20)$:</div>
+					<p style="font-size: 70%">
+						Domino's Pizza is done at a time $X$ that varies <span>uniformly</span> between 15 and 25 min.
+					</p>
+					<p style="font-size: 70%;">
+						PDF of $X$ is constant with total area 1, so $f(x)=p(X=x)=1/(25-15)=0.1$ if $15\le x\le 25$ and $f(x)=0$ otherwise.
+					</p>
+					<p style="font-size: 70%;">
+						<span style="font-weight: bold;opacity: 70%;color: #ff5d8b;">Q:</span> Probability the pizza is done between 20 and 23 minutes?
+					</p>
+					<p style="font-size: 70%;">
+						<span style="font-weight: bold;opacity: 70%;color: #ff5d8b;">A:</span> 
+						$\int_{20}^{23}f(x)\,dx=\int_{20}^{23}0.1\,dx=0.3=30\%$.
+					</p>
+				</section>
+				<!-- Continued uniform 4 -->
+				<section data-auto-animate data-transition="fade">
+					<div>
+						<div style="position: absolute;margin: 22rem 0 0 0rem; width: 18rem;">
+							<img src="/random-variable-assets/13-uniform-pdf.svg" alt="" width="100%" data-id="quant-var">
+						</div>
+						<div style="position: absolute;margin: 30em 0 0 0rem; width: 15rem; font-size: 50%;">
+							Probability density function (PDF) $f(x)$ of $X$
+						</div>
+						<div style="position: absolute;margin: 25rem 0 0 7rem; width: 18rem; font-size: 40%;color:black;">
+							$P(X=x)$
+						</div>
+					</div>
+					
+					<div>
+						<div style="position: absolute;margin: 22rem 0 0 20rem; width: 18rem;">
+							<img src="/random-variable-assets/13-uniform-cdf.svg" alt="" width="100%" data-id="quant-var">
+						</div>
+						<div style="position: absolute;margin: 30em 0 0 20rem; width: 15rem; font-size: 50%;">
+							Cumulative distribution function (CDF) $F(x)$ of $X$
+						</div>
+						<div style="position: absolute;margin: 25rem 0 0 27rem; width: 18rem; font-size: 40%;color:black;">
+							$P(X\le x)$
+						</div>
+					</div>
+					
+					<div style="font-weight: bold;opacity: 70%;color: #6eb2ff;">Uniform RV $X\sim U(15,20)$:</div>
+					<p style="font-size: 70%">
+						Domino's Pizza is done at a time $X$ that varies <span>uniformly</span> between 15 and 25 min.
+					</p>
+					<p style="font-size: 60%;margin-top: -1.6em;">
+						CDF of $X$ is $F(x)=P(X\le x)$ <span class="fragment">$=\displaystyle\int\limits_{-\infty}^{x}f(x)\;dx$</span><span class="fragment">$\;=\displaystyle \int\limits_{15}^{x}0.1\;dx\text{ if $15\le x\le 25$}$</span>
+					</p>
+					<p style="font-size: 60%;margin-top: -1em;" class="fragment">
+						$=\begin{cases}0&\text{if $x&gt;25$}\\0.1(x-15)&\text{if $15\le x\le 25$}\\1&\text{if $x&lt;15$}\end{cases}$
+					</p>
+				</section>
+
+				
+				<!-- Continued uniform 4 -->
+				<section data-auto-animate data-transition="fade">
+					<div>
+						<div style="position: absolute;margin: 22rem 0 0 0rem; width: 18rem;">
+							<img src="/random-variable-assets/13-uniform-pdf.svg" alt="" width="100%" data-id="quant-var">
+						</div>
+						<div style="position: absolute;margin: 30em 0 0 0rem; width: 15rem; font-size: 50%;">
+							Probability density function (PDF) $f(x)$ of $X$
+						</div>
+						<div style="position: absolute;margin: 25rem 0 0 7rem; width: 18rem; font-size: 40%;color:black;">
+							$P(X=x)$
+						</div>
+					</div>
+					
+					<div>
+						<div style="position: absolute;margin: 22rem 0 0 20rem; width: 18rem;">
+							<img src="/random-variable-assets/13-uniform-cdf.svg" alt="" width="100%" data-id="quant-var">
+						</div>
+						<div style="position: absolute;margin: 30em 0 0 20rem; width: 15rem; font-size: 50%;">
+							Cumulative distribution function (CDF) $F(x)$ of $X$
+						</div>
+						<div style="position: absolute;margin: 25rem 0 0 27rem; width: 18rem; font-size: 40%;color:black;">
+							$P(X\le x)$
+						</div>
+					</div>
+					
+					<div style="font-weight: bold;opacity: 70%;color: #6eb2ff;">Uniform RV $X\sim U(15,20)$:</div>
+					<p style="font-size: 70%">
+						Domino's Pizza is done at a time $X$ that varies <span>uniformly</span> between 15 and 25 min.
+					</p>
+					<p style="font-size: 70%;">
+						<span style="font-weight: bold;opacity: 70%;color: #ff5d8b;">Q:</span> Probability the pizza is done between 20 and 23 minutes?
+					</p>
+					<p style="font-size: 70%;" class="fragment">
+						<span style="font-weight: bold;opacity: 70%;color: #ff5d8b;">A:</span> 
+						$F(23)-F(20)=0.3$.
+					</p>
+				</section>
+
+				<!-- In general, PDF, CDF -->
+				<section data-auto-animate data-transition="fade">
+					
+					<div style="font-weight: bold;opacity: 70%;color: #6eb2ff;">In general:</div>
+					<p style="font-size: 70%">
+						PDF $f_X(x)$ of a continuous RV $X$ is a non-negative function with total area 1.
+					</p>
+					<p style="font-size: 70%" class="fragment">
+						CDF $F_X(x)$ of a continuous RV $X$ increases from 0 to 1.
+					</p>
+					<p style="font-size: 60%" class="fragment">
+						Uniform RV $X\sim U(a,b)$ between $a$ and $b$ has PDF $f_X(x)=\dfrac{\;\;\;1}{b-a}$ if $a\le x\le b$ and $f_X(x)=0$ otherwise.
+					</p>
+					
+				</section>
+				<!-- Normal RV -->
+				<section data-auto-animate data-transition="fade">
+					<div>
+						<div style="position: absolute;margin: 19rem 0 0 0rem; width: 18rem;">
+							<img src="/random-variable-assets/13-normal.svg" alt="" width="100%" data-id="quant-var">
+						</div>
+						<div style="position: absolute;margin: 30em 0 0 0rem; width: 15rem; font-size: 50%;">
+							Probability density function (PDF) $f(x)$ of $X$
+						</div>
+						<div style="position: absolute;margin: 22rem 0 0 7rem; width: 18rem; font-size: 40%;color:black;">
+							$P(X=x)$
+						</div>
+					</div>
+					
+					<div style="font-weight: bold;opacity: 70%;color: #6eb2ff;">Normal RV $X\sim N(\mu,\sigma)$:</div>
+					<p style="font-size: 70%">
+						Let $X$ be the heights of adult male. Then $X$ is approximately normally distributed with $\mu=70\text{ in.}$ and $\sigma=3\text{ in.}$ Then
+					</p>
+					<p style="font-size: 70%;">
+						$P(67\le X\le 73)\approx$ <span class="fragment">$0.68$</span>.
+					</p>
+					<p style="font-size: 70%;" class="fragment">
+						$F_X(70)\approx$ <span class="fragment">$0.50$</span>.
+					</p>
+				</section>
+				
+				<!-- Cts RV -->
+				<section data-auto-animate data-transition="fade">
+					<p style="font-size: 70%">
+						<span style="font-weight: bold;opacity: 70%;color: #6eb2ff;">Example 4.</span> An RV $X$ has PDF $f(x)=cx^{-1/2}\text{ for }0\le x\le 1$ and $f(x)=0\text{ otherwise}$.
+					</p>
+					<p style="font-size: 70%;" class="fragment">
+						(a) Find $c$. (b) Find $F(x)$. (c) Find median of $X$.
+					</p>
+					<p style="font-size: 70%;" class="fragment">
+						(a) $1=\int_{0}^{1}cx^{-1/2}dx=[2cx^{1/2}]^{1}_{0}=2c\Rightarrow c=\dfrac{1}{2}.$
+					</p>
+					<p style="font-size: 70%;" class="fragment">
+						(b) For $x\ge 0$, $F(x)=\int_{0}^{x}(1/2)t^{-1/2}dt=[t^{1/2}]^{x}_{0}=\sqrt{x}$
+					</p>
+					<p style="font-size: 70%;" class="fragment">
+						$\Rightarrow F(x)=\begin{cases}0&\text{if }x<0\\\sqrt{x}&\text{if }0\le x\le1\\1&\text{if }x>1\\\end{cases}$
+					</p>
+					<p style="font-size: 70%;" class="fragment">
+						(c) $\dfrac{1}{2}=F(x)=\sqrt{x}\Rightarrow x=\dfrac14.$
+					</p>
+				</section>
+				<!-- In-class exercise -->
+				<section data-auto-animate data-transition="fade">
+					<div style="font-weight: bold;opacity: 70%;color: #6eb2ff;">In-class exercise</div>
+					<p style="font-size: 80%;">
+						<span style="font-weight: bold;opacity: 70%;color: #6eb2ff;">P6.</span> Consider the Pareto random variable X whose PDF has the form $c/x^2$ for $x\ge 1$ and 0 otherwise.<br>
+						(a) Find c. (b) Find the CDF of X. (c) Find the median of X.
+					</p>
+					<p style="font-size: 80%;">
+						<span style="font-weight: bold;opacity: 70%;color: #6eb2ff;">P2.</span> The proportion of people who respond to a mail-order solicitation is a  continuous random variable X that has the density function $f(x)=2(x+2)/5$ for $0&lt;x&lt;1$ and $f(x)=0$ elsewhere. (a) Show that $P(0&lt;x&lt;1)=1$. (b) Find the probability that more than 1/4 but fewer than 3/4 of the people contacted will respond to this type of solicitation.
+					</p>
+				</section>
+			</div>
+		</div>
+		
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		
+		<!-- For animation, see https://github.com/rajgoel/reveal.js-plugins/tree/master/animate -->
+		<!-- Load content plugin -->
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/loadcontent/plugin.js"></script>
+		<!-- Animate plugin -->
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/animate/plugin.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.1.2/svg.min.js"></script>
+		
+		<!-- https://github.com/rajgoel/reveal.js-plugins/tree/master/chalkboard -->
+		<script src="plugin/chalkboard/plugin.js"></script>
+		<link rel="stylesheet" href="plugin/chalkboard/style.css">
+		<!-- Font awesome is required for the chalkboard plugin -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<!-- Custom controls plugin is used to for opening and closing annotation modes. -->
+		<script src="plugin/customcontrols/plugin.js"></script>
+		<link rel="stylesheet" href="plugin/customcontrols/style.css">
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				customcontrols: {
+					controls: [
+					{ icon: '<i class="fa fa-pen-square"></i>',
+						title: 'Toggle chalkboard (B)',
+						action: 'RevealChalkboard.toggleChalkboard();'
+					},
+					{ icon: '<i class="fa fa-pen"></i>',
+						title: 'Toggle notes canvas (C)',
+						action: 'RevealChalkboard.toggleNotesCanvas();'
+					}
+					]
+				},
+				chalkboard: {
+					//
+				},
+				hash: true,
+				animate: {
+					autoplay: true // default is false
+				},
+				katex: {
+					version: 'latest',
+					trust: true,
+					macros: {
+						"\\f": "\\htmlClass{fragment}{#1}",
+					},
+					delimiters: [
+					{ left: '$$', right: '$$', display: true },
+					{ left: '$', right: '$', display: false },
+					{ left: '\\(', right: '\\)', display: false },
+					{ left: '\\[', right: '\\]', display: true },
+					],
+					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+				},
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX, RevealLoadContent, RevealAnimate, RevealChalkboard, RevealCustomControls ],
+				backgroundTransition: 'fade',
+			});
+
+			// Gemini: Prevent chalkboard from refreshing/clearing on fragment changes
+			// Catch: Must draw on first slide of fragments.
+			// If going back in slide, must go to first slide of fragments to display ink.
+			// Reveal.on('fragmentshown', event => {
+			// 	// This stops the plugin from re-indexing the canvas to the new fragment
+			// 	event.stopImmediatePropagation(); 
+			// }, 1); // The '1' priority ensures this runs before the plugin's listener
+		</script>
+	</body>
+</html>

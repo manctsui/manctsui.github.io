@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-plugins/menu/font-awesome/css/fontawesome.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-transition="fade">Slide 1</section>
+				<section data-transition="fade">Slide 2</section>
+				<section data-auto-animate data-transition="fade">
+					<h1>Auto-Animate</h1>
+					<span data-id="math-1">
+						$a^b$
+					</span>
+				</section>
+				<section data-auto-animate data-transition="fade">
+					<h1 style="margin-top: 0px; color: red;">Auto-Animate</h1>
+					<span data-id="math-1">
+						\[a^b \htmlClass{fragment highlight-blue}{\htmlClass{fragment highlight-red}{+b^2}}\htmlClass{fragment}{+c^2}\]
+					</span>
+					<span class="fragment">
+						\(\f{+b^2}\)<span class="fragment highlight-blue"><span class="fragment highlight-red">\(c^b\)</span></span>
+					</span>
+					<span>
+						Effect with  
+					</span>
+					<span class="fragment" style="border-radius: 10px; margin: 0px 10px; padding: 3px; background-color: rgba(255, 251, 0); color: black;">
+						&nbsp;keyword
+					</span>
+					<span>
+						via fragment
+					</span>
+					<!-- 
+					Note: 
+					- span class fragment gets rendered before KaTeX fragments, so turn all span class fragments into KaTeX fragments to preserve order.
+					- Also to use htmlClass requires KaTeX trust setting to be TRUE.
+					- Use \f{#1} macro to shorthand "\htmlClass{fragment}{#1}".
+					- fragment highlight-color behavior allows pausing before class name "highlight-color" is applied, allowing for animation effect; does this work for other type of class effects? Yes: see https://revealjs.com/fragments/
+					
+					Note:
+					- In live server, use add in ?print-pdf and then print.
+					- In reveal options, set pdfSeparateFragments: false or true to include/exclude pauses.
+					-->
+				</section>
+				<section data-transition="fade">
+					<span>
+						Effect with  
+					</span>
+					<span style="border-radius: 10px; margin: 0px 10px; padding: 3px; background-color: rgba(255, 251, 0); color: black;">
+						<span class="fragment">
+							&nbsp;keyword
+						</span>
+					</span>
+					<span>
+						via fragment
+					</span>
+					<p>
+
+					</p>
+
+					<span>
+						Second effect with  
+					</span>
+					<span style="border-radius: 10px; margin: 0px 10px; padding: 3px; background-color: rgba(255, 251, 0); color: black;">
+						<span class="fragment">
+							&nbsp;ANOVA
+						</span>
+					</span>
+					<span>
+						via fragment
+					</span>
+				</section>
+			</div>
+		</div>
+		
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		
+		<!-- For animation, see https://github.com/rajgoel/reveal.js-plugins/tree/master/animate -->
+		<!-- Load content plugin -->
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/loadcontent/plugin.js"></script>
+		<!-- Animate plugin -->
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/animate/plugin.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.1.2/svg.min.js"></script>
+		
+		<!-- https://github.com/rajgoel/reveal.js-plugins/tree/master/chalkboard -->
+		<script src="plugin/chalkboard/plugin.js"></script>
+		<link rel="stylesheet" href="plugin/chalkboard/style.css">
+		<!-- Font awesome is required for the chalkboard plugin -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<!-- Custom controls plugin is used to for opening and closing annotation modes. -->
+		<script src="plugin/customcontrols/plugin.js"></script>
+		<link rel="stylesheet" href="plugin/customcontrols/style.css">
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				customcontrols: {
+					controls: [
+					{ icon: '<i class="fa fa-pen-square"></i>',
+						title: 'Toggle chalkboard (B)',
+						action: 'RevealChalkboard.toggleChalkboard();'
+					},
+					{ icon: '<i class="fa fa-pen"></i>',
+						title: 'Toggle notes canvas (C)',
+						action: 'RevealChalkboard.toggleNotesCanvas();'
+					}
+					]
+				},
+				chalkboard: {
+					//
+				},
+				hash: true,
+				animate: {
+					autoplay: true // default is false
+				},
+				katex: {
+					version: 'latest',
+					trust: true,
+					macros: {
+						"\\f": "\\htmlClass{fragment}{#1}",
+					},
+					delimiters: [
+					{ left: '$$', right: '$$', display: true },
+					{ left: '$', right: '$', display: true },
+					{ left: '\\(', right: '\\)', display: true },
+					{ left: '\\[', right: '\\]', display: true },
+					],
+					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+				},
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX, RevealLoadContent, RevealAnimate, RevealChalkboard, RevealCustomControls ],
+				backgroundTransition: 'fade',
+			});
+
+			// Gemini: Prevent chalkboard from refreshing/clearing on fragment changes
+			// Catch: Must draw on first slide of fragments.
+			// If going back in slide, must go to first slide of fragments to display ink.
+			// Reveal.on('fragmentshown', event => {
+			// 	// This stops the plugin from re-indexing the canvas to the new fragment
+			// 	event.stopImmediatePropagation(); 
+			// }, 1); // The '1' priority ensures this runs before the plugin's listener
+		</script>
+	</body>
+</html>
