@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAT 02311 & 2511 | 2026 Fall</title>
+    <link href="data:," rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" rel="preload" as="style" crossorigin="anonymous" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" onload='this.onload=null,this.rel="stylesheet"'><script crossorigin="anonymous" defer="defer" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script><script crossorigin="anonymous" defer="defer" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:&#34;$$&#34;,right:&#34;$$&#34;,display:!0},{left:&#34;$&#34;,right:&#34;$&#34;,display:!1}],throwOnError:!1,trust:!0})"></script>
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="preload" as="style" crossorigin="anonymous" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" onload="this.onload=null,this.rel=&#34;stylesheet&#34;">
+    <style>
+        body{font-family:'Segoe UI','Lucida Grande','Open Sans',sans-serif;font-size:1.1rem;margin:auto;max-width:45em;padding:1em}p{line-height:1.6}a{color:#0067ce;text-decoration:none}a:hover{text-decoration:underline}h1{font-size:1.7em;font-weight:600;margin-top: 0em;}h2{font-size: 1.4em;font-weight:400; margin-bottom: 0.3em;}h3{font-size:1.5em}
+        table {border-collapse: collapse;}
+        .course-schedule th, .course-schedule td {border: 2px solid; padding: 0.5em 0.8em;text-align: left;}
+        .course-schedule th.lesson {width: 30%;}
+        .course-schedule th.textbook {width: 22%;}
+        .course-schedule th.notes {width: 15%;}
+        .course-schedule th.hw {width: 20%;}
+        .course-schedule th.practice {width: 11%;}
+        .course-schedule tr:nth-child(odd) {background-color: #ededed;}
+        .course-schedule tr.highlight {background-color: #fff8a9;}
+        .course-schedule tr.highlight ul {font-size: 0.8em; list-style-type: "~ ";}
+        .course-schedule tr.highlight li {margin-bottom: 0.8em}
+        .course-schedule tr:hover{background-color: #b9ff84;}
+        footer{padding-bottom: 3em;}
+        .course-schedule {margin-top: 2em;}
+        
+        #course-info ul {list-style-type: none; padding-left: 0;}
+        #course-info ul > li {line-height: 1.5;}
+        #course-info td {padding: 0.4em 0.8em;}
+        #course-info tr:nth-child(odd) {background-color: #ededed;}
+        #course-info tr {
+            vertical-align: top; 
+            /* border-bottom: 3px solid black; */
+        }
+        #course-info td:first-child {font-weight: bold}
+
+        h2:before {
+            content: "#"
+        }
+        #course-title {
+            margin-top: 1em;
+            font-size: 1.2em;
+        }
+        .unit, small {
+            font-size: 0.7em;
+        }
+        .here {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="course-title">
+        STAT 02311 (Undergraduate) & STAT 02511 (Graduate) | 2026 Fall
+    </div>
+    <h1>
+        (Introduction to) Statistical Computing
+    </h1>
+    <h2>
+        Course information
+    </h2>
+    <p>
+        This is a cross-listed undergraduate/graduate course on statistical computing.
+    </p> 
+    <table id="course-info">
+        <tr>
+            <td>Instructor</td>
+            <td>Man Cheung Tsui</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>tsui@rowan.edu</td>
+        </tr>
+        <tr>
+            <td>Office</td>
+            <td>
+                Robinson Hall Room 228B
+            </td>
+        </tr>
+        <tr>
+            <td>Office Hours</td>
+            <td>
+                Mondays 2PM–3PM
+                <br>
+                Tuesdays 12PM–1:50PM
+                <br>
+                Wednesdays 2PM–3PM
+            </td>
+        </tr>
+        <tr>
+            <td>Course Meets</td>
+            <td>
+                Mondays & Wednesdays 5PM–6:15PM in Discovery 414
+            </td>
+        </tr>
+        <tr>
+            <td>Syllabus & Grades</td>
+            <td>
+               <a href="https://canvas.rowan.edu/courses/8256112">See Canvas for STAT 2311</a><br>
+               <a href="https://canvas.rowan.edu/courses/8256113">See Canvas for STAT 2511</a> 
+            </td>
+        </tr>
+    </table>
+    
+    <h2>
+        Course schedule
+    </h2>
+
+        <table class="course-schedule">
+        <tr>
+            <th class="lesson">Schedule</th>
+            <th class="textbook">Textbook</th>
+            <th class="notes">Notes</th>
+            <th class="hw">Homework</th>
+        </tr>
+        <tr>
+            <td>
+                <div class="unit">Base R</div>
+                1 - Basics
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="unit">Base R</div>
+                TBD
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="unit">Tidyverse</div>
+                TBD
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr class="highlight">
+            <td>
+                Exam 1<br>
+                Wednesday, October 7, 2026 
+            </td>
+            <td>
+                
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="unit">TBD</div>
+                TBD
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr class="highlight">
+            <td>
+                Exam 2<br>
+                Wednesday, November 25, 2026 
+            </td>
+            <td>
+                
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="unit">TBD</div>
+                TBD
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr class="highlight">
+            <td>
+                Final Exam:<br>
+                Monday, December 14, 2026<br> at 5PM–7PM
+            </td>
+            <td>
+                
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+    <footer>
+
+    </footer>
+</body>
+</html>
