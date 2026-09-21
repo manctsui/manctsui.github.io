@@ -1,0 +1,64 @@
+---
+title: "Demographics Across Countries"
+subtitle: "Lesson 5 Demonstration"
+author: "Man"
+format: 
+  html:
+    output-file: "index.html"
+editor: visual
+---
+
+```{r}
+#| echo: false
+#| warning: false
+library(dplyr)
+library(tidyr)
+library(reactable)
+```
+
+The `countries` dataset can be displayed with an interactive data table: 
+
+```{r}
+df <- read.csv("http://manctsui.github.io/datasets/countries.csv")
+reactable(df, defaultPageSize = 4, searchable = TRUE)
+```
+
+# Net migration
+
+Net migration is calculated by the formula:
+$$
+\text{Migration into country} - \text{Migration out of country}
+$$
+
+What countries with the most negative vs. most positive net migration?
+
+:::{#fig-countries-migration}
+```{r}
+#| code-fold: true
+#| warning: false
+#| 
+#| layout-ncol: 2
+least <- df |>
+  arrange(Net.migration) |>
+  head(3) |>
+  select("Most Negative Net Migration" = Country)
+
+reactable(least)
+
+most <- df |>
+  arrange(desc(Net.migration)) |>
+  head(3) |>
+  select("Most Positive Net Migration" = Country)
+
+reactable(most)
+```
+Countries with most extreme net migration
+:::
+
+A few notes:
+
+- Negative migration in Micronesia makes sense due to sea level rise and lack of economic opportunities.
+- The data on Afghanistan is likely inaccurate.
+
+
+
