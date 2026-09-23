@@ -1,0 +1,191 @@
+---
+title: "Lesson 6 Demo - Blank"
+date: 2026-09-23
+format: html
+toc: true
+---
+
+First load in some libraries.
+
+```{r}
+#| warning: false
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(reactable)
+library(plotly)
+library(crosstalk)
+```
+
+Do `install.packages("crosstalk")` and similarly for other packages you may not have.
+
+# ggplot2
+
+`ggplot2` creates 2D graphs.
+
+**Directions**
+
+1.  State the data frame and the "aesthetics" of which data frame columns to serve as x-, y-axis:
+
+::: border
+```         
+ggplot(df, 
+    aes(x = col1, y = col2, color = ..., fill = ..., size = ..., shape = ...) +
+    options below +
+    more options below +
+    etc. 
+    )
+```
+:::
+
+2.  Graph types, like:
+    - `geom_histogram()`
+    - `geom_bar()` and `geom_col()`
+    - `geom_dotplot()`
+    - `geom_point()`
+    - `geom_line()`
+    - `geom_boxplot()`
+3.  Etc.
+    - Add labels `labs(title =  ..., x = ..., y = ..., color = ...)`
+    - Add theme: `theme_bw()`, `theme_dark()`, `theme_minimal()`, etc.
+
+## Example
+
+Use the Billboard Songs database and the top positions of their songs, available at `https://manctsui.github.io/datasets/charts.csv`.
+
+Plot the number of weeks song is on the board vs their peak positions.
+
+(Idea: Keep only distinct songs.)
+
+```{r}
+
+```
+
+# Plotly
+
+`plotly` creates 2D and 3D graphs with interactivity.
+
+Wrap a `ggplot` object with `ggplotly()` to get a `plotly` graph:
+
+```{r}
+#| warning: false
+library(ggplot2)
+library(plotly)
+
+x <- c(1:100)
+random_y <- rnorm(100, mean = 0)
+data <- data.frame(x, random_y)
+
+fig <- ggplot(data, mapping = aes(x = x, y = random_y)) +
+    geom_line()
+
+ggplotly(fig)
+
+```
+
+Or directly create graphs in `plotly`:
+
+```{r}
+fig <- plot_ly(data, x = ~x, y = ~random_y, type = 'scatter', mode = 'lines')
+
+fig
+```
+
+Types to choose from:
+
+- `scatter` -- accounts for dotplots, scatterplots, line graphs, etc.
+- `scatter3d`
+- `bar`
+- `pie`
+- `choropleth` map of geographic regions shaded by intensity of data values
+- Sankey diagrams, etc.
+
+## Example
+
+Use the Billboard Songs database and the top positions of their songs, available at `https://manctsui.github.io/datasets/charts.csv`.
+
+Plot the number of weeks song is on the board vs their peak positions.
+
+(Idea: Keep only distinct songs.)
+
+```{r}
+
+```
+
+# Leaflet
+
+```{r}
+library(leaflet)
+
+locations_df <- data.frame(
+  name = c("Eiffel Tower", "Louvre Museum", "Notre-Dame"),
+  lat  = c(48.8584, 48.8606, 48.8530),
+  lng  = c(2.2945, 2.3376, 2.3499)
+)
+
+# Plotting all 3 markers simultaneously
+leaflet(data = locations_df) |>
+  addTiles() |>
+  addMarkers(
+    lng = ~lng, 
+    lat = ~lat, 
+    popup = ~name # Adds clickable text popups
+  )
+```
+
+# HTML Widgets
+
+The above examples of `plotly` and `leaflet` are actually Javascript libraries. The R package `htmlwidgets` allows developers write R bindings to access these JS libraries.
+
+This means you can [pick from many widgets](https://gallery.htmlwidgets.org/) to use in R without needing to use JS:
+
+![](assets/widgets-gallery.png){width="80%"}
+
+# Crosstalk
+
+Crosstalk does *linked brushing*: selecting data points in one widget automatically selects the same data points in a shared widget.
+
+**Directions:**
+
+1.  Pick a column `df$col` of a data frame `df` that uniquely identifies each row: this column serves as a **key**.
+
+2.  Upgrade our data frame `df` to a `SharedData` object and store it as a variable
+
+    `sd <- SharedData$new(df, key = ~col)`
+
+    The `~` is used here because key expects a formula not a variable name as input.
+
+3.  Use this `SharedData` object `sd` as you would use a data frame within `ggplot2`, `plotly`, `DT`, `reactable`, `leaflet`, etc.
+
+Crosstalk also comes with the following inputs; some arguments are shown:
+
+- `filter_slider(id, label, sharedData, column, min, max)`
+- `filter_select(id, label, sharedData, group)`
+- `filter_checkbox(id, label, sharedData, group)`
+
+Here:
+
+- `id` is the HTML id of the input, so you can reference this input object.
+- `label` is the name of this input that shows up.
+- `sharedData` is your upgraded data frame
+- `group` and `column`: the formula or column that is shared.
+
+## Example
+
+We display a few specific artists from the Billboard Songs database and the top positions of their songs.
+
+```{r}
+
+
+```
+
+## Caveats
+
+- Not all HTML widgets support crosstalk.
+- For full reactivity, use Shiny for R.
+
+## Reference
+
+- [Documentation for crosstalk](https://www.rdocumentation.org/packages/crosstalk/versions/1.2.2) esp. `filter_slider`, `filter_select`, and `filter_checkbox` (under `filter_slider`).
+- [Tutorial](https://emilyriederer.github.io/demo-crosstalk/tutorial/tutorial-rmd.html)
+- [Examples](https://rstudio.github.io/crosstalk/using.html)
