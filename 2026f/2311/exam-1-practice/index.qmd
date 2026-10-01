@@ -1,0 +1,265 @@
+---
+title: 'Exam 1: Practice'
+format: html
+---
+
+
+The printed CSV file lists of the weekly Billboard Top 10 songs from January 2021.
+
+- `date` is the date that the song rank is announced by Billboard.
+- `last.week` is the position on the board of the song in the previous week.
+- `peak.rank` is the peak rank of the song overall, in the past and in the future.
+- `weeks.on.board` is the number of weeks the song has been on Billboard Top 100 up to that date *so far*.
+
+
+```{r}
+#| collapsed: true
+#| warning: false
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(plotly)
+```
+
+```{r}
+df <- read.csv("https://manctsui.github.io/datasets/billboard_2021_01.csv")
+df |> head(2)
+```
+
+## Problem 1
+State the expected output of the code `df[df$song == "Mood", "rank"]`.
+
+**Answer:** 3, 2, 1, 1, 7. (Don't worry about formating this nicely, or know if this displays as column or row.)
+
+(What is graded: know that we are finding the rank for *all* occurrences of the song "Mood", not just the first occurrence of it.)
+
+```{r}
+df[df$song == "Mood", "rank"]
+```
+
+## Problem 2
+
+State the expected output of `df |> filter(song == "All I Want For Christmas Is You") |> select(weeks.on.board)`.
+
+```{r}
+df |> filter(song == "All I Want For Christmas Is You") |> select(weeks.on.board)
+```
+
+## Problem 3
+Return the number of different songs that appeared in this list.
+
+**Answers:** We had used `distinct()` in `dplyr` before, but not `unique()`
+
+```{r}
+# With dplyr: distinct
+df |> distinct(song) |> count()
+
+# With Base R: functions
+length(unique(df$song))
+
+# With Base R: pipes
+df$song |> unique() |> length()
+```
+
+**Answer 2:** In `dplyr`, we can also aggregate by grouping then summarizing using any trivial aggregation formula like "1", then either count the number of rows in the resulting table, or sum up this new column `n`:
+
+```{r}
+# With dplyr: group_by then count number of rows
+df |>
+  group_by(song) |>
+  summarize(n = 1) |>
+  nrow()
+
+# With dplyr: group_by then sum
+df2 <- df |>
+  group_by(song) |>
+  summarize(n = 1)
+
+sum(df2$n)
+```
+
+## Problem 4
+Return which songs (on this list) reached their peak position in January 2021.
+
+**Answer:** Since this list contains precisely those Billboard Top 10 songs from January 2021, we simply check if each song has rank equal to its peak rank. Then we omit repeats (like Drivers License which spent a few weeks at its peak position of \#1).
+
+```{r}
+df |> filter(rank == peak.rank) |> distinct(song)
+```
+
+## Problem 5
+Return the songs which ranked higher (i.e. ranked better) in the week of January 30th than it did in the previous week.
+
+**Answer:** "Ranked higher" actually means the rank is a smaller number than its last week rank:
+
+```{r}
+df |> filter(date == "1/30/2021", rank < last.week)
+```
+
+## Problem 6
+Return which songs first entered the Billboard Top 10 in January.
+
+**Answer:** There is insufficient information to answer this problem; don't worry about unanswerable problems like this.
+
+**Better problems:**
+
+- Which songs directly entered the Billboard Top 100 in January 2021 in its first week ranked $\le 10$. (Answer: since every entry in our list is ranked $\le 10$, just filter by `weeks.on.board == 1`)
+- Which songs spent its third week ranked $\le 10$ in January 2021 on the Billboard Top 100, having spent its second week on the Billboard Top 100 outside of the top 10? (Answer: filter by `weeks.on.board == 3 & last.week > 10`)
+
+
+## Problem 7
+Add a column called "january_occurrences" to the data frame `df` that tabulates the number of times a given song appears in the Billboard Top 10 in January 2021.
+
+**Answer:**
+
+```{r}
+# With dplyr, group by song and mutate:
+df <- df |>
+  group_by(song) |>
+  mutate(january_occurrences = sum(rank/rank)) |>
+  ungroup()
+```
+
+**Answer 2:** We did not discuss joins, but you can join the following along the column `song` to `df` to produce a different solution:
+
+```{r}
+df |> group_by(song) |> count() |> select(song, january.occurrences = n)
+```
+
+## Problem 8
+Return which songs appeared exactly once (i.e. for exactly one week) on the Billboard Top 10 in January 2021.
+
+**Answer:** Since we solved Problem 7, we just need those songs which appeared exactly once in January:
+
+```{r}
+df |> filter(january_occurrences == 1)
+```
+
+## Problem 9
+Rename every occurrence of "AJR" in `df` to "Adam Jack Ryan" and save this new data frame to a data frame called `df2`. Do not overwrite `df`.
+
+```{r}
+# With dplyr
+df2 <- df |> mutate(artist = ifelse(artist == "AJR", "Adam Jack Ryan", artist))
+
+# With base R:
+# make a copy of df,
+# then change artist name
+# by looking at column "artist"
+# and rows with artist name of "AJR"
+df2 <- df
+
+row_condition <- df2$artist == "AJR"
+column_condition <- "artist"
+
+df2[row_condition, column_condition] <- "Adam Jack Ryan"
+```
+
+## Problem 10
+Add a column to `df` called "days.on.board" that reports the number of days the song had spent on the Billboard Top 100 up to that date.
+
+```{r}
+df$days.on.board <- 7 * df$weeks.on.board
+```
+
+## Problem 11
+Chart the weekly ranking of the song "Mood" with a line graph in ggplot or plotly.
+
+**Answer:** We first store data relevant to "Mood" in a new data frame called `mood`. Since we have not learned string manipulations, we avoid directly using the character string `date` and instead use `weeks.on.board` as a proxy.
+
+```{r}
+mood <- df |>
+  filter(song == "Mood") |>
+  select(date, rank, weeks.on.board)
+mood
+```
+
+```{r}
+# With ggplot:
+ggplot(mood, aes(x = weeks.on.board, y = rank)) + geom_line()
+```
+
+```{r}
+# With plotly:
+# Note: plotly displays incorrectly in Google Colab and Jupyter Notebook
+plot_ly(mood, x = ~weeks.on.board, y = ~rank, type = "scatter", mode = "line")
+```
+
+## Problem 12
+Draw a bar chart (correction: histogram) that displays the distribution of the number of characters there are in the song titles from this list of songs (do not count the same song title twice).
+
+```{r}
+title_length <- df |>
+  distinct(song) |>
+  mutate(song = nchar(song)) |>
+  select("length" = song)
+
+# With ggplot
+ggplot(title_length, aes(x = length)) + geom_histogram()
+
+# With plotly
+# Note: plotly displays incorrectly in Google Colab and Jupyter Notebook
+plot_ly(title_length, x = ~length, type = "histogram")
+```
+
+## Problem 13
+Find the three songs in this list that jumped (up) the most in rank from the past week, out of the songs which had been on the Billboard Top 100 the previous week.
+
+```{r}
+# With dplyr
+df |>
+  mutate(rank_jump = last.week - rank) |>
+  arrange(desc(rank_jump)) |>
+  head(3)
+```
+
+## Problem 14
+Return the artists who had more than one non-collaborating song on Billboard Top 10 in January 2021.
+
+**Note:** This problem is not written well since there are many exceptions. The intent here is to treat each artist name as distinct and we want to determine how many songs on the chart are associated to each artist name:
+
+**Partial answer:** Below we count how many songs each artist name had:
+
+```{r}
+df |>
+  select(song, artist) |>
+  distinct(song, artist) |>
+  group_by(artist) |>
+  count() |>
+  ungroup()
+```
+
+Then filter by `n > 1`.
+
+```{r}
+df |>
+  select(song, artist) |>
+  distinct(song, artist) |>
+  group_by(artist) |>
+  count() |>
+  ungroup() |>
+  filter(n > 1)
+```
+
+## Problem 15
+Report the songs by AJR, SZA, and Ariana Grande from this list ordered by most weeks on board, with the following expected output (note the change in column names):
+
+| Song Name | Artist | Weeks on Board|
+|---|---|---|
+| \<chr\> | \<chr\> | \<int\> |
+| Bang! | AJR | 29 |
+| Positions | Ariana Grande | 13 |
+| 34+35 | Ariana Grande | 12 |
+| Good Days | SZA | 4 |
+
+```{r}
+df |>
+  filter(artist %in% c("AJR", "SZA", "Ariana Grande")) |>
+  select("song", "artist", "weeks.on.board") |>
+  group_by(song, artist) |>
+  summarize(weeks.on.board = max(weeks.on.board)) |>
+  ungroup() |>
+  arrange(desc(weeks.on.board)) |>
+  select("Song Name" = song, "Artist" = artist, "Weeks on Board" = weeks.on.board)
+```
+
