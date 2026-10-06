@@ -1,0 +1,148 @@
+---
+title: "Lesson 6 Assignment Solutions"
+author: "Man"
+date: 2026-09-27
+format: html
+toc: true
+---
+
+# 
+
+```{r}
+#| warning: false
+library(dplyr)
+library(tidyr)
+library(reactable)
+library(plotly)
+library(crosstalk)
+```
+
+# The Dataset
+
+Read in the dataset from the Lesson 5 Assignment and then quickly check the first few rows (via `head` from base R, `slice_head` from `dplyr`, `reactable`, `DT`, etc.) of this dataset to preview what's in it.
+
+```{r}
+df <- read.csv("https://manctsui.github.io/datasets/timesData.csv")
+reactable(df, defaultPageSize = 2, searchable = TRUE)
+```
+
+# Problem 1A
+
+Find the three countries with the most universities on the above rankings.
+
+Display this information as a table (`reactable`, `DT`, etc.) with two columns:
+
+- The first column is the country name
+- The second column is the number of times the country's universities featured in the above rankings.
+
+```{r}
+# Summarize/aggregate by country, sort, slice head
+by_country <- df |>
+    group_by(country) |>
+    count() |>
+    arrange(desc(n)) |>
+    head(3)
+
+# Rename columns and display resulting table as a reactable.
+by_country |>
+    select("Country" = country, "No. of Ranked Universities" = n) |>
+    reactable()
+
+```
+
+# Problem 1B
+
+Display the result of Problem 1A as a barchart in ggplot or plotly.
+
+```{r}
+fig <- plot_ly(by_country, x = ~country, y = ~n, type="bar") |>
+    layout(
+        yaxis = list(title = "No. of Ranked Universities"),
+        xaxis = list(title = "Country")
+        )
+
+fig
+```
+
+# Problem 2A
+
+Display the top 50 universities in the year 2011 as a table with only two columns: 
+
+- First column is the rank. 
+- Second column is the university name.
+
+**Answer:** Use a spreadsheet program (Microsoft Excel, etc.) on our CSV file or use `df |> filter(year == 2011) |> distinct(world_rank)` to see that the world rankings are character strings of numbers. So we just need to convert these character strings to numerics via `as.numeric()` function from base R. 
+
+(Note: in other years, world rankings include strings like "201-225" or "=39" which require more work to clean.)
+
+```{r}
+top <- df |>
+    filter(year == 2011) |>
+    arrange(as.numeric(world_rank)) |>
+    select("Rank" = world_rank, "University" = university_name) |>
+    head(50)
+
+top$Rank <- as.numeric(top$Rank)
+
+top |>
+    reactable()
+```
+
+# Problem 2B
+
+If we are to turn the data frame that results from Problem 1A as a `SharedData` object, would `$rank` column be a good candidate to use as a key? Explain.
+
+**Answer:** Two universities may share the same rank, so rank alone cannot distinguish between two rows/observations.
+
+# Problem 2C
+
+Create a filter slider from crosstalk that allows us to narrow our selection of universities based on the rank of the university.
+
+```{r}
+sd <- SharedData$new(top, key = ~University)
+filter_slider("slider", "Rank", sd, ~Rank)
+reactable(sd)
+```
+
+# Problem 3
+
+Do two separate scatterplots from our university world ranking dataset subsetted to 2016:
+
+- First scatterplot is number of students vs. student-staff ratio. (Do you see any visible outlier?)
+- Second scatterplot is student-staff ratio vs. teaching score.
+- Link the two scatterplots together via crosstalk.
+
+```{r}
+df2 <- df |>
+    filter(year == 2016)
+
+sd2 <- SharedData$new(df2, key = ~university_name)
+
+scatter1 <- plot_ly(sd2, x = ~num_students, y = ~student_staff_ratio, type = "scatter", mode = "markers") |>
+  add_trace(
+    text = df2[["university_name"]],
+    hoverinfo = 'text',
+    showlegend = FALSE
+  ) |>
+  layout(
+        xaxis = list(title = "Number of Students"),
+        yaxis = list(title = "Student-to-Staff Ratio")
+  )
+scatter2 <- plot_ly(sd2, x = ~student_staff_ratio, y = ~teaching, type = "scatter", mode = "markers") |>
+  add_trace(
+    text = df2$university_name,
+    hoverinfo = 'text',
+    showlegend = FALSE
+  ) |>
+  layout(
+        xaxis = list(title = "Student-to-Staff Ratio"),
+        yaxis = list(title = "Teaching Score")
+  )
+
+scatter1
+scatter2
+
+```
+
+
+We added hover text showing the university name via the `add_trace(...)` option by following plotly's [hover text documentation](https://plotly.com/r/hover-text-and-formatting/). You do not need to do this. 
