@@ -1,68 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" rel="preload" as="style"
+    crossorigin="anonymous" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+    onload='this.onload=null,this.rel="stylesheet"'>
+  <script crossorigin="anonymous" defer="defer"
+    integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+    src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script crossorigin="anonymous" defer="defer"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+    src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:&#34;$$&#34;,right:&#34;$$&#34;,display:!0},{left:&#34;$&#34;,right:&#34;$&#34;,display:!1}],throwOnError:!1,trust:!0})"></script>
+  <link href="data:," rel="icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans+Mono:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Creepster&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans+Mono:wght@100..900&display=swap"
+    rel="stylesheet">
 
   <title>Competition Practice: October 30</title>
   <style>
+    .katex {
+      font-size: 1.1em
+    }
+
+    .katex-display {
+      overflow: auto hidden
+    }
+
+    .katex-display>.katex {
+      white-space: normal
+    }
+
+    .katex-display>.base {
+      margin: .25em 0
+    }
+
+    .katex-display {
+      margin: .5em 0
+    }
+
     body {
-      font-family: "Noto Sans Mono", 'Segoe UI','Lucida Grande','Open Sans', sans-serif;
-      font-size:1.1rem;
-      margin:auto;
-      max-width:45em;
-      padding:1em;
+      font-family: "Noto Sans Mono", 'Segoe UI', 'Lucida Grande', 'Open Sans', sans-serif;
+      font-size: 1.1rem;
+      margin: auto;
+      max-width: 80em;
+      padding: 1em;
       font-family: Arial, sans-serif;
       background: #f4f4f9;
     }
 
     h1 {
-        font-family: "Noto Sans Mono";
-        font-size: 3.4em;
+      font-family: "Creepster";
+      font-size: 14em;
+      margin-top: 0;
     }
 
     .playlist-container {
-      background: #fff;
-      padding: 20px;
+      /* background: #fff; */
+      /* padding: 10px; */
       margin-bottom: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    audio {
-      width: 100%;
-      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
     }
 
     ul {
       list-style: none;
       padding: 0;
       margin: 0;
+      display: flex;
+      gap: 5px;
     }
 
     li {
       padding: 10px;
-      margin: 5px 0;
       border: 1px solid #ddd;
-      border-radius: 4px;
+      border-radius: 20px;
+      width: 0.1px;
+      height: 0.1px;
       cursor: pointer;
     }
 
     li.active {
-      background-color: #007bff;
+      background-color: #fd851d;
       color: white;
       font-weight: bold;
     }
 
     .narrow-player {
       /* Set a small horizontal width */
-      width: 140px;
+      width: 50px;
       height: 40px;
-      border-radius: 20px;
+      padding-right: 10px;
     }
 
     /* Hide the volume control/slider in WebKit browsers (Chrome, Edge, Safari) */
@@ -77,56 +110,246 @@
     .narrow-player::-webkit-media-controls-current-time-display {
       display: none !important;
     }
+
     /* 2. Optional: Adjust remaining controls to fill the freed space cleanly */
     .narrow-player::audio::-webkit-media-controls-panel {
-    padding: 0 8px;
+      padding: 0 8px;
+    }
+
+    .ibm-plex-mono-thin {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 100;
+      font-style: normal;
+    }
+
+    .ibm-plex-mono-regular {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    #ghost  {
+      /* Define a smooth transition if needed */
+      animation: colorChange 20s infinite ease-in-out;
+    }
+
+    /* 2. Create keyframes using the fill property */
+    @keyframes colorChange {
+      0% {
+        fill: #f4f6f9;
+        stroke: #cbd5e1;
+      }
+      33% {
+        fill: #fffcf6;
+        stroke: #cbd5e1;
+      }
+      66% {
+        fill: #fedfff;
+        stroke: #6d6d6d;
+      }
+      100% {
+        fill: #f4f6f9;
+        stroke: #cbd5e1;
+      }
+    }
+
+    
+    #linen  {
+      /* Define a smooth transition if needed */
+      animation: linenChange 20s infinite ease-in-out;
+    }
+
+    /* 2. Create keyframes using the fill property */
+    @keyframes linenChange {
+      0% {
+        stroke: #cbd5e1;
+      }
+      33% {
+        stroke: #cbd5e1;
+      }
+      66% {
+        stroke: #6d6d6d;
+      }
+      100% {
+        stroke: #cbd5e1;
+      }
     }
   </style>
 </head>
+
 <body>
 
-    <div style="display: flex;">
-        <div><h1 style="max-width: 30rem;">Competition Practice</h1></div>
-        <div style="">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-            <!-- Ghost Body (Sheet Silhouette) -->
-            <path d="M 28 50 C 28 18 72 18 72 50 C 72 68 82 78 82 90 C 72 82 62 92 50 82 C 38 92 28 82 18 90 C 18 78 28 68 28 50 Z" fill="#f4f6f9" stroke="#cbd5e1" stroke-width="2" stroke-linejoin="round" />
-
-            <!-- Linen Fabric Folds (Interior Shadow Lines) -->
-            <path d="M 28 52 Q 33 68 36 84 M 40 55 Q 44 68 46 80 M 60 55 Q 56 68 54 80 M 72 52 Q 67 68 64 84" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
-
-            <!-- Facial Features -->
-            <ellipse cx="43" cy="40" rx="4" ry="7" fill="#1e293b" />
-            <ellipse cx="57" cy="40" rx="4" ry="7" fill="#1e293b" />
-            <ellipse cx="50" cy="53" rx="3" ry="5" fill="#1e293b" />
-            </svg>
-        </div>
+  <div style="font-size: 4em; margin-top: 5rem;" class="ibm-plex-mono-regular">October 30 | Summation</div>
+  <div style="display: flex;">
+    <div>
+      <h1 style="max-width: 64rem;">Competition Practice</h1>
     </div>
-    <div style="display: flex; align-items: center; gap: 20px;">
-        <div>Opening theme: </div>
-        <div><audio  class="audio-player narrow-player" controls title="Who wants to be a millionaire opening theme" src="media/01 Main Theme.mp3"></audio></div>
+    <div style="">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="600" height="600">
+        <!-- Ghost Body (Sheet Silhouette) -->
+        <path id="ghost"
+          d="M 28 50 C 28 18 72 18 72 50 C 72 68 82 78 82 90 C 72 82 62 92 50 82 C 38 92 28 82 18 90 C 18 78 28 68 28 50 Z"
+          fill="#f4f6f9" stroke="#cbd5e1" stroke-width="2" stroke-linejoin="round" />
+
+        <!-- Linen Fabric Folds (Interior Shadow Lines) -->
+        <path id="linen" 
+        d="M 28 52 Q 33 68 36 84 M 40 55 Q 44 68 46 80 M 60 55 Q 56 68 54 80 M 72 52 Q 67 68 64 84" fill="none"
+          stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
+
+        <!-- Facial Features -->
+        <ellipse cx="43" cy="40" rx="4" ry="7" fill="#1e293b" />
+        <ellipse cx="57" cy="40" rx="4" ry="7" fill="#1e293b" />
+        <ellipse cx="50" cy="53" rx="3" ry="5" fill="#1e293b" />
+      </svg>
     </div>
+  </div>
+  <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 100vh;">
+    <div><audio class="audio-player narrow-player" controls title="Who wants to be a millionaire opening theme"
+        src="media/01 Main Theme.mp3"></audio></div>
+  </div>
+
+
+  <!--
+========================================================================================================== 
+    Session 1
+==========================================================================================================
+-->
+
+  <h2 style="font-size: 10em;">
+  Session 1
+</h2>
+<p class="ibm-plex-mono-regular" style="font-size: 4em; margin-bottom: 30vh" >
+  Work in groups
+</p>
 
   <!-- Playlist 1 -->
-  <div class="playlist-container">
-    <h2>Album A</h2>
-    <audio class="audio-player" controls></audio>
+  <div class="playlist-container" style="margin-bottom: 2em;">
+    <audio class="audio-player narrow-player" controls loading="lazy"></audio>
     <ul class="playlist">
-        <li data-src="media/Play.mp3" class="active">Track 1</li>
-      <li data-src="media/14 Question.mp3">Track 2</li>
-      <li data-src="media/Interloper.mp3">Track 3</li>
+      <li data-src="media/Play.mp3" class="active"></li>
+      <li data-src="media/14 Question.mp3"></li>
+      <li data-src="media/Interloper.mp3"></li>
+      <li data-src="media/Clash Defiant.mp3"></li>
+      <li data-src="media/The Lift.mp3"></li>
+      <li data-src="media/Ave Marimba.mp3"></li>
+      <li data-src="media/14 Question.mp3"></li>
+      <li data-src="media/Fastest Finger First.mp3"></li>
+      <li data-src="media/Final Answer.mp3"></li>
     </ul>
   </div>
 
+
+<h2 class="ibm-plex-mono-regular" style="font-size: 3em;">
+  Session 1
+</h2>
+<div style="font-size: 2em; margin-bottom: 100vh;">
+  <p style="text-indent: -1.7em;">
+    👻 There are $2^9=512$ many $3\times 3$ matrices whose entries are only zeroes and ones. The <b>trace</b> of such a $3\times 3$ matrix is the sum of its upper-left to lower-right diagonal entries. Find the sum of the traces of all these $512$ matrices.
+  </p>
+  <p  style="text-indent: -1.7em;">
+    🎃 Compute $\displaystyle\sum_{k=1}^{2016} (-1)^{1+2+\cdots+k}k.$
+  </p>
+  <p  style="text-indent: -1.7em;">
+    🕷️ Compute $\displaystyle\sum_{k=1}^{100}\lfloor \sqrt{k}\rfloor$. Here, $\lfloor x\rfloor$ is the largest integer $\le x$.
+  </p>
+  <p  style="text-indent: -1.7em;">
+    🧟 Compute $\displaystyle\sum_{n=1}^{\infty} \frac{1}{2^{a_n}} = \frac{1}{2^{a_1}} + \frac{1}{2^{a_2}} + \frac{1}{2^{a_3}} + \cdots$, where $a_1\le a_2\le a_3\le \ldots$ are all the positive integers not divisible by 2 or 3. (This sequence begins as $1, 5, 7, 11, 13, 17, \ldots$.)
+
+  </p>
+</div>
+
+  
+  
+  
+  
+
+
+
+  <!--
+========================================================================================================== 
+    Session 2
+==========================================================================================================
+-->
+
+
+  <h2 style="font-size: 10em;">
+  Session 2
+</h2>
+<p class="ibm-plex-mono-regular" style="font-size: 4em; margin-bottom: 30vh" >
+  Work in groups
+</p>
+
+
   <!-- Playlist 2 -->
-  <div class="playlist-container">
-    <h2>Album B</h2>
-    <audio class="audio-player" controls></audio>
+  <div class="playlist-container" style="margin-bottom: 2em;">
+    <audio class="audio-player narrow-player" controls loading="lazy"></audio>
     <ul class="playlist">
-      <li data-src="albumB-track1.mp3" class="active">Track 1</li>
-      <li data-src="albumB-track2.mp3">Track 2</li>
+      <li data-src="media/Play.mp3" class="active"></li>
+      <li data-src="media/14 Question.mp3"></li>
+      <li data-src="media/Stay the Course.mp3"></li>
+      <li data-src="media/The Chamber.mp3"></li>
+      <li data-src="media/Black Vortex.mp3"></li>
+      <li data-src="media/Drums of the Deep.mp3"></li>
+      <li data-src="media/The Lift.mp3"></li>
+      <li data-src="media/Our Story Begins.mp3"></li>
+      <li data-src="media/14 Question.mp3"></li>
+      <li data-src="media/Fastest Finger First.mp3"></li>
+      <li data-src="media/Final Answer.mp3"></li>
     </ul>
   </div>
+
+<h2 class="ibm-plex-mono-regular" style="font-size: 3em;">
+  Session 2
+</h2>
+<div style="font-size: 2em; margin-bottom: 100vh;">
+  <p style="text-indent: -1.7em;">
+    👻 The Fibonacci sequence is defined by $F_1 = F_2 = 1$ and $F_n = F_{n-1} + F_{n-2}$ for $n \ge 3$. Evaluate the sum  
+$$\sum_{n=1}^{\infty} \frac{(-1)^{F_n}}{2^n} = \frac{(-1)^1}{2} + \frac{(-1)^1}{4} + \frac{(-1)^2}{8} + \frac{(-1)^3}{16} + \cdots.$$
+  </p>
+  <p  style="text-indent: -1.7em;">
+    🎃 Give a simple closed form expression for the infinite sum.
+$$1 - \frac{1}{3}\left(\frac{1}{3}\right) + \frac{1}{5}\left(\frac{1}{3}\right)^2 - \frac{1}{7}\left(\frac{1}{3}\right)^3 + \frac{1}{9}\left(\frac{1}{3}\right)^4 - \frac{1}{11}\left(\frac{1}{3}\right)^5 + -\cdots$$
+  </p>
+  <p  style="text-indent: -1.7em;">
+    🕷️ The decimal representation of $1/17$ is $0.\overline{0588235294117647}$. Determine the decimal representation of $1/588235294117647$.
+  </p>
+</div>
+
+
+
+
+
+  <!--
+========================================================================================================== 
+    Closing theme
+==========================================================================================================
+-->
+
+<h2 style="font-family: Creepster; font-size: 12em; margin-bottom: 2rem">
+  Thanks for Coming
+</h2>
+<h2 class="ibm-plex-mono-regular" style="font-size: 2.5em; margin-bottom: 10vh">
+  Sign up for <b>Putnam Exam</b> for more challenging fun!<br>
+  > See me now or email me at <b>tsui@rowan.edu</b>.
+</h2>
+
+  <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 1em;">
+    <div><audio class="audio-player narrow-player" controls  loading="lazy" title="Who wants to be a millionaire closing theme"
+        src="media/63 Closing Theme.mp3"></audio></div>
+        <audio class="audio-player narrow-player" controls  loading="lazy" title="Who wants to be a millionaire (trance remix)"
+        src="media/Who wants to be a millionaire (trance remix).webm"></audio></div>
+  </div>
+
+
+  Closing: <a href="media/README.txt">Music attributions</a>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <!--
+========================================================================================================== 
+    Scripts
+==========================================================================================================
+-->
+
 
   <script>
     // Reusable initializer scoped to each container
@@ -179,4 +402,5 @@
   </script>
 
 </body>
+
 </html>
