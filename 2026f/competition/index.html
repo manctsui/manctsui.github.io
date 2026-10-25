@@ -134,6 +134,20 @@
 
     .problem-set { font-size: 2em; }
     .problem-set p { text-indent: -1.7em; }
+
+    .orange {
+      color: #FF7518;
+    }
+
+    /* Delayed visibility class for "Work in groups" */
+    .delayed-appear {
+      opacity: 0;
+      transition: opacity 0.5s ease-in 4s; /* 4 second delay before fading in */
+    }
+
+    .delayed-appear.visible {
+      opacity: 1;
+    }
   </style>
 </head>
 
@@ -142,10 +156,10 @@
   <div style="font-size: 4rem; margin-top: 5rem;" class="ibm-plex-mono-regular">October 30 | Summation</div>
   <div style="display: flex;">
     <div>
-      <h1 style="max-width: 45rem;">Competition Practice</h1>
+      <h1 style="max-width: 45rem;">Competition <span class="orange">Practice</span></h1>
     </div>
     <div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="400" height="400">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="420" height="420">
         <path id="ghost"
           d="M 28 50 C 28 18 72 18 72 50 C 72 68 82 78 82 90 C 72 82 62 92 50 82 C 38 92 28 82 18 90 C 18 78 28 68 28 50 Z"
           fill="#f4f6f9" stroke="#cbd5e1" stroke-width="2" stroke-linejoin="round" />
@@ -168,8 +182,8 @@
   <div class="spacer-full"></div>
 
   <!-- Session 1 -->
-  <h2 style="font-size: 10em;">Session 1</h2>
-  <p class="ibm-plex-mono-regular" style="font-size: 4em;">Work in groups</p>
+  <h2 class="orange" style="font-size: 10em;">Session 1</h2>
+  <p class="ibm-plex-mono-regular delayed-appear" style="font-size: 4em;">Work in groups</p>
 
   <div class="spacer-large"></div>
 
@@ -196,14 +210,14 @@
     <p>👻 There are $2^9=512$ many $3\times 3$ matrices whose entries are only zeroes and ones. The <b>trace</b> of such a $3\times 3$ matrix is the sum of its upper-left to lower-right diagonal entries. Find the sum of the traces of all these $512$ matrices.</p>
     <p>🎃 Compute $\displaystyle\sum_{k=1}^{2016} (-1)^{1+2+\cdots+k}k.$</p>
     <p>🕷️ Compute $\displaystyle\sum_{k=1}^{100}\lfloor \sqrt{k}\rfloor$. Here, $\lfloor x\rfloor$ is the largest integer $\le x$.</p>
-    <p>🧟 Compute $\displaystyle\sum_{n=1}^{\infty} \frac{1}{2^{a_n}} = \frac{1}{2^{a_1}} + \frac{1}{2^{a_2}} + \frac{1}{2^{a_3}} + \cdots$, where $a_1\le a_2\le a_3\le \ldots$ are all the positive integers not divisible by 2 or 3. (This sequence begins as $1, 5, 7, 11, 13, 17, \ldots$.)</p>
+    <p>🧟 Compute $\displaystyle\sum_{n=1}^{\infty} \frac{1}{2^{a_n}} = \frac{1}{2^{a_1}} + \frac{1}{2^{a_2}} + \frac{1}{2^{a_3}} + \cdots$, where $a_1< a_2< a_3< \ldots$ are all the positive integers not divisible by 2 or 3. (This sequence begins as $1, 5, 7, 11, 13, 17, \ldots$.)</p>
   </div>
 
   <div class="spacer-full"></div>
 
   <!-- Session 2 -->
-  <h2 style="font-size: 10em;">Session 2</h2>
-  <p class="ibm-plex-mono-regular" style="font-size: 4em;">Work in groups</p>
+  <h2 class="orange" style="font-size: 10em;">Session 2</h2>
+  <p class="ibm-plex-mono-regular delayed-appear" style="font-size: 4em;">Work in groups</p>
 
   <div class="spacer-large"></div>
 
@@ -239,7 +253,7 @@ $$1 - \frac{1}{3}\left(\frac{1}{3}\right) + \frac{1}{5}\left(\frac{1}{3}\right)^
   <div class="spacer-full"></div>
 
   <!-- Closing theme -->
-  <h2 style="font-family: Creepster, system-ui; font-size: 11em; margin-bottom: 1rem">Thanks for Coming</h2>
+  <h2 class="orange" style="font-family: Creepster, system-ui; font-size: 11em; margin-bottom: 1rem">Thanks for Coming</h2>
   <h2 class="ibm-plex-mono-regular" style="font-size: 2.3em;">
     Sign up for <b>Putnam Exam</b> for more challenging fun!<br>
     > See me now or email me at <b>tsui@rowan.edu</b>.
@@ -338,6 +352,24 @@ $$1 - \frac{1}{3}\left(\frac{1}{3}\right) + \frac{1}{5}\left(\frac{1}{3}\right)^
     }
 
     document.querySelectorAll('.playlist-container').forEach(initPlaylist);
+
+
+    // Delayed visibility observer for "Work in groups"
+    if ('IntersectionObserver' in window) {
+      const delayedObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            delayedObserver.unobserve(entry.target);
+          }
+        });
+      });
+
+      document.querySelectorAll('.delayed-appear').forEach(el => delayedObserver.observe(el));
+    } else {
+      // Fallback for older browsers
+      document.querySelectorAll('.delayed-appear').forEach(el => el.classList.add('visible'));
+    }
   </script>
 
 </body>
